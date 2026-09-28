@@ -198,7 +198,7 @@ export function createPlanSequence(canvas, options) {
     createImageBitmap(blobs[i], { imageOrientation: 'from-image', premultiplyAlpha: 'none' }).then((bmp) => {
       decoding.delete(i);
       decoded.set(i, bmp);
-      if (i === 1) { size = [bmp.width, bmp.height]; if (done >= Math.min(startAt, count) + 1 && carteReady) resolveStart(); }
+      if (i === 1) { size = [bmp.width, bmp.height]; resize(); if (done >= Math.min(startAt, count) + 1 && carteReady) resolveStart(); }
       if (decoded.size > CAPACITY) {
         const pos = state.current;
         const loin = [...decoded.keys()].filter((k) => k !== bound[0] && k !== bound[1]).sort((a, b) => Math.abs(b - pos) - Math.abs(a - pos));
@@ -269,13 +269,21 @@ export function createPlanSequence(canvas, options) {
   let echelle = 1;
   const durees = [];
   let derniereCle = '';
+  // Sans carte graphique (rendu logiciel : robots de mesure, ordinateurs anciens), on démarre directement léger
+  try {
+    const info = gl.getExtension('WEBGL_debug_renderer_info');
+    if (info && /SwiftShader|llvmpipe|softpipe|Software|Basic Render/i.test(gl.getParameter(info.UNMASKED_RENDERER_WEBGL))) echelle = 0.5;
+  } catch { /* information indisponible : on garde la mesure du temps de dessin */ }
 
   function resize() {
     // Les images font 640 à 832 px de large : calculer l'écran en plus haute définition ne montrerait
-    // aucun détail de plus, et coûtait jusqu'à neuf fois plus de calcul sur les téléphones (saccades)
-    const dpr = Math.min(window.devicePixelRatio || 1, 1.25) * echelle;
-    const w = Math.round(canvas.clientWidth * dpr);
-    const h = Math.round(canvas.clientHeight * dpr);
+    // aucun détail de plus. La largeur calculée est plafonnée à 1,2 fois celle des images.
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.25);
+    const largeurImage = size[0] > 16 ? size[0] : 832;
+    const plafond = Math.min(1, (largeurImage * 1.2) / Math.max(1, canvas.clientWidth * dpr));
+    const k = dpr * plafond * echelle;
+    const w = Math.round(canvas.clientWidth * k);
+    const h = Math.round(canvas.clientHeight * k);
     if (canvas.width !== w || canvas.height !== h) {
       canvas.width = w;
       canvas.height = h;

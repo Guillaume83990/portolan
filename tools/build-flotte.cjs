@@ -171,12 +171,8 @@ function page({ root, url, title, description, image, body, script, jsonld, body
   ${preloadTags(root, preload)}
   <link rel="preload" href="${root}assets/fonts/BodoniModa-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="${root}assets/fonts/HankenGrotesk-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="${root}css/fonts.css">
-  <link rel="stylesheet" href="${root}css/main.css">
-  <link rel="stylesheet" href="${root}css/flotte.css">
-  <link rel="stylesheet" href="${root}css/visite-fiche.css">
-  <link rel="stylesheet" href="${root}css/pages.css">
-  <link rel="stylesheet" href="${root}css/compte.css">
+  <!-- Une seule feuille de style, assemblée et compressée par tools/css.cjs (sources : css/main.css, flotte.css…) -->
+  <link rel="stylesheet" href="${root}css/site.min.css">
   <script type="application/ld+json">
 ${JSON.stringify(jsonld, null, 2)}
   </script>
@@ -465,7 +461,7 @@ function fiche(y, i) {
   const visite = v ? `
         <section class="fi-tour" id="visite" aria-labelledby="tour-title"
           data-dir="${root}assets/${v.dir}/" data-yacht="${esc(y.nom)}" data-pieces="${esc(JSON.stringify(v.pieces))}" data-louer="${loue(y)}">
-          <button type="button" class="fi-tour__open" data-cursor="Embarquer" aria-describedby="tour-lead">
+          <button type="button" class="fi-tour__open" data-cursor="Embarquer" aria-labelledby="tour-title" aria-describedby="tour-lead">
             ${img(v.affiche, { w: 1600, h: 900, alt: '', sizes: '(min-width: 1100px) 60vw, 100vw' }, root)}
             <span class="fi-tour__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
           </button>

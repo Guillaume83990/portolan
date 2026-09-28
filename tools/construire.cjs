@@ -8,6 +8,7 @@ const path = require('path');
 const env = { ...process.env, NODE_PATH: 'C:/Users/propi/Tools/depth/node_modules' };
 const run = (cmd) => execSync(cmd, { cwd: path.join(__dirname, '..'), stdio: 'inherit', env });
 
+run('node tools/css.cjs');
 run('node tools/supabase/exporter.cjs');
 run('node tools/build-flotte.cjs');
 run('node tools/traduire.cjs en de it');

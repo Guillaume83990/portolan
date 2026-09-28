@@ -227,16 +227,11 @@ async function startFilm() {
   if (new URLSearchParams(location.search).has('debug')) window.portolanVisite = sequence;
 
   // Ouverture : les rhumbs rayonnent et la carte apparaît à l'encre (le titre est déjà là)
-  // Sur téléphone, les 96 rayons apparaissent en fondu (les tracer un à un coûtait trop au processeur)
-  const ouverture = gsap.timeline({ defaults: { ease: 'power3.out' } })
-    .to('.rhumbs', { opacity: 0.4, duration: small ? 1.2 : 0.6 }, 0);
-  if (!small) {
-    ouverture.from(rhumbLines, {
-      attr: { x2: (i, el) => el.getAttribute('x1'), y2: (i, el) => el.getAttribute('y1') },
-      duration: 2.2, ease: 'power2.inOut', stagger: 0.004,
-    }, 0);
-  }
-  ouverture
+  // Les rayons se déploient depuis le centre par un seul masque circulaire (animer les 96 traits un par un
+  // coûtait trop au processeur)
+  gsap.timeline({ defaults: { ease: 'power3.out' } })
+    .to('.rhumbs', { opacity: 0.4, duration: 0.6 }, 0)
+    .fromTo('.rhumbs', { clipPath: 'circle(0% at 50% 50%)' }, { clipPath: 'circle(75% at 50% 50%)', duration: 2.2, ease: 'power2.inOut', clearProps: 'clipPath' }, 0)
     .call(() => sequence.intro(2600), null, 0.3)
     .to('.rhumbs', { opacity: 0.16, duration: 1.4 }, 2.2)
     .to(['.film__hint', '.route'], { autoAlpha: 1, duration: 1 }, 2.8)
@@ -625,7 +620,7 @@ if (!reduceMotion) {
   const statement = document.querySelector('[data-words]');
   if (statement) {
     const words = SplitText.create(statement, { aria: 'hidden', type: 'words', wordsClass: 'word' }).words;
-    gsap.fromTo(words, { opacity: 0.14 }, {
+    gsap.fromTo(words, { opacity: 0.45 }, {
       opacity: 1, ease: 'none', stagger: 0.1,
       scrollTrigger: { trigger: statement, start: 'top 80%', end: 'bottom 45%', scrub: true },
     });

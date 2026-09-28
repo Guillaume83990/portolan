@@ -27,12 +27,8 @@
   
   <link rel="preload" href="../../../assets/fonts/BodoniModa-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../../../assets/fonts/HankenGrotesk-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../../css/fonts.css">
-  <link rel="stylesheet" href="../../../css/main.css">
-  <link rel="stylesheet" href="../../../css/flotte.css">
-  <link rel="stylesheet" href="../../../css/visite-fiche.css">
-  <link rel="stylesheet" href="../../../css/pages.css">
-  <link rel="stylesheet" href="../../../css/compte.css">
+  <!-- Une seule feuille de style, assemblée et compressée par tools/css.cjs (sources : css/main.css, flotte.css…) -->
+  <link rel="stylesheet" href="../../../css/site.min.css">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -169,7 +165,7 @@
 
         <section class="fi-tour" id="visite" aria-labelledby="tour-title"
           data-dir="../../../assets/visites/castellane/" data-yacht="Castellane" data-pieces="{&quot;V1&quot;:&quot;Au mouillage, îles de Lérins&quot;,&quot;V2&quot;:&quot;La poupe&quot;,&quot;V3&quot;:&quot;Le beach club&quot;,&quot;V4&quot;:&quot;Le pont arrière&quot;,&quot;V5&quot;:&quot;Le salon&quot;,&quot;V6&quot;:&quot;Le hall&quot;,&quot;V7&quot;:&quot;La suite du propriétaire&quot;}" data-louer="false">
-          <button type="button" class="fi-tour__open" data-cursor="Embarquer" aria-describedby="tour-lead">
+          <button type="button" class="fi-tour__open" data-cursor="Embarquer" aria-labelledby="tour-title" aria-describedby="tour-lead">
             <img src="../../../assets/img/visites/castellane/affiche-1600.webp" srcset="../../../assets/img/visites/castellane/affiche-900.webp 900w, ../../../assets/img/visites/castellane/affiche-1600.webp 1600w" sizes="(min-width: 1100px) 60vw, 100vw" alt="" width="1600" height="900" loading="lazy">
             <span class="fi-tour__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
           </button>

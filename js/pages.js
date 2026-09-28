@@ -20,7 +20,7 @@ if (!reduceMotion) {
   // Manifeste : les mots s'allument au défilement
   document.querySelectorAll('[data-words]').forEach((el) => {
     const words = SplitText.create(el, { aria: 'hidden', type: 'words', wordsClass: 'word' }).words;
-    gsap.fromTo(words, { opacity: 0.14 }, { opacity: 1, ease: 'none', stagger: 0.1, scrollTrigger: { trigger: el, start: 'top 80%', end: 'bottom 45%', scrub: true } });
+    gsap.fromTo(words, { opacity: 0.45 }, { opacity: 1, ease: 'none', stagger: 0.1, scrollTrigger: { trigger: el, start: 'top 80%', end: 'bottom 45%', scrub: true } });
   });
 
   gsap.utils.toArray('.pg-card, .pg-faq__item, .pg-budget__tool, .pg-cost__tool, .pg-sell__media, .pg-sell__text > *, .ct-way, .ct-office, .ct-other__list li').forEach((el) => {
