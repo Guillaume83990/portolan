@@ -31,6 +31,17 @@ export function aLEcran(el, fn, pourcent = 90) {
   observateur(pourcent).observe(cible);
 }
 
+// Traite une liste par petites tranches (8 ms au plus), en rendant la main au navigateur entre deux :
+// aucune tâche ne dépasse 50 ms, même sur un téléphone lent
+const rendreLaMain = () => new Promise((r) => (window.scheduler?.yield ? window.scheduler.yield().then(r) : setTimeout(r, 0)));
+export async function tranches(liste, fn) {
+  let debut = performance.now();
+  for (const el of liste) {
+    fn(el);
+    if (performance.now() - debut > 8) { await rendreLaMain(); debut = performance.now(); }
+  }
+}
+
 // Réglages d'animation (tout le reste décrit l'état de départ)
 const REGLAGES = new Set(['duration', 'ease', 'stagger', 'delay', 'transformOrigin']);
 const ARRIVEE = { autoAlpha: 1, opacity: 1, x: 0, y: 0 };

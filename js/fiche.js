@@ -1,6 +1,6 @@
 // Fiche d'un yacht : ouverture, galerie par pont avec visionneuse, plan de pont, calendrier des semaines,
 // demande préremplie selon le bouton choisi, barre du bas sur téléphone.
-import { gsap, ScrollTrigger, SplitText, reduceMotion, initCommun, scrollToEl, pause, revele, aLEcran } from './commun.js';
+import { gsap, ScrollTrigger, SplitText, reduceMotion, initCommun, scrollToEl, pause, revele, aLEcran, tranches } from './commun.js';
 import { t as tr } from './i18n.js';
 import { initReservation } from './reservation.js';
 
@@ -15,7 +15,7 @@ if (!reduceMotion) {
     .from('.fi-hero .crumbs, .fi-hero .kicker, .fi-hero__lead', { autoAlpha: 0, y: 20, duration: 1.2, stagger: 0.1 }, 0.6)
     .from('.fi-hero__specs div', { autoAlpha: 0, y: 20, duration: 1, stagger: 0.07 }, 0.9);
   gsap.to('.fi-hero__media img', { yPercent: 10, ease: 'none', scrollTrigger: { trigger: '.fi-hero', start: 'top top', end: 'bottom top', scrub: true } });
-  gsap.utils.toArray('.fi-intro > p, .fi-points li, .fi-specs__list div, .fi-sale__list li, .fi-decks__list li, .fi-more__list li').forEach((el) => {
+  tranches(gsap.utils.toArray('.fi-intro > p, .fi-points li, .fi-specs__list div, .fi-sale__list li, .fi-decks__list li, .fi-more__list li'), (el) => {
     revele(el, { autoAlpha: 0, y: 24, duration: 1, ease: 'power3.out' }, el, 92);
   });
 }

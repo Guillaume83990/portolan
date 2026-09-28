@@ -1,6 +1,6 @@
 // Pages « Acheter », « Louer » et « Méthode » : ouverture, manifeste, escales et étapes à image collée, budget de location,
 // coût annuel d'un yacht, questions fréquentes. Les formulaires sont gérés par commun.js.
-import { gsap, ScrollTrigger, SplitText, reduceMotion, initCommun, scrollToEl, pause, revele, aLEcran } from './commun.js';
+import { gsap, ScrollTrigger, SplitText, reduceMotion, initCommun, scrollToEl, pause, revele, aLEcran, tranches } from './commun.js';
 import { t as tr, euros, nombre } from './i18n.js';
 
 initCommun();
@@ -23,7 +23,7 @@ if (!reduceMotion) {
     gsap.fromTo(words, { opacity: 0.45 }, { opacity: 1, ease: 'none', stagger: 0.1, scrollTrigger: { trigger: el, start: 'top 80%', end: 'bottom 45%', scrub: true } });
   });
 
-  gsap.utils.toArray('.pg-card, .pg-faq__item, .pg-budget__tool, .pg-cost__tool, .pg-sell__media, .pg-sell__text > *, .ct-way, .ct-office, .ct-other__list li').forEach((el) => {
+  tranches(gsap.utils.toArray('.pg-card, .pg-faq__item, .pg-budget__tool, .pg-cost__tool, .pg-sell__media, .pg-sell__text > *, .ct-way, .ct-office, .ct-other__list li'), (el) => {
     revele(el, { autoAlpha: 0, y: 28, duration: 1.1, ease: 'power3.out' }, el, 90);
   });
 }
@@ -48,7 +48,7 @@ if (!reduceMotion) {
     revele(ch.querySelector('.mt-chapter__media'), { clipPath: 'inset(12% 12% 12% 12%)', duration: 1.6, ease: 'expo.out' }, ch, 75);
     revele(ch.querySelectorAll('.mt-chapter__num, .mt-chapter__when, .mt-chapter__title, .mt-chapter__text, .mt-chapter__lists li'), { autoAlpha: 0, y: 26, duration: 1.1, ease: 'power3.out', stagger: 0.05 }, ch, 70);
   });
-  gsap.utils.toArray('.mt-carnet__panel, .mt-engage__list li, .mt-office').forEach((el) => {
+  tranches(gsap.utils.toArray('.mt-carnet__panel, .mt-engage__list li, .mt-office'), (el) => {
     revele(el, { autoAlpha: 0, y: 28, duration: 1.1, ease: 'power3.out' }, el, 90);
   });
   const count = document.querySelector('.mt-carnet__count [data-count]');
@@ -186,7 +186,7 @@ if (chart) {
   if (!reduceMotion) {
     revele(chart.querySelectorAll('.ne-chart__land'), { opacity: 0, duration: 1.4, ease: 'power2.out', stagger: 0.08 }, chart, 80);
     revele(pins, { scale: 0, transformOrigin: 'center', duration: 0.8, ease: 'back.out(2)', stagger: 0.06 }, chart, 70);
-    gsap.utils.toArray('.ne-winds__list li, .ne-seasons__list li, .ne-care__facts div').forEach((el) => {
+    tranches(gsap.utils.toArray('.ne-winds__list li, .ne-seasons__list li, .ne-care__facts div'), (el) => {
       revele(el, { autoAlpha: 0, y: 28, duration: 1.1, ease: 'power3.out' }, el, 90);
     });
   }

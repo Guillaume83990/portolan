@@ -5,9 +5,9 @@ import { initMenu } from './menu.js';
 import { t as tr } from './i18n.js';
 import { initLienCompte } from './compte.js';
 import { enregistrerDemande } from './demandes.js';
-import { revele, aLEcran } from './apparition.js';
+import { revele, aLEcran, tranches } from './apparition.js';
 
-export { revele, aLEcran };
+export { revele, aLEcran, tranches };
 
 export const { gsap, ScrollTrigger, SplitText, Lenis } = window;
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -64,11 +64,27 @@ export function initCommun() {
     if (!e.target.closest('.lang')) { langButton.setAttribute('aria-expanded', 'false'); langList.hidden = true; }
   });
 
-  // En-tête opaque dès que l'on quitte l'image d'ouverture
+  // Le reste du démarrage se fait par petites tranches : le navigateur reste disponible entre chacune
+  // (PageSpeed ne compte que les tâches de plus de 50 ms)
+  demarrerEnTranches();
+}
+
+async function demarrerEnTranches() {
+  await pause();
+  // En-tête opaque dès que l'on quitte l'image d'ouverture (sans mesurer la page : simple seuil de défilement)
   const header = document.querySelector('.header');
   // La bulle WhatsApp apparaît en même temps (à l'ouverture, elle masquerait les filtres)
   const wa = document.querySelector('.wa');
-  ScrollTrigger.create({ start: 80, end: 'max', onToggle: (self) => { header.classList.toggle('is-solid', self.isActive); wa?.classList.toggle('is-on', self.isActive); } });
+  let solide = null;
+  const entete = () => {
+    const s = window.scrollY > 80;
+    if (s === solide) return;
+    solide = s;
+    header.classList.toggle('is-solid', s);
+    wa?.classList.toggle('is-on', s);
+  };
+  window.addEventListener('scroll', entete, { passive: true });
+  entete();
 
   // Curseur laiton, qui affiche une invite sur les images cliquables
   const cursor = document.querySelector('.cursor');
@@ -98,28 +114,34 @@ export function initCommun() {
     });
   }
 
-  // Apparitions : surtitres, titres ligne à ligne, nom de la maison en pied de page (dans une tranche à part)
-  if (!reduceMotion) pause().then(() => {
-    document.querySelectorAll('main .kicker').forEach((k) => {
+  await pause();
+  initForms();
+
+  // Apparitions : surtitres, titres ligne à ligne, nom de la maison en pied de page (un élément par tranche)
+  if (!reduceMotion) {
+    await tranches([...document.querySelectorAll('main .kicker')], (k) => {
       if (k.closest('.fl-hero, .fi-hero, .pg-hero, .legal, .espace')) return;
       revele(k, { autoAlpha: 0, x: -12, duration: 1, ease: 'power3.out' }, k, 90);
     });
-    document.querySelectorAll('main .section-title, .fi-brochure__title').forEach((title) => {
+    await tranches([...document.querySelectorAll('main .section-title, .fi-brochure__title')], (title) => {
       SplitText.create(title, { aria: 'hidden', type: 'lines', mask: 'lines', autoSplit: true,
         onSplit: (self) => revele(self.lines, { yPercent: 110, rotate: 2.5, transformOrigin: 'left top', duration: 1.4, ease: 'expo.out', stagger: 0.12 }, title, 88),
       });
     });
     const mark = document.querySelector('.footer__mark');
     if (mark) {
+      await pause();
       const chars = SplitText.create(mark, { aria: 'hidden', type: 'chars' }).chars;
       revele(chars, { yPercent: 100, autoAlpha: 0, duration: 1.2, ease: 'expo.out', stagger: 0.05 }, mark, 98);
     }
-  });
+  }
+  recalculerApresPolices();
+}
 
-  initForms();
-  document.fonts?.ready.then(() => ScrollTrigger.refresh());
-  if (document.readyState === 'complete') pause().then(() => ScrollTrigger.refresh());
-  else window.addEventListener('load', () => ScrollTrigger.refresh());
+// Un seul recalcul des positions de défilement (chaque recalcul mesure toute la page) : ScrollTrigger le fait
+// déjà au chargement complet de la page ; on n'en ajoute un que si les polices arrivent après.
+export function recalculerApresPolices() {
+  document.fonts?.ready.then(() => { if (document.readyState === 'complete') pause().then(() => ScrollTrigger.refresh()); });
 }
 
 // Formulaires (dossier, brochure, visite, contact, recherche…) : on vérifie les champs, on enregistre la demande

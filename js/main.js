@@ -2,7 +2,7 @@ import { initMenu } from './menu.js';
 import { t as tr } from './i18n.js';
 import { initLienCompte } from './compte.js';
 import { enregistrerDemande } from './demandes.js';
-import { revele, aLEcran } from './apparition.js';
+import { revele, aLEcran, tranches } from './apparition.js';
 
 
 const { gsap, ScrollTrigger, SplitText, Lenis } = window;
@@ -597,13 +597,13 @@ if (chart) {
 await pause();
 if (!reduceMotion) {
   // Filets des surtitres
-  document.querySelectorAll('.kicker').forEach((k) => {
+  await tranches([...document.querySelectorAll('.kicker')], (k) => {
     if (k.closest('.film')) return;
     revele(k, { autoAlpha: 0, x: -12, duration: 1, ease: 'power3.out' }, k, 90);
   });
 
   // Titres : lignes qui montent dans leur masque, avec une légère rotation
-  document.querySelectorAll('.section-title, .contact__title, .offer__title, .offmarket__title').forEach((title) => {
+  await tranches([...document.querySelectorAll('.section-title, .contact__title, .offer__title, .offmarket__title')], (title) => {
     SplitText.create(title, { aria: 'hidden', type: 'lines', mask: 'lines', autoSplit: true,
       onSplit: (self) => revele(self.lines, { yPercent: 110, rotate: 2.5, transformOrigin: 'left top', duration: 1.4, ease: 'expo.out', stagger: 0.12 }, title, 88),
     });
@@ -612,7 +612,7 @@ if (!reduceMotion) {
   await pause();
 
   // Paragraphes et liens : montée douce
-  gsap.utils.toArray('[data-reveal], .offmarket__text, .offmarket__fields, .contact__lead, .contact__promises li, .contact__wa, .lead').forEach((el) => {
+  await tranches(gsap.utils.toArray('[data-reveal], .offmarket__text, .offmarket__fields, .contact__lead, .contact__promises li, .contact__wa, .lead'), (el) => {
     revele(el, { autoAlpha: 0, y: 28, duration: 1.2, ease: 'power3.out' }, el, 90);
   });
 
@@ -875,7 +875,6 @@ if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && !reduceMo
   });
 }
 
-// Les positions sont recalculées une fois les polices et les images chargées (sinon : décalages)
-document.fonts?.ready.then(() => ScrollTrigger.refresh());
-if (document.readyState === 'complete') ScrollTrigger.refresh();
-else window.addEventListener('load', () => ScrollTrigger.refresh());
+// Un seul recalcul des positions (chaque recalcul mesure toute la page) : ScrollTrigger le fait déjà au chargement
+// complet de la page ; on n'en ajoute un que si les polices arrivent après.
+document.fonts?.ready.then(() => { if (document.readyState === 'complete') pause().then(() => ScrollTrigger.refresh()); });
