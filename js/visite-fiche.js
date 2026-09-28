@@ -14,22 +14,22 @@ export async function openTour(section) {
 
   const box = document.createElement('dialog');
   box.className = 'tour';
-  box.setAttribute('aria-label', `Visite à bord de ${yacht}`);
+  box.setAttribute('aria-label', tr('Visite à bord de {yacht}', { yacht }));
   box.innerHTML = `
     <canvas class="tour__canvas" aria-hidden="true"></canvas>
     <div class="tour__veil" aria-hidden="true"></div>
     <header class="tour__head">
-      <p class="tour__name"><em>${yacht}</em><span>Visite à bord</span></p>
-      <button type="button" class="tour__close">Quitter la visite</button>
+      <p class="tour__name"><em>${yacht}</em><span>${tr('Visite à bord')}</span></p>
+      <button type="button" class="tour__close">${tr('Quitter la visite')}</button>
     </header>
-    <div class="tour__loader" role="status"><span class="tour__loader-bar"></span><span class="tour__loader-text">Embarquement</span></div>
+    <div class="tour__loader" role="status"><span class="tour__loader-bar"></span><span class="tour__loader-text">${tr('Embarquement')}</span></div>
     <p class="tour__hint" aria-hidden="true">${small ? tr('Glissez pour avancer') : tr('Faites défiler pour avancer')}</p>
     <div class="tour__room" aria-live="polite"><p class="tour__count"></p><p class="tour__title"></p></div>
     <div class="tour__end" hidden>
-      <p class="tour__end-title">${yacht} vous attend.</p>
+      <p class="tour__end-title">${tr('{yacht} vous attend.', { yacht })}</p>
       <div class="tour__end-actions">
-        <button type="button" class="btn btn--light" data-go="${louer ? 'location' : 'visite'}">${louer ? tr('Réserver une semaine') : tr('Organiser une visite')}</button>
-        <button type="button" class="btn btn--ghost" data-go="dossier">Recevoir le dossier</button>
+        <button type="button" class="btn btn--light" data-go="${louer ? 'location' : 'visite'}">${louer ? tr('Réserver en ligne') : tr('Organiser une visite')}</button>
+        <button type="button" class="btn btn--ghost" data-go="dossier">${tr('Recevoir le dossier')}</button>
       </div>
     </div>
     <nav class="tour__route" aria-label="${tr('Étapes de la visite')}"><ol></ol></nav>
@@ -150,6 +150,8 @@ export async function openTour(section) {
   end.querySelectorAll('[data-go]').forEach((b) => b.addEventListener('click', () => {
     const intent = b.dataset.go;
     close();
+    // Location : direction le calendrier de réservation en ligne
+    if (intent === 'location' && document.getElementById('disponibilites')) { scrollToEl(document.getElementById('disponibilites'), 16); return; }
     const form = document.querySelector(`.fi-form input[name="demande"][value="${intent}"]`);
     if (form) { form.checked = true; form.dispatchEvent(new Event('change', { bubbles: true })); }
     scrollToEl(document.getElementById('demande'), 16);

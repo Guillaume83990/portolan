@@ -161,8 +161,14 @@ export function createPlanSequence(canvas, options) {
     bound[unit] = key;
   }
 
-  // Chargement : d'abord le début, puis en priorité les images juste devant le visiteur
-  const frames = new Array(count + 1);
+  // Chargement : d'abord le début, puis en priorité les images juste devant le visiteur.
+  // Les images restent COMPRESSÉES en mémoire (quelques Mo) ; seules celles autour de la position du visiteur
+  // sont décodées (une trentaine). Tout décoder d'avance demandait 400 Mo sur téléphone (1,4 Go sur ordinateur) :
+  // les téléphones refusaient les dernières images, et la visite restait bloquée avant la fin.
+  const blobs = new Array(count + 1); // image téléchargée (Blob), ou false si elle n'a jamais pu l'être
+  const decoded = new Map(); // numéro → ImageBitmap décodée
+  const decoding = new Set();
+  const CAPACITY = window.matchMedia('(max-width: 760px)').matches ? 28 : 48;
   let done = 0;
   const total = count + 1;
   let size = [16, 9];
@@ -171,31 +177,53 @@ export function createPlanSequence(canvas, options) {
   const state = { target: 1, current: 1, p: 0, intro: 0, running: false, visible: true };
   let carteReady = false;
 
-  const tick = () => { done++; onLoad?.(done / total); if (carteReady && frames[1] && done >= Math.min(startAt, count) + 1) resolveStart(); };
+  const tick = () => { done++; onLoad?.(done / total); if (carteReady && decoded.has(1) && done >= Math.min(startAt, count) + 1) resolveStart(); };
 
   if (!carte) { carteReady = true; tick(); } else fetch(carte).then((r) => r.blob()).then((b) => createImageBitmap(b)).then((bmp) => {
     gl.activeTexture(gl.TEXTURE2);
     gl.bindTexture(gl.TEXTURE_2D, texC);
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, bmp);
+    bmp.close();
     carteReady = true;
     tick();
-  });
+  }).catch(() => { carteReady = true; tick(); });
+
+  // Décode une image au moment où elle va servir, et libère les plus éloignées du visiteur
+  function decode(i) {
+    if (i < 1 || i > count || !blobs[i] || decoded.has(i) || decoding.has(i)) return;
+    decoding.add(i);
+    createImageBitmap(blobs[i], { imageOrientation: 'none', premultiplyAlpha: 'none' }).then((bmp) => {
+      decoding.delete(i);
+      decoded.set(i, bmp);
+      if (i === 1) { size = [bmp.width, bmp.height]; if (done >= Math.min(startAt, count) + 1 && carteReady) resolveStart(); }
+      if (decoded.size > CAPACITY) {
+        const pos = state.current;
+        const loin = [...decoded.keys()].filter((k) => k !== bound[0] && k !== bound[1]).sort((a, b) => Math.abs(b - pos) - Math.abs(a - pos));
+        for (const k of loin.slice(0, decoded.size - CAPACITY)) { decoded.get(k).close(); decoded.delete(k); }
+      }
+    }).catch(() => { decoding.delete(i); blobs[i] = false; advance(); });
+  }
 
   async function fetchOne(i) {
-    try {
-      const res = await fetch(`${dir}f${pad(i)}.${ext}`);
-      const bmp = await createImageBitmap(await res.blob(), { imageOrientation: 'none', premultiplyAlpha: 'none' });
-      frames[i] = bmp;
-      advance();
-      if (i === 1) size = [bmp.width, bmp.height];
-    } catch {
-      console.warn('Image manquante :', i);
+    for (let essai = 0; essai < 3; essai++) {
+      try {
+        const res = await fetch(`${dir}f${pad(i)}.${ext}`);
+        if (!res.ok) throw new Error(res.status);
+        blobs[i] = await res.blob();
+        break;
+      } catch {
+        await new Promise((r) => setTimeout(r, 400 * (essai + 1)));
+      }
     }
+    if (!blobs[i]) { blobs[i] = false; console.warn('Image manquante :', i); }
+    advance();
+    if (i === 1) decode(1);
     tick();
   }
   const taken = new Array(count + 1).fill(false);
   let loadedUpTo = 0;
-  const advance = () => { while (loadedUpTo < count && frames[loadedUpTo + 1]) loadedUpTo++; };
+  // Une image introuvable ne bloque plus la suite : on affiche sa voisine
+  const advance = () => { while (loadedUpTo < count && blobs[loadedUpTo + 1] !== undefined) loadedUpTo++; };
   function next() {
     // On charge d'abord la suite immédiate de ce qui est déjà prêt, en direction du visiteur
     const head = Math.max(1, Math.min(Math.floor(state.target), loadedUpTo + 1));
@@ -210,10 +238,11 @@ export function createPlanSequence(canvas, options) {
   async function worker() { for (let i = next(); i; i = next()) await fetchOne(i); }
   for (let k = 0; k < parallel; k++) worker();
 
+  // L'image décodée la plus proche (en attendant que la bonne soit prête, quelques millisecondes)
   function nearest(i) {
     for (let d = 0; d < count; d++) {
-      if (frames[i - d]) return i - d;
-      if (frames[i + d]) return i + d;
+      if (decoded.has(i - d)) return i - d;
+      if (decoded.has(i + d)) return i + d;
     }
     return -1;
   }
@@ -222,7 +251,9 @@ export function createPlanSequence(canvas, options) {
   const t0 = performance.now();
 
   function resize() {
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    // Les images font 640 à 832 px de large : calculer l'écran en plus haute définition ne montrerait
+    // aucun détail de plus, et coûtait jusqu'à neuf fois plus de calcul sur les téléphones (saccades)
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.25);
     const w = Math.round(canvas.clientWidth * dpr);
     const h = Math.round(canvas.clientHeight * dpr);
     if (canvas.width !== w || canvas.height !== h) {
@@ -244,11 +275,14 @@ export function createPlanSequence(canvas, options) {
     const f = Math.min(Math.max(state.current, 1), count);
     const i0 = Math.floor(f);
     const i1 = Math.min(i0 + 1, count);
+    // Décodage d'avance dans le sens du mouvement (et un peu derrière, pour revenir en arrière sans attente)
+    const sens = state.target >= state.current ? 1 : -1;
+    for (let d = -3; d <= 10; d++) decode(i0 + d * sens);
     const a = nearest(i0);
-    const b = frames[i1] ? i1 : a;
+    const b = decoded.has(i1) ? i1 : a;
     if (a < 0) return;
-    upload(0, texA, frames[a], a);
-    upload(1, texB, frames[b], b);
+    upload(0, texA, decoded.get(a), a);
+    upload(1, texB, decoded.get(b), b);
 
     gl.uniform1f(U.uBlend, b === a ? 0 : f - i0);
     gl.uniform1f(U.uCarteMix, carte ? smooth(carteRange[0], carteRange[1], state.p) : 1);
