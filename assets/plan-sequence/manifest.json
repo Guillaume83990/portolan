@@ -1,0 +1,53 @@
+{
+  "count": 881,
+  "stops": [
+    {
+      "key": "K1-drone",
+      "frame": 1
+    },
+    {
+      "key": "K2-trois-quarts",
+      "frame": 81
+    },
+    {
+      "key": "K3-poupe",
+      "frame": 161
+    },
+    {
+      "key": "K4-pont-arriere",
+      "frame": 241
+    },
+    {
+      "key": "K5-salon",
+      "frame": 321
+    },
+    {
+      "key": "K6-salle-a-manger",
+      "frame": 401
+    },
+    {
+      "key": "K7-bar",
+      "frame": 481
+    },
+    {
+      "key": "K8-coursive",
+      "frame": 561
+    },
+    {
+      "key": "K9-suite",
+      "frame": 641
+    },
+    {
+      "key": "K10-salle-de-bain",
+      "frame": 721
+    },
+    {
+      "key": "K10b-escalier",
+      "frame": 801
+    },
+    {
+      "key": "K11-pont-superieur-jacuzzi",
+      "frame": 881
+    }
+  ]
+}

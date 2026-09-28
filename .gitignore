@@ -1,0 +1,9 @@
+# Portolan : fichiers à ne jamais envoyer sur GitHub
+.env
+.env.*
+secrets/
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
+desktop.ini

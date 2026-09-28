@@ -1,0 +1,25 @@
+{
+  "count": 161,
+  "stops": [
+    {
+      "key": "V1",
+      "frame": 1
+    },
+    {
+      "key": "V2",
+      "frame": 41
+    },
+    {
+      "key": "V3",
+      "frame": 81
+    },
+    {
+      "key": "V4",
+      "frame": 121
+    },
+    {
+      "key": "V5",
+      "frame": 161
+    }
+  ]
+}

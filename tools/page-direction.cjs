@@ -1,0 +1,81 @@
+// Espace directeur (fr/direction/) : l'outil de gestion de Portolan, en français uniquement.
+// Page à part (pas de navigation publique, pas d'animations) ; tout son contenu est chargé par js/direction.js,
+// après vérification du rôle dans Supabase. Jamais traduite, jamais dans le plan du site.
+module.exports = function pageDirection() {
+  const root = '../../';
+  const html = `<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Espace directeur | Portolan</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0B1513">
+  <link rel="icon" href="${root}assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="${root}assets/fonts/BodoniModa-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="${root}assets/fonts/HankenGrotesk-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="${root}css/fonts.css">
+  <link rel="stylesheet" href="${root}css/main.css">
+  <link rel="stylesheet" href="${root}css/flotte.css">
+  <link rel="stylesheet" href="${root}css/compte.css">
+  <link rel="stylesheet" href="${root}css/direction.css">
+</head>
+<body class="page-direction">
+  <header class="dir-top">
+    <a class="brand" href="${root}fr/"><svg class="brand__rose" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1v30M1 16h30M5.4 5.4l21.2 21.2M26.6 5.4L5.4 26.6"/><circle cx="16" cy="16" r="6.5"/></svg><span>Portolan</span></a>
+    <span class="dir-top__titre">Espace directeur</span>
+    <div class="dir-top__moi" hidden>
+      <span class="dir-top__nom"></span>
+      <a href="${root}fr/" target="_blank" rel="noopener">Voir le site</a>
+      <button type="button" data-action="deconnexion">Se déconnecter</button>
+    </div>
+  </header>
+  <nav class="dir-onglets" aria-label="Sections de l'espace directeur" hidden>
+    <a href="#bord">Tableau de bord</a>
+    <a href="#reservations">Réservations <span class="pastille" data-compte="a_traiter"></span></a>
+    <a href="#calendrier">Calendrier</a>
+    <a href="#demandes">Demandes <span class="pastille" data-compte="demandes_nouvelles"></span></a>
+    <a href="#yachts">Yachts</a>
+    <a href="#clients">Clients</a>
+    <a href="#reglages">Réglages</a>
+  </nav>
+
+  <main class="dir" id="contenu">
+    <p class="dir-vide dir-chargement">Chargement…</p>
+
+    <section class="dir-porte" data-etat="deconnecte" hidden>
+      <h1>Espace directeur</h1>
+      <p>Réservations, demandes, flotte et chiffres de la saison. Connectez-vous avec votre compte directeur.</p>
+      <div class="actions">
+        <button class="btn btn--light" type="button" data-action="connexion">Se connecter</button>
+        <button class="btn btn--ghost" type="button" data-action="demo">Visiter en démonstration</button>
+      </div>
+      <p class="ligne__sous">La démonstration ouvre l'espace directeur en lecture seule : rien ne peut y être modifié.</p>
+      <p class="dir-note" role="status"></p>
+    </section>
+
+    <section class="dir-porte" data-etat="refuse" hidden>
+      <h1>Accès réservé</h1>
+      <p>Ce compte n'a pas accès à l'espace directeur. Vos réservations se trouvent dans votre espace client.</p>
+      <a class="btn btn--light" href="${root}fr/espace/">Mon espace</a>
+      <button class="lien-discret" type="button" data-action="deconnexion">Changer de compte</button>
+    </section>
+
+    <div data-etat="ouvert" hidden>
+      <p class="dir-demo" hidden>Mode démonstration : vous visitez l'espace directeur en lecture seule. Les coordonnées des vrais clients sont masquées ; les clients fictifs restent lisibles.</p>
+      <section data-vue="bord"></section>
+      <section data-vue="reservations" hidden></section>
+      <section data-vue="calendrier" hidden></section>
+      <section data-vue="demandes" hidden></section>
+      <section data-vue="yachts" hidden></section>
+      <section data-vue="clients" hidden></section>
+      <section data-vue="reglages" hidden></section>
+    </div>
+  </main>
+
+  <script type="module" src="${root}js/direction.js"></script>
+</body>
+</html>
+`;
+  return [['fr/direction/index.html', html]];
+};

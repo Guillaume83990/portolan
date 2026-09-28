@@ -1,0 +1,975 @@
+{
+  "_lisezmoi": "Fichier généré par tools/supabase/exporter.cjs à partir de la base Supabase : ne pas modifier à la main, passer par l'espace directeur.",
+  "saison": {
+    "annee": 2027,
+    "debut": "2027-05-01",
+    "fin": "2027-10-02",
+    "haute": [
+      "2027-07-03",
+      "2027-08-28"
+    ],
+    "hauteFin": "2027-09-04",
+    "minNuits": {
+      "haute": 7,
+      "basse": 3
+    },
+    "heures": [
+      "10:00",
+      "18:00"
+    ],
+    "ports": [
+      "Saint-Tropez",
+      "Cannes",
+      "Monaco",
+      "Saint-Raphaël"
+    ]
+  },
+  "yachts": [
+    {
+      "slug": "camarat",
+      "nom": "Camarat",
+      "type": "moteur",
+      "annee": 2024,
+      "coque": "Acier et aluminium",
+      "image": {
+        "h": 1024,
+        "w": 1536,
+        "alt": "Le yacht Camarat en navigation au coucher du soleil, devant le cap et le phare de Camarat",
+        "src": "flotte/camarat"
+      },
+      "ponts": [
+        [
+          "Pont supérieur",
+          "Jacuzzi, bains de soleil, bar extérieur, salon d'ombre"
+        ],
+        [
+          "Pont principal",
+          "Pont arrière, salon, salle à manger, bar, suite du propriétaire"
+        ],
+        [
+          "Pont inférieur",
+          "2 cabines VIP, 3 cabines doubles, quartiers de l'équipage"
+        ],
+        [
+          "Plage de bain",
+          "Accès à l'eau, garage à tender, jouets nautiques"
+        ]
+      ],
+      "refit": null,
+      "points": [
+        [
+          "Suite à la proue",
+          "48 m², baie courbe sur la mer, salle de bain avec baignoire face à l'horizon"
+        ],
+        [
+          "Pont supérieur",
+          "Jacuzzi, bains de soleil et bar extérieur, à l'abri du vent"
+        ],
+        [
+          "Plage de bain",
+          "Au ras de l'eau, avec accès direct aux jouets nautiques et au tender"
+        ]
+      ],
+      "tirant": 2.9,
+      "visite": {
+        "dir": "plan-sequence",
+        "duree": "Douze étapes, de la baie de Pampelonne au pont supérieur.",
+        "pieces": {
+          "K1-drone": "Pampelonne, au mouillage",
+          "K2-trois-quarts": "L'approche",
+          "K3-poupe": "La plage de bain",
+          "K4-pont-arriere": "Le pont arrière",
+          "K5-salon": "Le salon",
+          "K6-salle-a-manger": "La salle à manger",
+          "K7-bar": "Le bar",
+          "K8-coursive": "La coursive",
+          "K9-suite": "La suite du propriétaire",
+          "K10-salle-de-bain": "La salle de bain",
+          "K10b-escalier": "L'escalier",
+          "K11-pont-superieur-jacuzzi": "Le pont supérieur"
+        },
+        "affiche": "bord/drone"
+      },
+      "cabines": "6 cabines : suite du propriétaire, 2 VIP, 3 doubles",
+      "galerie": [
+        {
+          "h": 900,
+          "w": 1600,
+          "alt": "Camarat de profil au mouillage devant Pampelonne",
+          "src": "bord/profil",
+          "pont": "Extérieur"
+        },
+        {
+          "h": 900,
+          "w": 1600,
+          "alt": "Camarat vu du ciel, au mouillage dans la baie de Pampelonne",
+          "src": "bord/drone",
+          "pont": "Extérieur"
+        },
+        {
+          "h": 900,
+          "w": 1600,
+          "alt": "La plage de bain en teck et l'escalier éclairé de Camarat",
+          "src": "bord/poupe",
+          "pont": "Extérieur"
+        },
+        {
+          "h": 900,
+          "w": 1600,
+          "alt": "Le pont arrière de Camarat, ouvert sur le salon",
+          "src": "bord/pont-arriere",
+          "pont": "Pont principal"
+        },
+        {
+          "h": 900,
+          "w": 1600,
+          "alt": "Le salon de Camarat : noyer, travertin et velours vert",
+          "src": "bord/salon",
+          "pont": "Pont principal"
+        },
+        {
+          "h": 900,
+          "w": 1600,
+          "alt": "La salle à manger de Camarat, dix couverts face au couchant",
+          "src": "bord/salle-a-manger",
+          "pont": "Pont principal"
+        },
+        {
+          "h": 900,
+          "w": 1600,
+          "alt": "Le bar de Camarat, marbre rétroéclairé et cuir vert",
+          "src": "bord/bar",
+          "pont": "Pont principal"
+        },
+        {
+          "h": 900,
+          "w": 1600,
+          "alt": "La coursive vers la suite, ornée de cartes marines anciennes",
+          "src": "bord/coursive",
+          "pont": "Pont principal"
+        },
+        {
+          "h": 900,
+          "w": 1600,
+          "alt": "La suite du propriétaire à la proue de Camarat",
+          "src": "bord/suite",
+          "pont": "Pont principal"
+        },
+        {
+          "h": 900,
+          "w": 1600,
+          "alt": "La salle de bain de la suite, baignoire face à la mer",
+          "src": "bord/salle-de-bain",
+          "pont": "Pont principal"
+        },
+        {
+          "h": 900,
+          "w": 1600,
+          "alt": "L'escalier central en noyer, verre et laiton",
+          "src": "bord/escalier",
+          "pont": "Pont supérieur"
+        },
+        {
+          "h": 900,
+          "w": 1600,
+          "alt": "Le pont supérieur de Camarat et son jacuzzi au couchant",
+          "src": "bord/pont-superieur-jacuzzi",
+          "pont": "Pont supérieur"
+        }
+      ],
+      "largeur": 9.4,
+      "moteurs": "2 × MTU 16V 2000 M86",
+      "vitesse": {
+        "max": 16,
+        "croisiere": 13
+      },
+      "accroche": "Cinquante mètres de noyer, de travertin et de lumière, livrés en 2024.",
+      "chantier": "Construction sur mesure, Viareggio",
+      "equipage": 9,
+      "longueur": 50,
+      "pavillon": "Malte",
+      "autonomie": 4000,
+      "selection": true,
+      "architecte": "Atelier Marais",
+      "description": [
+        "Camarat a été dessiné pour la Méditerranée d'été : de grandes baies toute hauteur, un salon qui se prolonge sur le pont arrière sans seuil, et une suite du propriétaire posée à la proue, face à la mer. À l'intérieur, le noyer répond au travertin et au velours vert bouteille, sous une lumière toujours indirecte.",
+        "Son équipage de neuf personnes le connaît depuis sa mise à l'eau. Au mouillage devant Pampelonne, les stabilisateurs le rendent immobile ; en navigation, il relie Saint-Tropez à Monaco en moins de cinq heures."
+      ],
+      "exclusivite": true,
+      "chantierCourt": "Exclusivité Portolan",
+      "stabilisateurs": "À ailerons, actifs au mouillage",
+      "invites": 12,
+      "port": "Saint-Tropez",
+      "vente": 42000000,
+      "location": {
+        "basse": 240000,
+        "haute": 285000
+      },
+      "reserve": [
+        "2027-07-10",
+        "2027-07-17",
+        "2027-08-07",
+        "2027-08-14"
+      ],
+      "option": [
+        "2027-07-24",
+        "2027-08-21"
+      ],
+      "prises": [
+        {
+          "debut": "2027-07-10",
+          "fin": "2027-07-17",
+          "etat": "reserve"
+        },
+        {
+          "debut": "2027-07-17",
+          "fin": "2027-07-24",
+          "etat": "reserve"
+        },
+        {
+          "debut": "2027-07-24",
+          "fin": "2027-07-31",
+          "etat": "option"
+        },
+        {
+          "debut": "2027-08-07",
+          "fin": "2027-08-14",
+          "etat": "reserve"
+        },
+        {
+          "debut": "2027-08-14",
+          "fin": "2027-08-21",
+          "etat": "reserve"
+        },
+        {
+          "debut": "2027-08-21",
+          "fin": "2027-08-28",
+          "etat": "option"
+        }
+      ]
+    },
+    {
+      "slug": "castellane",
+      "nom": "Castellane",
+      "type": "moteur",
+      "annee": 2022,
+      "coque": "Aluminium",
+      "image": {
+        "h": 1024,
+        "w": 1536,
+        "alt": "Le yacht Castellane, coque bleu nuit, au mouillage aux îles de Lérins",
+        "src": "flotte/castellane"
+      },
+      "ponts": [
+        [
+          "Pont soleil",
+          "Bains de soleil, bar, salle à manger d'extérieur"
+        ],
+        [
+          "Pont supérieur",
+          "Salon du ciel, timonerie, cabine du capitaine"
+        ],
+        [
+          "Pont principal",
+          "Salon, salle à manger, suite du propriétaire"
+        ],
+        [
+          "Pont inférieur",
+          "3 cabines VIP, 2 twins, beach club"
+        ]
+      ],
+      "refit": null,
+      "points": [
+        [
+          "Beach club",
+          "Ouvert sur trois côtés, avec salle de sport et hammam"
+        ],
+        [
+          "Vitesse",
+          "17 nœuds en pointe, 14 en croisière, avec une consommation mesurée"
+        ],
+        [
+          "Entretien",
+          "Suivi par le chantier depuis sa livraison, historique complet disponible"
+        ]
+      ],
+      "tirant": 2.4,
+      "visite": {
+        "dir": "visites/castellane",
+        "duree": "Sept étapes, des îles de Lérins à la suite du propriétaire.",
+        "pieces": {
+          "V1": "Au mouillage, îles de Lérins",
+          "V2": "La poupe",
+          "V3": "Le beach club",
+          "V4": "Le pont arrière",
+          "V5": "Le salon",
+          "V6": "Le hall",
+          "V7": "La suite du propriétaire"
+        },
+        "affiche": "visites/castellane/affiche"
+      },
+      "cabines": "6 cabines : suite du propriétaire, 3 VIP, 2 twins",
+      "galerie": [
+        {
+          "h": 1024,
+          "w": 1536,
+          "alt": "Castellane au mouillage dans les eaux turquoise des îles de Lérins",
+          "src": "flotte/castellane",
+          "pont": "Extérieur"
+        },
+        {
+          "h": 1024,
+          "w": 1536,
+          "alt": "Le salon de Castellane : chêne clair, lin sable et laque bleu marine, face aux îles de Lérins",
+          "src": "galerie/castellane-salon",
+          "pont": "Pont principal"
+        },
+        {
+          "h": 1024,
+          "w": 1536,
+          "alt": "La suite du propriétaire, sur toute la largeur du yacht, ouverte sur la mer des deux côtés",
+          "src": "galerie/castellane-suite",
+          "pont": "Pont principal"
+        },
+        {
+          "h": 1024,
+          "w": 1536,
+          "alt": "Le beach club de Castellane, ouvert sur la mer, plateformes dépliées au mouillage",
+          "src": "galerie/castellane-beach-club",
+          "pont": "Pont inférieur"
+        },
+        {
+          "h": 1024,
+          "w": 1536,
+          "alt": "Le pont soleil de Castellane au coucher du soleil, face à Cannes et à l'Estérel",
+          "src": "galerie/castellane-pont-soleil",
+          "pont": "Pont soleil"
+        }
+      ],
+      "largeur": 9.2,
+      "moteurs": "2 × MTU 16V 2000 M96L",
+      "vitesse": {
+        "max": 17,
+        "croisiere": 14
+      },
+      "accroche": "Une coque bleu nuit, rapide et silencieuse, pensée pour les traversées.",
+      "chantier": "Heesen",
+      "equipage": 10,
+      "longueur": 50,
+      "pavillon": "Îles Caïmans",
+      "autonomie": 3800,
+      "selection": true,
+      "architecte": "Frank Laupman, Omega Architects",
+      "description": [
+        "Castellane appartient à cette famille de yachts hollandais qui naviguent vite sans jamais se faire entendre. Sa coque en aluminium, bleu nuit, file à dix-sept nœuds et rejoint la Corse dans la journée.",
+        "À bord, le chêne clair et le lin sable adoucissent les lignes tendues de l'extérieur. Le beach club, à fleur d'eau, s'ouvre sur trois côtés quand le yacht est au mouillage aux îles de Lérins, son port d'attache."
+      ],
+      "exclusivite": false,
+      "chantierCourt": "Heesen",
+      "stabilisateurs": "Gyroscopiques",
+      "invites": 12,
+      "port": "Cannes",
+      "vente": 34500000,
+      "location": null,
+      "reserve": [],
+      "option": [],
+      "prises": []
+    },
+    {
+      "slug": "mistral-blanc",
+      "nom": "Mistral Blanc",
+      "type": "moteur",
+      "annee": 2019,
+      "coque": "Acier et aluminium",
+      "image": {
+        "h": 1024,
+        "w": 1536,
+        "alt": "Le yacht Mistral Blanc à quai à Port Hercule, Monaco, à l'heure bleue",
+        "src": "flotte/mistral-blanc"
+      },
+      "ponts": [
+        [
+          "Pont soleil",
+          "Jacuzzi, bains de soleil, bar"
+        ],
+        [
+          "Pont supérieur",
+          "Salon du ciel, salle à manger d'extérieur"
+        ],
+        [
+          "Pont principal",
+          "Salon, salle à manger, suite du propriétaire"
+        ],
+        [
+          "Pont inférieur",
+          "2 VIP, 2 doubles, 1 twin"
+        ]
+      ],
+      "refit": 2024,
+      "points": [
+        [
+          "Table",
+          "Un chef formé dans les maisons étoilées de la Riviera"
+        ],
+        [
+          "Refit 2024",
+          "Intérieurs, literie et équipements audiovisuels renouvelés"
+        ],
+        [
+          "Au départ de Monaco",
+          "Portofino, la Corse ou les îles de Lérins en une journée"
+        ]
+      ],
+      "tirant": 2.5,
+      "visite": {
+        "dir": "visites/mistral-blanc",
+        "duree": "Six étapes, du quai de Monaco au pont soleil, à l'heure bleue.",
+        "pieces": {
+          "V1": "À quai, Port Hercule",
+          "V2": "Le pont arrière",
+          "V3": "Le salon",
+          "V4": "L'escalier",
+          "V5": "Le pont soleil",
+          "V6": "Face à Monaco"
+        },
+        "affiche": "visites/mistral-blanc/affiche"
+      },
+      "cabines": "6 cabines : suite du propriétaire, 2 VIP, 2 doubles, 1 twin",
+      "galerie": [
+        {
+          "h": 1024,
+          "w": 1536,
+          "alt": "Mistral Blanc à quai à Port Hercule, éclairé à l'heure bleue",
+          "src": "flotte/mistral-blanc",
+          "pont": "Extérieur"
+        },
+        {
+          "h": 1024,
+          "w": 1536,
+          "alt": "Le grand salon de Mistral Blanc : laque blanche, cuir ivoire et or pâle, face au port de Monaco",
+          "src": "galerie/mistral-blanc-salon",
+          "pont": "Pont principal"
+        },
+        {
+          "h": 1024,
+          "w": 1536,
+          "alt": "La suite du propriétaire, ouverte sur sa terrasse privée et la mer",
+          "src": "galerie/mistral-blanc-suite",
+          "pont": "Pont principal"
+        },
+        {
+          "h": 1024,
+          "w": 1536,
+          "alt": "La table dressée pour dix sur le pont, face à Monaco illuminé",
+          "src": "galerie/mistral-blanc-diner",
+          "pont": "Pont supérieur"
+        },
+        {
+          "h": 1024,
+          "w": 1536,
+          "alt": "Le jacuzzi et le bar du pont soleil au coucher du soleil, sur la côte vers le cap Martin",
+          "src": "galerie/mistral-blanc-jacuzzi",
+          "pont": "Pont soleil"
+        }
+      ],
+      "largeur": 8.6,
+      "moteurs": "2 × Caterpillar C32",
+      "vitesse": {
+        "max": 15,
+        "croisiere": 12
+      },
+      "accroche": "L'élégance italienne, à quai à Monaco, prête à appareiller.",
+      "chantier": "Benetti",
+      "equipage": 9,
+      "longueur": 44.5,
+      "pavillon": "Monaco",
+      "autonomie": 3500,
+      "selection": true,
+      "architecte": "Giorgio M. Cassetta",
+      "description": [
+        "Mistral Blanc a été livré à Livourne et entièrement rafraîchi en 2024 : laque blanche, frêne clair, cuir ivoire et touches d'or pâle. Tout y est lumineux, jusqu'au grand salon du pont principal.",
+        "Basé à Monaco, il part volontiers vers Portofino ou la Corse. Son chef a travaillé dix ans dans des maisons étoilées de la Riviera ; la table se dresse sur le pont arrière, face au port qui s'illumine."
+      ],
+      "exclusivite": false,
+      "chantierCourt": "Benetti",
+      "stabilisateurs": "À ailerons, actifs au mouillage",
+      "invites": 12,
+      "port": "Monaco",
+      "vente": null,
+      "location": {
+        "basse": 185000,
+        "haute": 215000
+      },
+      "reserve": [
+        "2027-07-03",
+        "2027-07-10",
+        "2027-07-31",
+        "2027-08-07",
+        "2027-08-14"
+      ],
+      "option": [
+        "2027-06-19",
+        "2027-08-28"
+      ],
+      "prises": [
+        {
+          "debut": "2027-06-19",
+          "fin": "2027-06-26",
+          "etat": "option"
+        },
+        {
+          "debut": "2027-07-03",
+          "fin": "2027-07-10",
+          "etat": "reserve"
+        },
+        {
+          "debut": "2027-07-10",
+          "fin": "2027-07-17",
+          "etat": "reserve"
+        },
+        {
+          "debut": "2027-07-31",
+          "fin": "2027-08-07",
+          "etat": "reserve"
+        },
+        {
+          "debut": "2027-08-07",
+          "fin": "2027-08-14",
+          "etat": "reserve"
+        },
+        {
+          "debut": "2027-08-14",
+          "fin": "2027-08-21",
+          "etat": "reserve"
+        },
+        {
+          "debut": "2027-08-28",
+          "fin": "2027-09-04",
+          "etat": "option"
+        }
+      ]
+    },
+    {
+      "slug": "solenne",
+      "nom": "Solenne",
+      "type": "voile",
+      "annee": 2012,
+      "coque": "Acier, superstructure en aluminium",
+      "image": {
+        "h": 1024,
+        "w": 1536,
+        "alt": "Le voilier Solenne, ketch à coque verte, sous voiles devant Porquerolles",
+        "src": "flotte/solenne"
+      },
+      "ponts": [
+        [
+          "Pont",
+          "Cockpit arrière, salon de pont, bains de soleil à l'avant"
+        ],
+        [
+          "Pont inférieur",
+          "Suite du propriétaire, 2 doubles, 1 twin, carré"
+        ]
+      ],
+      "refit": 2021,
+      "points": [
+        [
+          "À la voile",
+          "14 nœuds sous voiles, manœuvres automatisées"
+        ],
+        [
+          "Refit 2021",
+          "Gréement, voiles et intérieurs renouvelés"
+        ],
+        [
+          "Les îles d'Or",
+          "Porquerolles, Port-Cros et le Levant à une demi-journée"
+        ]
+      ],
+      "tirant": 3.6,
+      "visite": {
+        "dir": "visites/solenne",
+        "duree": "Sept étapes, de la crique de Porquerolles à la cabine du propriétaire.",
+        "pieces": {
+          "V1": "Au mouillage, Porquerolles",
+          "V2": "La poupe",
+          "V3": "Le cockpit",
+          "V4": "La descente",
+          "V5": "Le carré",
+          "V6": "La coursive",
+          "V7": "La cabine du propriétaire"
+        },
+        "affiche": "visites/solenne/affiche"
+      },
+      "cabines": "4 cabines : suite du propriétaire, 2 doubles, 1 twin",
+      "galerie": [
+        {
+          "h": 1024,
+          "w": 1536,
+          "alt": "Solenne sous voiles devant l'île de Porquerolles",
+          "src": "flotte/solenne",
+          "pont": "Extérieur"
+        },
+        {
+          "h": 1024,
+          "w": 1536,
+          "alt": "Le cockpit de Solenne et ses deux barres à roue, sous voiles vers Porquerolles",
+          "src": "galerie/solenne-cockpit",
+          "pont": "Pont"
+        },
+        {
+          "h": 1024,
+          "w": 1536,
+          "alt": "Le pont avant en teck au mouillage, dans une crique turquoise de Porquerolles",
+          "src": "galerie/solenne-mouillage",
+          "pont": "Pont"
+        },
+        {
+          "h": 1024,
+          "w": 1536,
+          "alt": "Le carré de Solenne : teck verni, toile crème, cuir vert forêt et hublots en laiton",
+          "src": "galerie/solenne-carre",
+          "pont": "Pont inférieur"
+        },
+        {
+          "h": 1024,
+          "w": 1536,
+          "alt": "La cabine du propriétaire, lambrissée de teck, ouverte sur la mer par deux hublots",
+          "src": "galerie/solenne-cabine",
+          "pont": "Pont inférieur"
+        }
+      ],
+      "largeur": 8.3,
+      "moteurs": "1 × Caterpillar C18",
+      "vitesse": {
+        "max": 14,
+        "croisiere": 11
+      },
+      "accroche": "Un ketch à coque verte, pour naviguer vraiment.",
+      "chantier": "Perini Navi",
+      "equipage": 6,
+      "longueur": 38,
+      "pavillon": "Royaume-Uni",
+      "autonomie": 3000,
+      "selection": true,
+      "architecte": "Ron Holland",
+      "description": [
+        "Solenne est un voilier que l'on mène à six, sans effort, grâce aux enrouleurs dessinés par son chantier. Le cockpit en teck s'abrite sous un bimini, la barre à roue se partage avec qui veut apprendre.",
+        "Sous le pont, le teck verni, la toile crème et le cuir vert forêt rappellent les grands voiliers d'autrefois. Porquerolles, Port-Cros et le Levant sont à une demi-journée de voile de Saint-Tropez."
+      ],
+      "exclusivite": false,
+      "chantierCourt": "Perini Navi",
+      "stabilisateurs": "Ketch, voiles sur enrouleurs",
+      "invites": 8,
+      "port": "Saint-Tropez",
+      "vente": null,
+      "location": {
+        "basse": 72000,
+        "haute": 85000
+      },
+      "reserve": [
+        "2027-07-17",
+        "2027-07-24",
+        "2027-08-14"
+      ],
+      "option": [
+        "2027-08-21"
+      ],
+      "prises": [
+        {
+          "debut": "2027-07-17",
+          "fin": "2027-07-24",
+          "etat": "reserve"
+        },
+        {
+          "debut": "2027-07-24",
+          "fin": "2027-07-31",
+          "etat": "reserve"
+        },
+        {
+          "debut": "2027-08-14",
+          "fin": "2027-08-21",
+          "etat": "reserve"
+        },
+        {
+          "debut": "2027-08-21",
+          "fin": "2027-08-28",
+          "etat": "option"
+        }
+      ]
+    },
+    {
+      "slug": "tramontane",
+      "nom": "Tramontane",
+      "type": "moteur",
+      "annee": 2018,
+      "coque": "Composite",
+      "image": {
+        "h": 1024,
+        "w": 1536,
+        "alt": "Le yacht Tramontane lancé à pleine vitesse le long des roches rouges de l'Estérel",
+        "src": "flotte/tramontane"
+      },
+      "ponts": [
+        [
+          "Fly",
+          "Poste de pilotage, bar, salon d'extérieur, bains de soleil"
+        ],
+        [
+          "Pont principal",
+          "Cockpit, salon, salle à manger, suite du propriétaire"
+        ],
+        [
+          "Pont inférieur",
+          "1 VIP, 2 doubles, 1 twin"
+        ]
+      ],
+      "refit": 2023,
+      "points": [
+        [
+          "28 nœuds",
+          "Saint-Tropez à Cannes en une heure"
+        ],
+        [
+          "Fly",
+          "Salon, bar et bains de soleil à l'ombre d'un hard-top"
+        ],
+        [
+          "Tirant d'eau réduit",
+          "Mouillages au plus près des calanques de l'Estérel"
+        ]
+      ],
+      "tirant": 2.1,
+      "visite": {
+        "dir": "visites/tramontane",
+        "duree": "Six étapes, de la calanque de l'Estérel à la cabine du propriétaire.",
+        "pieces": {
+          "V1": "Au mouillage, Estérel",
+          "V2": "La plage arrière",
+          "V3": "Le cockpit",
+          "V4": "Le salon",
+          "V5": "La descente",
+          "V6": "La cabine du propriétaire"
+        },
+        "affiche": "visites/tramontane/affiche"
+      },
+      "cabines": "5 cabines : suite du propriétaire, 1 VIP, 2 doubles, 1 twin",
+      "galerie": [
+        {
+          "h": 1024,
+          "w": 1536,
+          "alt": "Tramontane lancé à pleine vitesse le long de l'Estérel",
+          "src": "flotte/tramontane",
+          "pont": "Extérieur"
+        },
+        {
+          "h": 1024,
+          "w": 1536,
+          "alt": "La plage arrière au ras de l'eau, au mouillage dans une calanque de l'Estérel",
+          "src": "galerie/tramontane-calanque",
+          "pont": "Extérieur"
+        },
+        {
+          "h": 1024,
+          "w": 1536,
+          "alt": "Le salon de Tramontane : eucalyptus gris, cuir noir et pierre claire, face aux roches rouges",
+          "src": "galerie/tramontane-salon",
+          "pont": "Pont principal"
+        },
+        {
+          "h": 1024,
+          "w": 1536,
+          "alt": "La cabine du propriétaire, tête de lit en cuir noir et baie ouverte sur l'Estérel",
+          "src": "galerie/tramontane-cabine",
+          "pont": "Pont principal"
+        },
+        {
+          "h": 1024,
+          "w": 1536,
+          "alt": "Le fly de Tramontane, abrité par son hard-top : bar, poste de pilotage et bains de soleil",
+          "src": "galerie/tramontane-fly",
+          "pont": "Fly"
+        }
+      ],
+      "largeur": 7.2,
+      "moteurs": "2 × MTU 12V 2000 M96L",
+      "vitesse": {
+        "max": 28,
+        "croisiere": 22
+      },
+      "accroche": "Vingt-huit nœuds, et l'Estérel pour horizon.",
+      "chantier": "Custom Line",
+      "equipage": 6,
+      "longueur": 33,
+      "pavillon": "France",
+      "autonomie": 350,
+      "selection": true,
+      "architecte": "Francesco Paszkowski",
+      "description": [
+        "Tramontane est le plus vif de la flotte : il relie Saint-Tropez à Cannes en une heure, et laisse le temps de déjeuner aux îles de Lérins avant de rentrer. Sa coque grise et ses vitrages teintés lui donnent une allure de sport.",
+        "À bord, l'eucalyptus gris, le cuir noir et l'acier brossé composent un intérieur tenu, presque architectural. Le fly, abrité par un hard-top, devient le salon principal dès que le soleil est haut."
+      ],
+      "exclusivite": false,
+      "chantierCourt": "Custom Line",
+      "stabilisateurs": "Gyroscopiques",
+      "invites": 10,
+      "port": "Saint-Raphaël",
+      "vente": null,
+      "location": {
+        "basse": 95000,
+        "haute": 110000
+      },
+      "reserve": [
+        "2027-07-03",
+        "2027-07-24",
+        "2027-08-07"
+      ],
+      "option": [
+        "2027-07-31"
+      ],
+      "prises": [
+        {
+          "debut": "2027-07-03",
+          "fin": "2027-07-10",
+          "etat": "reserve"
+        },
+        {
+          "debut": "2027-07-24",
+          "fin": "2027-07-31",
+          "etat": "reserve"
+        },
+        {
+          "debut": "2027-07-31",
+          "fin": "2027-08-07",
+          "etat": "option"
+        },
+        {
+          "debut": "2027-08-07",
+          "fin": "2027-08-14",
+          "etat": "reserve"
+        }
+      ]
+    },
+    {
+      "slug": "alize",
+      "nom": "Alizé",
+      "type": "moteur",
+      "annee": 2021,
+      "coque": "Composite",
+      "image": {
+        "h": 1024,
+        "w": 1536,
+        "alt": "Le yacht Alizé au mouillage devant Saint-Tropez, au lever du soleil",
+        "src": "flotte/alize"
+      },
+      "ponts": [
+        [
+          "Fly",
+          "Poste de pilotage, bar, salon d'extérieur"
+        ],
+        [
+          "Pont principal",
+          "Cockpit, salon, salle à manger, terrasse avant"
+        ],
+        [
+          "Pont inférieur",
+          "Suite du propriétaire, 1 VIP, 2 doubles, 1 twin"
+        ]
+      ],
+      "refit": null,
+      "points": [
+        [
+          "Terrasse avant",
+          "Salon et bains de soleil sur la proue, à l'abri des regards"
+        ],
+        [
+          "Frais maîtrisés",
+          "5 membres d'équipage, consommation contenue en croisière"
+        ],
+        [
+          "Visible à Saint-Tropez",
+          "Amarré au vieux port, visite sur rendez-vous"
+        ]
+      ],
+      "tirant": 1.9,
+      "visite": {
+        "dir": "visites/alize",
+        "duree": "Cinq étapes, du quai du vieux port à la terrasse avant, au coucher du soleil.",
+        "pieces": {
+          "V1": "À quai, Saint-Tropez",
+          "V2": "Le cockpit",
+          "V3": "Le salon",
+          "V4": "Le passavant",
+          "V5": "La terrasse avant"
+        },
+        "affiche": "visites/alize/affiche"
+      },
+      "cabines": "5 cabines : suite du propriétaire, 1 VIP, 2 doubles, 1 twin",
+      "galerie": [
+        {
+          "h": 1024,
+          "w": 1536,
+          "alt": "Alizé au mouillage dans le golfe de Saint-Tropez, au lever du soleil",
+          "src": "flotte/alize",
+          "pont": "Extérieur"
+        },
+        {
+          "h": 1024,
+          "w": 1536,
+          "alt": "La table du cockpit dressée pour six, face au vieux port de Saint-Tropez au couchant",
+          "src": "galerie/alize-cockpit",
+          "pont": "Pont principal"
+        },
+        {
+          "h": 1024,
+          "w": 1536,
+          "alt": "Le salon d'Alizé : chêne blanchi, travertin, rotin et coussins olive et terre cuite",
+          "src": "galerie/alize-salon",
+          "pont": "Pont principal"
+        },
+        {
+          "h": 1024,
+          "w": 1536,
+          "alt": "La terrasse avant d'Alizé au coucher du soleil, face à Saint-Tropez",
+          "src": "galerie/alize-terrasse",
+          "pont": "Pont principal"
+        },
+        {
+          "h": 1024,
+          "w": 1536,
+          "alt": "La cabine du propriétaire, tête de lit en rotin et plaid terre cuite, ouverte sur la mer",
+          "src": "galerie/alize-cabine",
+          "pont": "Pont inférieur"
+        }
+      ],
+      "largeur": 6.8,
+      "moteurs": "2 × MAN V12 1800",
+      "vitesse": {
+        "max": 28,
+        "croisiere": 24
+      },
+      "accroche": "Le premier yacht idéal : vif, lumineux, facile à vivre.",
+      "chantier": "Sanlorenzo",
+      "equipage": 5,
+      "longueur": 29.2,
+      "pavillon": "France",
+      "autonomie": 300,
+      "selection": true,
+      "architecte": "Bernardo Zuccon",
+      "description": [
+        "Alizé a été pensé pour une famille qui navigue beaucoup : des volumes clairs, une grande terrasse avant, et une coque qui file à vingt-quatre nœuds sans bruit. Il se mène avec cinq membres d'équipage, ce qui garde ses frais d'exploitation raisonnables.",
+        "Le chêne blanchi, le travertin, le rotin et les tissus olive et terre cuite lui donnent un air de maison de vacances. Il est amarré au vieux port de Saint-Tropez, visible sur rendez-vous."
+      ],
+      "exclusivite": false,
+      "chantierCourt": "Sanlorenzo",
+      "stabilisateurs": "Gyroscopiques",
+      "invites": 10,
+      "port": "Saint-Tropez",
+      "vente": 7900000,
+      "location": null,
+      "reserve": [],
+      "option": [],
+      "prises": []
+    }
+  ]
+}

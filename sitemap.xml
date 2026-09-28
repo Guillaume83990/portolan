@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://portolan.example/fr/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/en/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/de/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/it/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/fr/acheter/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/acheter/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/buy/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/kaufen/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/acquistare/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/buy/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/en/buy/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/acheter/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/buy/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/kaufen/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/acquistare/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/buy/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/de/kaufen/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/acheter/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/buy/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/kaufen/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/acquistare/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/buy/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/it/acquistare/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/acheter/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/buy/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/kaufen/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/acquistare/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/buy/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/fr/conditions/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/conditions/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/terms/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/agb/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/condizioni/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/terms/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/en/terms/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/conditions/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/terms/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/agb/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/condizioni/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/terms/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/de/agb/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/conditions/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/terms/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/agb/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/condizioni/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/terms/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/it/condizioni/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/conditions/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/terms/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/agb/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/condizioni/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/terms/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/fr/confidentialite/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/confidentialite/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/privacy/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/en/privacy/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/confidentialite/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/privacy/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/de/datenschutz/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/confidentialite/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/privacy/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/it/privacy/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/confidentialite/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/privacy/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/fr/contact/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/contact/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/contact/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/kontakt/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/contatti/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/contact/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/en/contact/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/contact/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/contact/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/kontakt/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/contatti/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/contact/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/de/kontakt/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/contact/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/contact/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/kontakt/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/contatti/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/contact/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/it/contatti/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/contact/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/contact/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/kontakt/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/contatti/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/contact/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/fr/flotte/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/en/fleet/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/de/flotte/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/it/flotta/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/fr/flotte/alize/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/alize/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/alize/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/alize/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/alize/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/alize/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/en/fleet/alize/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/alize/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/alize/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/alize/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/alize/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/alize/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/de/flotte/alize/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/alize/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/alize/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/alize/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/alize/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/alize/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/it/flotta/alize/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/alize/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/alize/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/alize/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/alize/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/alize/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/fr/flotte/camarat/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/camarat/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/camarat/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/camarat/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/camarat/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/camarat/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/en/fleet/camarat/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/camarat/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/camarat/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/camarat/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/camarat/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/camarat/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/de/flotte/camarat/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/camarat/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/camarat/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/camarat/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/camarat/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/camarat/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/it/flotta/camarat/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/camarat/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/camarat/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/camarat/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/camarat/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/camarat/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/fr/flotte/castellane/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/castellane/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/castellane/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/castellane/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/castellane/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/castellane/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/en/fleet/castellane/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/castellane/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/castellane/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/castellane/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/castellane/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/castellane/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/de/flotte/castellane/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/castellane/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/castellane/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/castellane/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/castellane/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/castellane/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/it/flotta/castellane/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/castellane/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/castellane/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/castellane/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/castellane/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/castellane/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/fr/flotte/mistral-blanc/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/mistral-blanc/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/mistral-blanc/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/mistral-blanc/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/mistral-blanc/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/mistral-blanc/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/en/fleet/mistral-blanc/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/mistral-blanc/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/mistral-blanc/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/mistral-blanc/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/mistral-blanc/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/mistral-blanc/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/de/flotte/mistral-blanc/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/mistral-blanc/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/mistral-blanc/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/mistral-blanc/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/mistral-blanc/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/mistral-blanc/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/it/flotta/mistral-blanc/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/mistral-blanc/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/mistral-blanc/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/mistral-blanc/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/mistral-blanc/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/mistral-blanc/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/fr/flotte/solenne/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/solenne/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/solenne/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/solenne/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/solenne/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/solenne/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/en/fleet/solenne/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/solenne/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/solenne/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/solenne/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/solenne/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/solenne/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/de/flotte/solenne/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/solenne/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/solenne/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/solenne/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/solenne/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/solenne/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/it/flotta/solenne/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/solenne/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/solenne/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/solenne/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/solenne/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/solenne/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/fr/flotte/tramontane/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/tramontane/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/tramontane/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/tramontane/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/tramontane/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/tramontane/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/en/fleet/tramontane/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/tramontane/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/tramontane/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/tramontane/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/tramontane/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/tramontane/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/de/flotte/tramontane/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/tramontane/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/tramontane/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/tramontane/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/tramontane/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/tramontane/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/it/flotta/tramontane/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/flotte/tramontane/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/fleet/tramontane/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/flotte/tramontane/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/flotta/tramontane/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/fleet/tramontane/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/fr/louer/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/louer/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/charter/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/chartern/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/noleggio/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/charter/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/en/charter/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/louer/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/charter/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/chartern/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/noleggio/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/charter/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/de/chartern/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/louer/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/charter/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/chartern/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/noleggio/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/charter/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/it/noleggio/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/louer/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/charter/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/chartern/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/noleggio/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/charter/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/fr/mentions-legales/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/mentions-legales/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/impressum/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/note-legali/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/legal-notice/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/en/legal-notice/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/mentions-legales/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/impressum/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/note-legali/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/legal-notice/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/de/impressum/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/mentions-legales/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/impressum/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/note-legali/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/legal-notice/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/it/note-legali/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/mentions-legales/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/impressum/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/note-legali/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/legal-notice/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/fr/methode/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/methode/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/method/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/methode/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/metodo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/method/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/en/method/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/methode/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/method/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/methode/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/metodo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/method/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/de/methode/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/methode/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/method/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/methode/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/metodo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/method/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/it/metodo/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/methode/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/method/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/methode/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/metodo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/method/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/fr/nos-eaux/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/nos-eaux/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/our-waters/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/reviere/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/le-nostre-acque/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/our-waters/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/en/our-waters/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/nos-eaux/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/our-waters/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/reviere/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/le-nostre-acque/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/our-waters/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/de/reviere/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/nos-eaux/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/our-waters/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/reviere/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/le-nostre-acque/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/our-waters/"/>
+  </url>
+  <url>
+    <loc>https://portolan.example/it/le-nostre-acque/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portolan.example/fr/nos-eaux/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portolan.example/en/our-waters/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://portolan.example/de/reviere/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://portolan.example/it/le-nostre-acque/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portolan.example/en/our-waters/"/>
+  </url>
+</urlset>
