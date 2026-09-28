@@ -12,4 +12,5 @@ run('node tools/supabase/exporter.cjs');
 run('node tools/build-flotte.cjs');
 run('node tools/traduire.cjs en de it');
 run('node tools/sitemap.cjs');
+run('node tools/publication.cjs');
 console.log('\nSite reconstruit : fr, en, de, it et sitemap.xml.');

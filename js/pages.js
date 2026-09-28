@@ -1,6 +1,6 @@
 // Pages « Acheter », « Louer » et « Méthode » : ouverture, manifeste, escales et étapes à image collée, budget de location,
 // coût annuel d'un yacht, questions fréquentes. Les formulaires sont gérés par commun.js.
-import { gsap, ScrollTrigger, SplitText, reduceMotion, initCommun, scrollToEl, pause } from './commun.js';
+import { gsap, ScrollTrigger, SplitText, reduceMotion, initCommun, scrollToEl, pause, revele, aLEcran } from './commun.js';
 import { t as tr, euros, nombre } from './i18n.js';
 
 initCommun();
@@ -9,7 +9,7 @@ const eur = euros;
 
 // Ouverture : l'image se pose, le titre monte lettre à lettre
 if (!reduceMotion) {
-  const chars = SplitText.create('.pg-hero__title', { type: 'lines,chars', mask: 'lines' }).chars;
+  const chars = SplitText.create('.pg-hero__title', { aria: 'hidden', type: 'lines,chars', mask: 'lines' }).chars;
   gsap.timeline({ defaults: { ease: 'expo.out' } })
     .from('.pg-hero__media img', { scale: 1.18, duration: 2.6, ease: 'power3.out' }, 0)
     .from(chars, { yPercent: 105, duration: 1.4, stagger: 0.045 }, 0.2)
@@ -19,12 +19,12 @@ if (!reduceMotion) {
 
   // Manifeste : les mots s'allument au défilement
   document.querySelectorAll('[data-words]').forEach((el) => {
-    const words = SplitText.create(el, { type: 'words', wordsClass: 'word' }).words;
+    const words = SplitText.create(el, { aria: 'hidden', type: 'words', wordsClass: 'word' }).words;
     gsap.fromTo(words, { opacity: 0.14 }, { opacity: 1, ease: 'none', stagger: 0.1, scrollTrigger: { trigger: el, start: 'top 80%', end: 'bottom 45%', scrub: true } });
   });
 
   gsap.utils.toArray('.pg-card, .pg-faq__item, .pg-budget__tool, .pg-cost__tool, .pg-sell__media, .pg-sell__text > *, .ct-way, .ct-office, .ct-other__list li').forEach((el) => {
-    gsap.from(el, { autoAlpha: 0, y: 28, duration: 1.1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%' } });
+    revele(el, { autoAlpha: 0, y: 28, duration: 1.1, ease: 'power3.out' }, el, 90);
   });
 }
 
@@ -45,16 +45,16 @@ if (!reduceMotion) {
   document.querySelectorAll('.mt-chapter').forEach((ch) => {
     const im = ch.querySelector('.mt-chapter__media img');
     gsap.fromTo(im, { yPercent: -8 }, { yPercent: 0, ease: 'none', scrollTrigger: { trigger: ch, start: 'top bottom', end: 'bottom top', scrub: true } });
-    gsap.from(ch.querySelector('.mt-chapter__media'), { clipPath: 'inset(12% 12% 12% 12%)', duration: 1.6, ease: 'expo.out', scrollTrigger: { trigger: ch, start: 'top 75%' } });
-    gsap.from(ch.querySelectorAll('.mt-chapter__num, .mt-chapter__when, .mt-chapter__title, .mt-chapter__text, .mt-chapter__lists li'), { autoAlpha: 0, y: 26, duration: 1.1, ease: 'power3.out', stagger: 0.05, scrollTrigger: { trigger: ch, start: 'top 70%' } });
+    revele(ch.querySelector('.mt-chapter__media'), { clipPath: 'inset(12% 12% 12% 12%)', duration: 1.6, ease: 'expo.out' }, ch, 75);
+    revele(ch.querySelectorAll('.mt-chapter__num, .mt-chapter__when, .mt-chapter__title, .mt-chapter__text, .mt-chapter__lists li'), { autoAlpha: 0, y: 26, duration: 1.1, ease: 'power3.out', stagger: 0.05 }, ch, 70);
   });
   gsap.utils.toArray('.mt-carnet__panel, .mt-engage__list li, .mt-office').forEach((el) => {
-    gsap.from(el, { autoAlpha: 0, y: 28, duration: 1.1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%' } });
+    revele(el, { autoAlpha: 0, y: 28, duration: 1.1, ease: 'power3.out' }, el, 90);
   });
   const count = document.querySelector('.mt-carnet__count [data-count]');
   if (count) {
     const o = { n: 0 };
-    gsap.to(o, { n: Number(count.dataset.count), duration: 2, ease: 'power2.out', scrollTrigger: { trigger: count, start: 'top 85%' }, onUpdate: () => { count.textContent = Math.round(o.n); } });
+    aLEcran(count, () => gsap.to(o, { n: Number(count.dataset.count), duration: 2, ease: 'power2.out', onUpdate: () => { count.textContent = Math.round(o.n); } }), 85);
   }
 }
 
@@ -184,10 +184,10 @@ if (chart) {
     p.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
   });
   if (!reduceMotion) {
-    gsap.from(chart.querySelectorAll('.ne-chart__land'), { opacity: 0, duration: 1.4, ease: 'power2.out', stagger: 0.08, scrollTrigger: { trigger: chart, start: 'top 80%' } });
-    gsap.from(pins, { scale: 0, transformOrigin: 'center', duration: 0.8, ease: 'back.out(2)', stagger: 0.06, scrollTrigger: { trigger: chart, start: 'top 70%' } });
+    revele(chart.querySelectorAll('.ne-chart__land'), { opacity: 0, duration: 1.4, ease: 'power2.out', stagger: 0.08 }, chart, 80);
+    revele(pins, { scale: 0, transformOrigin: 'center', duration: 0.8, ease: 'back.out(2)', stagger: 0.06 }, chart, 70);
     gsap.utils.toArray('.ne-winds__list li, .ne-seasons__list li, .ne-care__facts div').forEach((el) => {
-      gsap.from(el, { autoAlpha: 0, y: 28, duration: 1.1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%' } });
+      revele(el, { autoAlpha: 0, y: 28, duration: 1.1, ease: 'power3.out' }, el, 90);
     });
   }
 }

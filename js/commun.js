@@ -5,6 +5,9 @@ import { initMenu } from './menu.js';
 import { t as tr } from './i18n.js';
 import { initLienCompte } from './compte.js';
 import { enregistrerDemande } from './demandes.js';
+import { revele, aLEcran } from './apparition.js';
+
+export { revele, aLEcran };
 
 export const { gsap, ScrollTrigger, SplitText, Lenis } = window;
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -98,22 +101,18 @@ export function initCommun() {
   // Apparitions : surtitres, titres ligne à ligne, nom de la maison en pied de page (dans une tranche à part)
   if (!reduceMotion) pause().then(() => {
     document.querySelectorAll('main .kicker').forEach((k) => {
-      if (k.closest('.fl-hero, .fi-hero')) return;
-      gsap.from(k, { autoAlpha: 0, x: -12, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: k, start: 'top 90%' } });
+      if (k.closest('.fl-hero, .fi-hero, .pg-hero, .legal, .espace')) return;
+      revele(k, { autoAlpha: 0, x: -12, duration: 1, ease: 'power3.out' }, k, 90);
     });
     document.querySelectorAll('main .section-title, .fi-brochure__title').forEach((title) => {
-      SplitText.create(title, {
-        type: 'lines', mask: 'lines', autoSplit: true,
-        onSplit: (self) => gsap.from(self.lines, {
-          yPercent: 110, rotate: 2.5, transformOrigin: 'left top', duration: 1.4, ease: 'expo.out', stagger: 0.12,
-          scrollTrigger: { trigger: title, start: 'top 88%' },
-        }),
+      SplitText.create(title, { aria: 'hidden', type: 'lines', mask: 'lines', autoSplit: true,
+        onSplit: (self) => revele(self.lines, { yPercent: 110, rotate: 2.5, transformOrigin: 'left top', duration: 1.4, ease: 'expo.out', stagger: 0.12 }, title, 88),
       });
     });
     const mark = document.querySelector('.footer__mark');
     if (mark) {
-      const chars = SplitText.create(mark, { type: 'chars' }).chars;
-      gsap.from(chars, { yPercent: 100, autoAlpha: 0, duration: 1.2, ease: 'expo.out', stagger: 0.05, scrollTrigger: { trigger: mark, start: 'top 98%' } });
+      const chars = SplitText.create(mark, { aria: 'hidden', type: 'chars' }).chars;
+      revele(chars, { yPercent: 100, autoAlpha: 0, duration: 1.2, ease: 'expo.out', stagger: 0.05 }, mark, 98);
     }
   });
 

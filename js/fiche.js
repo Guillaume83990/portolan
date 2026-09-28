@@ -1,6 +1,6 @@
 // Fiche d'un yacht : ouverture, galerie par pont avec visionneuse, plan de pont, calendrier des semaines,
 // demande préremplie selon le bouton choisi, barre du bas sur téléphone.
-import { gsap, ScrollTrigger, SplitText, reduceMotion, initCommun, scrollToEl, pause } from './commun.js';
+import { gsap, ScrollTrigger, SplitText, reduceMotion, initCommun, scrollToEl, pause, revele, aLEcran } from './commun.js';
 import { t as tr } from './i18n.js';
 import { initReservation } from './reservation.js';
 
@@ -8,7 +8,7 @@ initCommun();
 
 // Ouverture : l'image se pose, le nom monte lettre à lettre, puis les caractéristiques
 if (!reduceMotion) {
-  const chars = SplitText.create('.fi-hero__title', { type: 'lines,chars', mask: 'lines' }).chars;
+  const chars = SplitText.create('.fi-hero__title', { aria: 'hidden', type: 'lines,chars', mask: 'lines' }).chars;
   gsap.timeline({ defaults: { ease: 'expo.out' } })
     .from('.fi-hero__media img', { scale: 1.2, duration: 2.8, ease: 'power3.out' }, 0)
     .from(chars, { yPercent: 105, duration: 1.4, stagger: 0.05 }, 0.25)
@@ -16,7 +16,7 @@ if (!reduceMotion) {
     .from('.fi-hero__specs div', { autoAlpha: 0, y: 20, duration: 1, stagger: 0.07 }, 0.9);
   gsap.to('.fi-hero__media img', { yPercent: 10, ease: 'none', scrollTrigger: { trigger: '.fi-hero', start: 'top top', end: 'bottom top', scrub: true } });
   gsap.utils.toArray('.fi-intro > p, .fi-points li, .fi-specs__list div, .fi-sale__list li, .fi-decks__list li, .fi-more__list li').forEach((el) => {
-    gsap.from(el, { autoAlpha: 0, y: 24, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 92%' } });
+    revele(el, { autoAlpha: 0, y: 24, duration: 1, ease: 'power3.out' }, el, 92);
   });
 }
 
@@ -131,7 +131,8 @@ document.querySelectorAll('.fi-decks__list li').forEach((li) => {
 const outline = document.querySelector('.fi-decks__line');
 if (outline && !reduceMotion) {
   const len = outline.getTotalLength();
-  gsap.fromTo(outline, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: 3, ease: 'power2.inOut', scrollTrigger: { trigger: '.fi-decks', start: 'top 75%' } });
+  const trace = gsap.fromTo(outline, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: 3, ease: 'power2.inOut', paused: true });
+  aLEcran('.fi-decks', () => trace.play(), 75);
 }
 
 await pause();

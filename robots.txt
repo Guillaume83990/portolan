@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://portolan.example/sitemap.xml
+Sitemap: https://guillaume83990.github.io/portolan/sitemap.xml

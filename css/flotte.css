@@ -353,3 +353,9 @@ select.form__input option { color: var(--encre); }
 .fi-bar .btn { padding: 0.8rem 1.25rem; }
 @media (min-width: 1100px) { .fi-bar { display: none; } }
 @media (max-width: 1099px) { .page-fiche .wa { bottom: 5.5rem; } }
+
+/* Performance : le navigateur ne calcule ces blocs (calendrier de 184 jours, suggestions, pied de page) qu'à
+   l'approche de l'écran. La taille réservée est proche de la taille réelle, pour que les ancres restent justes. */
+.resa__mois { content-visibility: auto; contain-intrinsic-size: auto 560px; }
+@media (max-width: 1199px) { .resa__mois { contain-intrinsic-size: auto 330px; } }
+.page-fiche .fi-more, .page-fiche .footer { content-visibility: auto; contain-intrinsic-size: auto 800px; }

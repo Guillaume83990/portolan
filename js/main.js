@@ -2,6 +2,7 @@ import { initMenu } from './menu.js';
 import { t as tr } from './i18n.js';
 import { initLienCompte } from './compte.js';
 import { enregistrerDemande } from './demandes.js';
+import { revele, aLEcran } from './apparition.js';
 
 
 const { gsap, ScrollTrigger, SplitText, Lenis } = window;
@@ -186,11 +187,18 @@ async function startFilm() {
   buildDial(film.querySelector('.hud__dial'));
 
   const first = beats[0];
-  const split = SplitText.create(first.querySelector('.chapter__title'), { type: 'lines', mask: 'lines' });
+  const split = SplitText.create(first.querySelector('.chapter__title'), { aria: 'hidden', type: 'lines', mask: 'lines' });
   gsap.set(first, { autoAlpha: 1 });
-  gsap.set(split.lines, { yPercent: 110 });
-  gsap.set(first.querySelectorAll('.chapter__kicker, .chapter__body'), { autoAlpha: 0, y: 16 });
+  // Le texte d'ouverture reste visible dès le premier affichage (seule une petite montée l'anime)
+  gsap.set(first.querySelector('.chapter__kicker'), { autoAlpha: 0, y: 16 });
+  gsap.set(first.querySelector('.chapter__body'), { y: 16 });
   gsap.set(['.film__hint', '.route', '.hud'], { autoAlpha: 0 });
+
+  // Le titre monte tout de suite, sans attendre les images du film : c'est lui que Google mesure
+  // comme « plus grand élément affiché » (LCP). La carte brûle ensuite derrière lui.
+  let introDone = false;
+  gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.05, onComplete: () => { introDone = true; } })
+    .to(first.querySelectorAll('.chapter__kicker, .chapter__body'), { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.12 }, 0.1);
 
   let sequence;
   try {
@@ -200,6 +208,9 @@ async function startFilm() {
       dir: small ? '../assets/plan-sequence/m/' : '../assets/plan-sequence/d/',
       carte: `../assets/plan-sequence/carte${small ? '-m' : ''}.webp`,
       carteRange: CARTE,
+      // Le film démarre dès les premières images ; la suite se charge ensuite, sans gêner l'affichage de la page
+      startAt: small ? 8 : 12,
+      sobre: true,
       onLoad: (f) => loader.style.setProperty('--progress', Math.min(1, f * 4).toFixed(2)),
     });
     await sequence.ready;
@@ -215,18 +226,19 @@ async function startFilm() {
   sequence.start();
   if (new URLSearchParams(location.search).has('debug')) window.portolanVisite = sequence;
 
-  // Ouverture : les rhumbs rayonnent, la carte apparaît à l'encre, puis le titre
-  let introDone = false;
-  gsap.timeline({ defaults: { ease: 'power3.out' }, onComplete: () => { introDone = true; } })
-    .to('.rhumbs', { opacity: 0.4, duration: 0.6 }, 0)
-    .from(rhumbLines, {
+  // Ouverture : les rhumbs rayonnent et la carte apparaît à l'encre (le titre est déjà là)
+  // Sur téléphone, les 96 rayons apparaissent en fondu (les tracer un à un coûtait trop au processeur)
+  const ouverture = gsap.timeline({ defaults: { ease: 'power3.out' } })
+    .to('.rhumbs', { opacity: 0.4, duration: small ? 1.2 : 0.6 }, 0);
+  if (!small) {
+    ouverture.from(rhumbLines, {
       attr: { x2: (i, el) => el.getAttribute('x1'), y2: (i, el) => el.getAttribute('y1') },
       duration: 2.2, ease: 'power2.inOut', stagger: 0.004,
-    }, 0)
+    }, 0);
+  }
+  ouverture
     .call(() => sequence.intro(2600), null, 0.3)
     .to('.rhumbs', { opacity: 0.16, duration: 1.4 }, 2.2)
-    .to(split.lines, { yPercent: 0, duration: 1.3, stagger: 0.12 }, 1.8)
-    .to(first.querySelectorAll('.chapter__kicker, .chapter__body'), { autoAlpha: 1, y: 0, duration: 1, stagger: 0.15 }, 2.2)
     .to(['.film__hint', '.route'], { autoAlpha: 1, duration: 1 }, 2.8)
     .set('.hud', { autoAlpha: 1, opacity: 0 }, 2.8);
 
@@ -592,17 +604,13 @@ if (!reduceMotion) {
   // Filets des surtitres
   document.querySelectorAll('.kicker').forEach((k) => {
     if (k.closest('.film')) return;
-    gsap.from(k, { autoAlpha: 0, x: -12, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: k, start: 'top 90%' } });
+    revele(k, { autoAlpha: 0, x: -12, duration: 1, ease: 'power3.out' }, k, 90);
   });
 
   // Titres : lignes qui montent dans leur masque, avec une légère rotation
   document.querySelectorAll('.section-title, .contact__title, .offer__title, .offmarket__title').forEach((title) => {
-    SplitText.create(title, {
-      type: 'lines', mask: 'lines', autoSplit: true,
-      onSplit: (self) => gsap.from(self.lines, {
-        yPercent: 110, rotate: 2.5, transformOrigin: 'left top', duration: 1.4, ease: 'expo.out', stagger: 0.12,
-        scrollTrigger: { trigger: title, start: 'top 88%' },
-      }),
+    SplitText.create(title, { aria: 'hidden', type: 'lines', mask: 'lines', autoSplit: true,
+      onSplit: (self) => revele(self.lines, { yPercent: 110, rotate: 2.5, transformOrigin: 'left top', duration: 1.4, ease: 'expo.out', stagger: 0.12 }, title, 88),
     });
   });
 
@@ -610,13 +618,13 @@ if (!reduceMotion) {
 
   // Paragraphes et liens : montée douce
   gsap.utils.toArray('[data-reveal], .offmarket__text, .offmarket__fields, .contact__lead, .contact__promises li, .contact__wa, .lead').forEach((el) => {
-    gsap.from(el, { autoAlpha: 0, y: 28, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%' } });
+    revele(el, { autoAlpha: 0, y: 28, duration: 1.2, ease: 'power3.out' }, el, 90);
   });
 
   // La maison : les mots s'allument un à un au fil du défilement
   const statement = document.querySelector('[data-words]');
   if (statement) {
-    const words = SplitText.create(statement, { type: 'words', wordsClass: 'word' }).words;
+    const words = SplitText.create(statement, { aria: 'hidden', type: 'words', wordsClass: 'word' }).words;
     gsap.fromTo(words, { opacity: 0.14 }, {
       opacity: 1, ease: 'none', stagger: 0.1,
       scrollTrigger: { trigger: statement, start: 'top 80%', end: 'bottom 45%', scrub: true },
@@ -636,9 +644,9 @@ if (!reduceMotion) {
 
   // Acheter, louer : les panneaux s'ouvrent comme des rideaux qui s'écartent
   gsap.utils.toArray('.offer').forEach((offer, i) => {
-    const st = { trigger: '.offers', start: 'top 65%' };
-    gsap.from(offer.querySelector('.offer__media'), { clipPath: i === 0 ? 'inset(0 100% 0 0)' : 'inset(0 0 0 100%)', duration: 1.6, ease: 'expo.inOut', scrollTrigger: st });
-    gsap.from(offer.querySelectorAll('.offer__text > *:not(.offer__title)'), { autoAlpha: 0, y: 24, duration: 1, ease: 'power3.out', stagger: 0.1, delay: 0.6, scrollTrigger: st });
+    const offres = document.querySelector('.offers');
+    revele(offer.querySelector('.offer__media'), { clipPath: i === 0 ? 'inset(0 100% 0 0)' : 'inset(0 0 0 100%)', duration: 1.6, ease: 'expo.inOut' }, offres, 65);
+    revele(offer.querySelectorAll('.offer__text > *:not(.offer__title)'), { autoAlpha: 0, y: 24, duration: 1, ease: 'power3.out', stagger: 0.1, delay: 0.6 }, offres, 65);
   });
 
   // Chiffres : ils défilent jusqu'à leur valeur
@@ -646,11 +654,10 @@ if (!reduceMotion) {
     const end = Number(el.dataset.count);
     const suffix = el.dataset.suffix ? el.dataset.suffix.replace('&#8239;', ' ') : '';
     const obj = { v: 0 };
-    gsap.to(obj, {
+    aLEcran(el, () => gsap.to(obj, {
       v: end, duration: 2.2, ease: 'power3.out',
-      scrollTrigger: { trigger: el, start: 'top 90%' },
       onUpdate: () => { el.textContent = `${Math.round(obj.v)}${suffix}`; },
-    });
+    }), 90);
   });
 
   await pause();
@@ -674,18 +681,17 @@ if (!reduceMotion) {
   // Témoignage : les lignes montent une à une
   const quote = document.querySelector('.quote__text');
   if (quote) {
-    SplitText.create(quote, {
-      type: 'lines', mask: 'lines', autoSplit: true,
-      onSplit: (self) => gsap.from(self.lines, { yPercent: 105, duration: 1.3, ease: 'expo.out', stagger: 0.1, scrollTrigger: { trigger: quote, start: 'top 85%' } }),
+    SplitText.create(quote, { aria: 'hidden', type: 'lines', mask: 'lines', autoSplit: true,
+      onSplit: (self) => revele(self.lines, { yPercent: 105, duration: 1.3, ease: 'expo.out', stagger: 0.1 }, quote, 85),
     });
-    gsap.from('.quote__rose', { rotate: -180, autoAlpha: 0, duration: 2, ease: 'expo.out', scrollTrigger: { trigger: '.quote', start: 'top 80%' } });
+    revele('.quote__rose', { rotate: -180, autoAlpha: 0, duration: 2, ease: 'expo.out' }, document.querySelector('.quote'), 80);
   }
 
   // Pied de page : le nom de la maison se révèle lettre par lettre
   const mark = document.querySelector('.footer__mark');
   if (mark) {
-    const chars = SplitText.create(mark, { type: 'chars' }).chars;
-    gsap.from(chars, { yPercent: 100, autoAlpha: 0, duration: 1.2, ease: 'expo.out', stagger: 0.05, scrollTrigger: { trigger: mark, start: 'top 98%' } });
+    const chars = SplitText.create(mark, { aria: 'hidden', type: 'chars' }).chars;
+    revele(chars, { yPercent: 100, autoAlpha: 0, duration: 1.2, ease: 'expo.out', stagger: 0.05 }, mark, 98);
   }
 }
 

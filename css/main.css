@@ -239,6 +239,8 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
   visibility: hidden;
 }
 .chapter.is-active, .shot.is-active { pointer-events: auto; }
+/* Le texte d'ouverture est visible dès le premier affichage, sans attendre les scripts (plus grand élément affiché, LCP) */
+.film__shots > .shot:first-child { opacity: 1; visibility: visible; }
 
 /* Dernière image : le soleil est bas sur l'horizon, le texte monte sur le ciel plus sombre */
 .shot--final { align-items: flex-end; }
@@ -637,7 +639,7 @@ h2.chapter__title { font-size: clamp(2.5rem, 6vw, 5.5rem); }
 }
 .method__step:last-child { border-bottom: 1px solid color-mix(in srgb, var(--encre) 16%, transparent); }
 .method__list:hover .method__step:not(:hover), .method__list:not(:hover) .method__step:not(.is-active) { opacity: 0.38; }
-.method__num { font-family: var(--serif); font-size: 1.4rem; color: #7A6535; }
+.method__num { font-family: var(--serif); font-size: 1.4rem; color: #6B5829; }
 .method__step h3 { font-family: var(--serif); font-size: clamp(1.8rem, 3.4vw, 3rem); line-height: 1.05; }
 .method__step p { margin-top: 0.9rem; max-width: 34ch; line-height: 1.6; color: color-mix(in srgb, var(--encre) 78%, var(--calcaire)); }
 .method__visual { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: var(--pin); }

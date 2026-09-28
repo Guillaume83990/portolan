@@ -1,5 +1,5 @@
 // La flotte : ouverture, filtres, deux affichages (planches, registre) et aperçu qui suit la souris.
-import { gsap, ScrollTrigger, SplitText, reduceMotion, finePointer, initCommun, scrollToEl, pause } from './commun.js';
+import { gsap, ScrollTrigger, SplitText, reduceMotion, finePointer, initCommun, scrollToEl, pause, aLEcran } from './commun.js';
 
 initCommun();
 
@@ -13,7 +13,7 @@ const count = list.querySelector('.fl-bar__count span');
 
 // Ouverture : l'image se pose, le titre monte lettre à lettre, les chiffres défilent
 if (!reduceMotion) {
-  const chars = SplitText.create('.fl-hero__title', { type: 'lines,chars', mask: 'lines' }).chars;
+  const chars = SplitText.create('.fl-hero__title', { aria: 'hidden', type: 'lines,chars', mask: 'lines' }).chars;
   gsap.timeline({ defaults: { ease: 'expo.out' } })
     .from('.fl-hero__media img', { scale: 1.18, duration: 2.6, ease: 'power3.out' }, 0)
     .from(chars, { yPercent: 105, duration: 1.4, stagger: 0.05 }, 0.2)
@@ -33,7 +33,8 @@ await pause();
 if (!reduceMotion) {
   plates.forEach((plate) => {
     const media = plate.querySelector('.plate__media');
-    const tl = gsap.timeline({ scrollTrigger: { trigger: plate, start: 'top 78%' } });
+    const tl = gsap.timeline({ paused: true });
+    aLEcran(plate, () => tl.play(), 78);
     tl.from(media, { clipPath: 'inset(100% 0% 0% 0%)', duration: 1.5, ease: 'expo.inOut' })
       .from(media.querySelector('img'), { scale: 1.3, duration: 2, ease: 'expo.out' }, 0.3)
       .from(plate.querySelectorAll('.plate__body > *'), { autoAlpha: 0, y: 26, duration: 1, ease: 'power3.out', stagger: 0.08 }, 0.5);

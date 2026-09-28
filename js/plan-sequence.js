@@ -79,13 +79,13 @@ const fragment = `
     if (inside < 1.0) {
       vec3 halo = vec3(0.0);
       vec2 base = vec2(q.x, clamp(q.y, 0.04, 0.96));
-      for (int i = 0; i < 12; i++) {
-        float a = float(i) * 0.5236;
+      for (int i = 0; i < 8; i++) {
+        float a = float(i) * 0.7854;
         vec2 o = vec2(cos(a), sin(a)) * (0.05 + 0.04 * mod(float(i), 3.0));
         vec2 sp = clamp(base + o, 0.0, 1.0);
         halo += mix(frames(sp), texture2D(uCarte, sp).rgb * 0.72, 1.0 - smoothstep(0.0, 1.0, uCarteMix));
       }
-      halo = halo / 12.0 * 0.42;
+      halo = halo / 8.0 * 0.42;
       col = mix(halo, col, inside);
     }
 
@@ -108,6 +108,9 @@ export function createPlanSequence(canvas, options) {
     // Sans carte (visites des fiches yachts), la caméra part dès le début du défilement
     carteRange = carte ? [0.02, 0.1] : [0, 0], yacht = [0.56, 0.48],
     startAt = 24, parallel = 8, onLoad,
+    // Hero de l'accueil : seules les premières images sont téléchargées au chargement ; la suite part dès que
+    // le visiteur touche, fait défiler ou appuie sur une touche (10 Mo épargnés à qui ne fait que passer)
+    sobre = false,
   } = options;
 
   const gl = canvas.getContext('webgl', { antialias: false, alpha: false, premultipliedAlpha: false });
@@ -192,7 +195,7 @@ export function createPlanSequence(canvas, options) {
   function decode(i) {
     if (i < 1 || i > count || !blobs[i] || decoded.has(i) || decoding.has(i)) return;
     decoding.add(i);
-    createImageBitmap(blobs[i], { imageOrientation: 'none', premultiplyAlpha: 'none' }).then((bmp) => {
+    createImageBitmap(blobs[i], { imageOrientation: 'from-image', premultiplyAlpha: 'none' }).then((bmp) => {
       decoding.delete(i);
       decoded.set(i, bmp);
       if (i === 1) { size = [bmp.width, bmp.height]; if (done >= Math.min(startAt, count) + 1 && carteReady) resolveStart(); }
@@ -224,7 +227,11 @@ export function createPlanSequence(canvas, options) {
   let loadedUpTo = 0;
   // Une image introuvable ne bloque plus la suite : on affiche sa voisine
   const advance = () => { while (loadedUpTo < count && blobs[loadedUpTo + 1] !== undefined) loadedUpTo++; };
+  let ouvert = !sobre;
+  let pris = 0;
   function next() {
+    if (!ouvert && pris >= Math.min(startAt, count)) return null;
+    pris++;
     // On charge d'abord la suite immédiate de ce qui est déjà prêt, en direction du visiteur
     const head = Math.max(1, Math.min(Math.floor(state.target), loadedUpTo + 1));
     for (let d = 0; d < 64; d++) {
@@ -237,6 +244,14 @@ export function createPlanSequence(canvas, options) {
   }
   async function worker() { for (let i = next(); i; i = next()) await fetchOne(i); }
   for (let k = 0; k < parallel; k++) worker();
+  // Première interaction du visiteur : on télécharge la suite du film
+  function ouvrir() {
+    if (ouvert) return;
+    ouvert = true;
+    ['pointerdown', 'wheel', 'touchstart', 'keydown', 'scroll'].forEach((t) => window.removeEventListener(t, ouvrir));
+    for (let k = 0; k < parallel; k++) worker();
+  }
+  if (!ouvert) ['pointerdown', 'wheel', 'touchstart', 'keydown', 'scroll'].forEach((t) => window.addEventListener(t, ouvrir, { passive: true }));
 
   // L'image décodée la plus proche (en attendant que la bonne soit prête, quelques millisecondes)
   function nearest(i) {
@@ -249,11 +264,16 @@ export function createPlanSequence(canvas, options) {
 
   let listener = null;
   const t0 = performance.now();
+  // Résolution adaptée à l'appareil : si dessiner une image prend trop longtemps (téléphone modeste,
+  // ordinateur sans carte graphique), on calcule moins de pixels ; l'image reste nette à l'œil (elle est floue par nature)
+  let echelle = 1;
+  const durees = [];
+  let derniereCle = '';
 
   function resize() {
     // Les images font 640 à 832 px de large : calculer l'écran en plus haute définition ne montrerait
     // aucun détail de plus, et coûtait jusqu'à neuf fois plus de calcul sur les téléphones (saccades)
-    const dpr = Math.min(window.devicePixelRatio || 1, 1.25);
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.25) * echelle;
     const w = Math.round(canvas.clientWidth * dpr);
     const h = Math.round(canvas.clientHeight * dpr);
     if (canvas.width !== w || canvas.height !== h) {
@@ -281,16 +301,29 @@ export function createPlanSequence(canvas, options) {
     const a = nearest(i0);
     const b = decoded.has(i1) ? i1 : a;
     if (a < 0) return;
+    const melange = b === a ? 0 : f - i0;
+    const carteMix = carte ? smooth(carteRange[0], carteRange[1], state.p) : 1;
+    // Rien n'a changé depuis la dernière image dessinée : on ne redessine pas (le processeur se repose)
+    const cle = `${a}|${b}|${melange.toFixed(3)}|${carteMix.toFixed(3)}|${state.intro.toFixed(3)}|${canvas.width}x${canvas.height}`;
+    if (cle === derniereCle) return;
+    derniereCle = cle;
+    const debut = performance.now();
     upload(0, texA, decoded.get(a), a);
     upload(1, texB, decoded.get(b), b);
 
-    gl.uniform1f(U.uBlend, b === a ? 0 : f - i0);
-    gl.uniform1f(U.uCarteMix, carte ? smooth(carteRange[0], carteRange[1], state.p) : 1);
+    gl.uniform1f(U.uBlend, melange);
+    gl.uniform1f(U.uCarteMix, carteMix);
     gl.uniform1f(U.uIntro, state.intro);
     gl.uniform2f(U.uRes, canvas.width, canvas.height);
     gl.uniform2f(U.uImg, size[0], size[1]);
-    gl.uniform1f(U.uTime, (performance.now() - t0) / 1000);
+    gl.uniform1f(U.uTime, (debut - t0) / 1000);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    durees.push(performance.now() - debut);
+    if (durees.length >= 4) {
+      const moyenne = durees.reduce((s, d) => s + d, 0) / durees.length;
+      durees.length = 0;
+      if (moyenne > 20 && echelle > 0.4) { echelle = Math.max(0.4, echelle * 0.7); resize(); }
+    }
     // Les textes suivent l'image réellement affichée (lissée), pas la position brute du scroll
     listener?.(f <= 1.001 ? state.p : fromFrame(f), f);
   }
