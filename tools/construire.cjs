@@ -14,4 +14,5 @@ run('node tools/build-flotte.cjs');
 run('node tools/traduire.cjs en de it');
 run('node tools/sitemap.cjs');
 run('node tools/publication.cjs');
+run('node tools/demonstration.cjs');
 console.log('\nSite reconstruit : fr, en, de, it et sitemap.xml.');
