@@ -39,8 +39,10 @@ let pages = 0;
       s = s.replace(/(<meta charset="[^"]*">)/i, '$1\n  <meta name="robots" content="noindex, follow">');
     }
 
-    // 2 · la pastille (une seule fois, sur les pages qui ont un <body>)
-    if (!s.includes('class="demo-pill"') && s.includes('</body>')) {
+    // 2 · la pastille, toujours reposée dans la langue de la page (une pastille héritée de la page
+    //     française par la traduction serait restée en français)
+    s = s.replace(/[ \t]*<a class="demo-pill"[\s\S]*?<\/a>\r?\n?/g, '');
+    if (s.includes('</body>')) {
       const pastille = `  <a class="demo-pill" href="https://www.sudwebproject.com/" target="_blank" rel="noopener" title="${TITRE[lang] || TITRE.fr}"><span class="demo-pill__dot" aria-hidden="true"></span>${TEXTE[lang] || TEXTE.fr}<span class="demo-pill__by"> · SudWebProject</span></a>\n`;
       s = s.replace('</body>', `${pastille}</body>`);
     }

@@ -8,7 +8,9 @@ const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
 const INTERNE = 'https://portolan.example';
-const PUBLIQUE = 'https://guillaume83990.github.io/portolan';
+const PUBLIQUE = 'https://portolan.sudwebproject.com';
+// Ancienne adresse GitHub Pages (avant le sous-domaine du 29/09/2026) : remplacée partout où elle subsiste
+const ANCIENNE = 'https://guillaume83990.github.io/portolan';
 const PRIVEES = /[\\/](espace|my-account|mein-konto|area-riservata|direction)[\\/]index\.html$/;
 
 let pages = 0;
@@ -20,7 +22,8 @@ let pages = 0;
     if (!/\.(html|xml|txt)$/.test(f)) continue;
     let s = fs.readFileSync(p, 'utf8');
     const avant = s;
-    s = s.split(`${INTERNE}/`).join(`${PUBLIQUE}/`).split(`"${INTERNE}"`).join(`"${PUBLIQUE}"`);
+    s = s.split(`${INTERNE}/`).join(`${PUBLIQUE}/`).split(`"${INTERNE}"`).join(`"${PUBLIQUE}"`)
+      .split(`${ANCIENNE}/`).join(`${PUBLIQUE}/`).split(`"${ANCIENNE}"`).join(`"${PUBLIQUE}"`);
     if (f.endsWith('.html') && !PRIVEES.test(p)) {
       s = s.replace(/\s*<!-- Site de démonstration : retirer noindex pour un vrai client -->/g, '').replace(/\s*<meta name="robots" content="noindex, nofollow">/g, '');
     }

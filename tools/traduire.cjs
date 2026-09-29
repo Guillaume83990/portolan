@@ -211,7 +211,7 @@ function transform(html, o) {
     for (const p of pages) {
       const frPath = `/${p.replace(/index\.html$/, '')}`;
       // La page française a peut-être déjà reçu l'adresse publique (tools/publication.cjs) : on revient à l'adresse de travail
-      const html = fs.readFileSync(path.join(ROOT, p), 'utf8').split('https://guillaume83990.github.io/portolan').join(SITE);
+      const html = fs.readFileSync(path.join(ROOT, p), 'utf8').split('https://guillaume83990.github.io/portolan').join(SITE).split('https://portolan.sudwebproject.com').join(SITE);
       const res = await tab.evaluate(transform, html, { lang, dict, noms: NOMS, frPath, site: SITE, localize: localizeTable, locales: LOCALES });
       const out = path.join(ROOT, localizeTable[lang][frPath].slice(1), 'index.html');
       fs.mkdirSync(path.dirname(out), { recursive: true });
