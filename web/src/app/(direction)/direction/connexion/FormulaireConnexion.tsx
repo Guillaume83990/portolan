@@ -43,8 +43,8 @@ export function FormulaireConnexion({ refus = false, demo = false }: { refus?: b
 
   if (demo) {
     return (
-      <p><button type="button" className={`btn btn--ghost${envoi ? ' is-envoi' : ''}`} style={{ padding: '.7rem 1.3rem', color: 'inherit', background: 'none', cursor: 'pointer', font: 'inherit' }}
-        onClick={() => connecter()} disabled={envoi}>Visiter en démonstration</button>{erreur && <span className="note is-erreur" role="alert" style={{ display: 'block' }}>{erreur}</span>}<Turnstile ref={robot} sombre /></p>
+      <div><button type="button" className={`btn btn--ghost${envoi ? ' is-envoi' : ''}`} style={{ padding: '.7rem 1.3rem', color: 'inherit', background: 'none', cursor: 'pointer', font: 'inherit' }}
+        onClick={() => connecter()} disabled={envoi}>Visiter en démonstration</button>{erreur && <span className="note is-erreur" role="alert" style={{ display: 'block' }}>{erreur}</span>}<Turnstile ref={robot} sombre /></div>
     );
   }
   return (
