@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maquette · 4.1 Connexion</title>
+  <script>if(/propre/.test(location.search))document.documentElement.classList.add("sans-notes")</script>
+  <link rel="stylesheet" href="../../../../css/fonts.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/compte.css">
+  <link rel="stylesheet" href="../../../../css/flotte.css">
+  <link rel="stylesheet" href="../ajouts.css">
+  <link rel="stylesheet" href="../espaces.css">
+  <link rel="stylesheet" href="../maquette.css">
+</head>
+<body>
+<main class="connexion">
+  <div class="connexion__boite">
+    <div class="connexion__logo"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1v30M1 16h30M5.4 5.4l21.2 21.2M26.6 5.4L5.4 26.6"/><circle cx="16" cy="16" r="6.5"/></svg><p>Portolan<br><small>Direction</small></p></div>
+    <form class="champs" onsubmit="return false">
+      <div class="champ"><label for="e">E-mail</label><input id="e" type="email" value="helene@portolan.example"></div>
+      <div class="champ"><label for="m">Mot de passe</label><input id="m" type="password" value="xxxxxxxxxxxx" aria-invalid="true"></div>
+      <p class="note is-erreur" data-mvp="Autre erreur possible : « Ce compte n'a pas accès à la direction. »">Identifiants incorrects. Vérifiez l'e-mail et le mot de passe.</p>
+      <div class="auth__actions"><button class="auth__oubli" type="button">Mot de passe oublié&#8239;?</button><button class="btn btn--light" type="submit">Me connecter</button></div>
+    </form>
+    <div class="connexion__demo" data-mvp="Seulement en mode démonstration"><p class="kicker" style="margin:0">Visiter en démonstration</p><p>Lecture seule, données des clients masquées.</p><p><a class="btn btn--ghost" href="tableau-de-bord-demo.html" style="padding:.7rem 1.3rem">Visiter en démonstration</a></p></div>
+  </div>
+</main>
+</body>
+</html>

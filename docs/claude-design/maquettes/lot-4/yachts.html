@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maquette · 4 · Yachts</title>
+  <script>if(/propre/.test(location.search))document.documentElement.classList.add("sans-notes")</script>
+  <link rel="stylesheet" href="../../../../css/fonts.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/compte.css">
+  <link rel="stylesheet" href="../../../../css/flotte.css">
+  <link rel="stylesheet" href="../ajouts.css">
+  <link rel="stylesheet" href="../espaces.css">
+  <link rel="stylesheet" href="../maquette.css">
+</head>
+<body class="clair">
+<div class="dir2">
+  <aside class="lat" aria-label="Navigation de la direction">
+    <a class="brand" href="tableau-de-bord.html"><svg class="brand__rose" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1v30M1 16h30M5.4 5.4l21.2 21.2M26.6 5.4L5.4 26.6"/><circle cx="16" cy="16" r="6.5"/></svg><span>Portolan<small>Direction</small></span></a>
+    <nav><a href="tableau-de-bord.html"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">01</span>Tableau de bord</a><a href="reservations.html"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">02</span>Réservations<span class="compteur">3</span></a><a href="calendrier.html"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">03</span>Calendrier</a><a href="demandes.html"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">04</span>Demandes<span class="compteur">5</span></a><a href="clients.html"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">05</span>Clients</a><a href="yachts.html" aria-current="page"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">06</span>Yachts</a><a href="reglages.html"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">07</span>Réglages</a></nav>
+    <div class="lat__pied"><b>Hélène Marchetti</b><span class="second" style="color:var(--brume)">Directrice</span><a href="#">Voir le site</a><a href="connexion.html">Se déconnecter</a></div>
+  </aside>
+  <div>
+    <header class="haut"><h1>Yachts</h1>
+      <div class="recherche"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg><input placeholder="Rechercher : PTL-, client, e-mail, yacht" aria-label="Recherche globale"><kbd>/</kbd></div>
+      <button class="btn btn--plein btn--petit" type="button">+ Nouveau</button>
+    </header>
+    <div class="contenu" style="position:relative">
+      <div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin-bottom:1.25rem">
+        <button class="chip" aria-pressed="true">Publiés · 5</button><button class="chip" aria-pressed="false">Brouillons · 1</button><button class="chip" aria-pressed="false">Archivés · 0</button>
+        <button class="btn btn--plein btn--petit" style="margin-left:auto">Ajouter un yacht</button>
+      </div>
+      <p class="second" style="font-size:var(--t-xs);margin-bottom:.75rem">Glissez les lignes pour changer l'ordre d'affichage sur le site.</p>
+      <table class="tab tab--mobile"><thead><tr><th></th><th></th><th>Yacht</th><th>Statut</th><th>Prix</th><th>Modifié</th><th></th></tr></thead><tbody><tr><td><span class="poignee" aria-label="Déplacer">⋮⋮</span></td><td><img class="vign" src="../../../../assets/img/flotte/camarat-900.webp" alt=""></td><td><span class="serif" style="font-size:1.3rem"><em>Camarat</em></span><br><span class="second" style="font-size:var(--t-xs)">Exclusivité Portolan · 2024 · 50 m</span></td><td class="cache-m"><span class="badge badge--payer">À vendre</span> <span class="badge badge--payer">À louer</span> <span class="badge badge--confirmee">Mis en avant</span></td><td class="cache-m">42&#8239;000&#8239;000&nbsp;€ · dès 240&#8239;000&nbsp;€/sem.</td><td class="cache-m second">2 oct. 2026</td><td><button class="btn btn--filet btn--petit" aria-label="Actions pour Camarat">…</button></td></tr><tr><td><span class="poignee" aria-label="Déplacer">⋮⋮</span></td><td><img class="vign" src="../../../../assets/img/flotte/castellane-900.webp" alt=""></td><td><span class="serif" style="font-size:1.3rem"><em>Castellane</em></span><br><span class="second" style="font-size:var(--t-xs)">Heesen · 2022 · 50 m</span></td><td class="cache-m"><span class="badge badge--payer">À vendre</span> <span class="badge badge--confirmee">Mis en avant</span></td><td class="cache-m">34&#8239;500&#8239;000&nbsp;€</td><td class="cache-m second">28 sept. 2026</td><td><button class="btn btn--filet btn--petit" aria-label="Actions pour Castellane">…</button></td></tr><tr><td><span class="poignee" aria-label="Déplacer">⋮⋮</span></td><td><img class="vign" src="../../../../assets/img/flotte/mistral-blanc-900.webp" alt=""></td><td><span class="serif" style="font-size:1.3rem"><em>Mistral Blanc</em></span><br><span class="second" style="font-size:var(--t-xs)">Benetti · 2019 · 44,5 m</span></td><td class="cache-m"><span class="badge badge--payer">À louer</span> <span class="badge badge--confirmee">Mis en avant</span><br><span style="font-size:var(--t-xs);color:var(--alerte)">● Traductions à revoir (EN, DE)</span></td><td class="cache-m">dès 185&#8239;000&nbsp;€/sem.</td><td class="cache-m second">3 oct. 2026</td><td><button class="btn btn--filet btn--petit" aria-label="Actions pour Mistral Blanc">…</button></td></tr><tr><td><span class="poignee" aria-label="Déplacer">⋮⋮</span></td><td><img class="vign" src="../../../../assets/img/flotte/solenne-900.webp" alt=""></td><td><span class="serif" style="font-size:1.3rem"><em>Solenne</em></span><br><span class="second" style="font-size:var(--t-xs)">Perini Navi · 2012 · 38 m</span></td><td class="cache-m"><span class="badge badge--payer">À louer</span></td><td class="cache-m">dès 72&#8239;000&nbsp;€/sem.</td><td class="cache-m second">21 sept. 2026</td><td><button class="btn btn--filet btn--petit" aria-label="Actions pour Solenne">…</button></td></tr><tr><td><span class="poignee" aria-label="Déplacer">⋮⋮</span></td><td><img class="vign" src="../../../../assets/img/flotte/tramontane-900.webp" alt=""></td><td><span class="serif" style="font-size:1.3rem"><em>Tramontane</em></span><br><span class="second" style="font-size:var(--t-xs)">Custom Line · 2018 · 33 m</span></td><td class="cache-m"><span class="badge badge--payer">À louer</span></td><td class="cache-m">dès 95&#8239;000&nbsp;€/sem.</td><td class="cache-m second">21 sept. 2026</td><td><button class="btn btn--filet btn--petit" aria-label="Actions pour Tramontane">…</button></td></tr><tr><td><span class="poignee" aria-label="Déplacer">⋮⋮</span></td><td><img class="vign" src="../../../../assets/img/flotte/alize-900.webp" alt=""></td><td><span class="serif" style="font-size:1.3rem"><em>Alizé</em></span><br><span class="second" style="font-size:var(--t-xs)">Sanlorenzo · 2021 · 29,2 m</span></td><td class="cache-m"><span class="badge badge--payer">À vendre</span> <span class="badge badge--neutre">Brouillon</span><br><span style="font-size:var(--t-xs);color:var(--alerte)">● Traductions à revoir (IT)</span></td><td class="cache-m">7&#8239;900&#8239;000&nbsp;€</td><td class="cache-m second">30 sept. 2026</td><td><button class="btn btn--filet btn--petit" aria-label="Actions pour Alizé">…</button></td></tr></tbody></table>
+      <div class="carte seul-ordi" style="position:absolute;right:3.5rem;top:15.5rem;width:13rem;padding:.4rem 0;display:grid;font-size:var(--t-s)" data-mvp="Menu « … » de Castellane">
+        <a href="editeur.html" style="padding:.55rem 1rem;text-decoration:none">Modifier</a><a href="#" style="padding:.55rem 1rem;text-decoration:none">Voir sur le site</a><a href="#" style="padding:.55rem 1rem;text-decoration:none">Dupliquer</a><a href="#" style="padding:.55rem 1rem;text-decoration:none">Archiver</a><a href="#" style="padding:.55rem 1rem;text-decoration:none;color:var(--alerte);border-top:1px solid var(--filet)">Supprimer</a>
+      </div>
+    </div>
+  </div>
+</div>
+<nav class="nav-bas" aria-label="Navigation"><a href="tableau-de-bord.html"><span style="font-size:.7rem;color:var(--laiton)">01</span>Tableau</a><a href="reservations.html"><span style="font-size:.7rem;color:var(--laiton)">02</span>Réservations</a><a href="calendrier.html"><span style="font-size:.7rem;color:var(--laiton)">03</span>Calendrier</a><a href="#"><span style="font-size:.7rem;color:var(--laiton)">04</span>Plus</a></nav>
+</body>
+</html>

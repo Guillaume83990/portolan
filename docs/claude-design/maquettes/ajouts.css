@@ -1,0 +1,123 @@
+/* Portolan : règles NOUVELLES dessinées pour le MVP (lots 1 à 6), à intégrer dans le code.
+   Elles s'ajoutent aux feuilles du site (main.css, compte.css, flotte.css, pages.css) et n'utilisent que leurs variables. */
+
+/* Vérification anti-robot, discrète : une ligne sous le consentement */
+.robot { display: flex; align-items: center; gap: 0.6rem; margin: 0; font-size: var(--t-xs); color: var(--brume); }
+.robot::before { content: ''; flex: none; width: 7px; height: 7px; border-radius: 50%; border: 1px solid var(--laiton); }
+.robot.is-ok::before { background: var(--laiton); }
+.robot.is-erreur { color: #E3A48A; }
+.robot.is-erreur::before { border-color: #E3A48A; }
+
+/* Réservation fermée sur la fiche : tarifs + accès au module (lot 2) */
+.resa-ferme { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.75rem; margin-top: 2rem; }
+.resa-ferme__note { font-size: var(--t-s); color: var(--brume); max-width: 40ch; }
+
+/* États d'envoi des petits formulaires (hors marché, brochure) */
+.btn.is-envoi { opacity: 0.6; cursor: progress; }
+.btn.is-envoi::after { content: ''; display: inline-block; width: 0.8em; height: 0.8em; margin-left: 0.6em; vertical-align: -0.1em; border: 1px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: tourne 0.9s linear infinite; }
+@keyframes tourne { to { transform: rotate(360deg); } }
+.offmarket__note.is-erreur, .form__note.is-erreur { color: #E3A48A; }
+
+/* Squelettes de chargement : un aplat pin qui respire, jamais de shimmer brillant */
+.squelette { background: color-mix(in srgb, var(--calcaire) 7%, transparent); animation: respire 1.6s ease-in-out infinite; }
+@keyframes respire { 50% { opacity: 0.45; } }
+.squelette--texte { height: 0.9em; margin: 0.35em 0; }
+.squelette--titre { height: 3.2rem; width: 60%; }
+
+/* Gabarit légal : sommaire collant à gauche (ordinateur), replié (téléphone) */
+.legal--sommaire { max-width: 78rem; }
+.legal__grille { display: grid; gap: 2rem; margin-top: 2.5rem; }
+@media (min-width: 960px) { .legal__grille { grid-template-columns: 15rem minmax(0, 1fr); gap: clamp(3rem, 6vw, 6rem); align-items: start; } }
+.legal__sommaire { font-size: var(--t-s); border-block: 1px solid color-mix(in srgb, var(--calcaire) 12%, transparent); }
+.legal__sommaire summary { display: flex; align-items: center; justify-content: space-between; min-height: 48px; cursor: pointer; list-style: none; font-size: var(--t-xs); letter-spacing: 0.22em; text-transform: uppercase; color: var(--laiton); }
+.legal__sommaire summary::-webkit-details-marker { display: none; }
+.legal__sommaire summary::after { content: '+'; font-size: 1.2rem; letter-spacing: 0; }
+.legal__sommaire[open] summary::after { content: '−'; }
+.legal__sommaire ol { list-style: none; margin: 0; padding: 0 0 1rem; display: grid; }
+.legal__sommaire a { display: block; padding: 0.55rem 0 0.55rem 1rem; border-left: 1px solid color-mix(in srgb, var(--laiton) 30%, transparent); color: var(--brume); text-decoration: none; line-height: 1.35; }
+.legal__sommaire a:hover { color: var(--calcaire); }
+.legal__sommaire a[aria-current] { color: var(--calcaire); border-left-color: var(--laiton); }
+@media (min-width: 960px) {
+  .legal__sommaire { position: sticky; top: calc(var(--header-h) + 2rem); border: 0; }
+  .legal__sommaire summary { pointer-events: none; }
+  .legal__sommaire summary::after { display: none; }
+}
+.legal--sommaire .legal__corps { max-width: 68ch; }
+.legal--sommaire .legal__corps section { scroll-margin-top: calc(var(--header-h) + 2rem); }
+
+/* Page 404 : « Ce mouillage n'est pas sur nos cartes. » */
+.introuvable { position: relative; min-height: 100svh; display: grid; align-content: end; padding: calc(var(--header-h) + 3rem) var(--gutter) clamp(3rem, 9vh, 6rem); overflow: hidden; isolation: isolate; }
+.introuvable__carte { position: absolute; inset: 0; z-index: -1; margin: 0; }
+.introuvable__carte img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.55) saturate(0.85); }
+.introuvable__carte::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgb(11 21 19 / 0.92), rgb(11 21 19 / 0.15) 60%), linear-gradient(to bottom, rgb(11 21 19 / 0.6), rgb(11 21 19 / 0) 30%); }
+.introuvable__code { font-family: var(--serif); font-style: italic; font-size: var(--t-l); color: var(--laiton); letter-spacing: 0.04em; margin-bottom: 1rem; }
+.introuvable__titre { font-family: var(--serif); font-weight: 400; font-size: var(--t-xxl); line-height: 0.98; letter-spacing: -0.025em; max-width: 14ch; text-wrap: balance; }
+.introuvable__texte { margin-top: 1.5rem; max-width: 40ch; font-size: var(--t-l); font-weight: 300; line-height: 1.5; color: color-mix(in srgb, var(--calcaire) 88%, transparent); }
+.introuvable__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; margin-top: 2.25rem; }
+
+/* Correction : sur téléphone, le nom du yacht ne se coupe plus au milieu d'un mot (« Mistral Blan-c ») */
+.fi-hero__title { overflow-wrap: normal; }
+@media (max-width: 700px) { .fi-hero__title { font-size: clamp(2.6rem, 14vw, 4.2rem); } }
+
+/* =========================================================================
+   LOT 2 · Module de réservation ouvert (sur la fiche, fond sombre)
+   ========================================================================= */
+.resa2 { display: grid; gap: 2.5rem; margin-top: 2rem; }
+@media (min-width: 1000px) { .resa2 { grid-template-columns: minmax(0, 1fr) 22rem; align-items: start; gap: 3.5rem; } }
+.resa2__etapes { display: grid; gap: 0; }
+.resa2__etape { padding: 1.75rem 0; border-top: 1px solid color-mix(in srgb, var(--calcaire) 14%, transparent); }
+.resa2__etape > .resa__etape { margin-bottom: 1.25rem; }
+.resa2__etape.is-faite > .resa__etape::after { content: '✓'; margin-left: auto; font-family: var(--sans); font-size: var(--t-s); color: var(--laiton); }
+.resa2__etape.is-faite > .resa__etape { display: flex; }
+.resa2__mois-nav { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+.resa2__mois-nav button { width: 40px; height: 40px; border-radius: 50%; font: inherit; color: var(--calcaire); background: none; border: 1px solid color-mix(in srgb, var(--calcaire) 30%, transparent); cursor: pointer; }
+.resa2 .resa__mois { grid-auto-flow: row; grid-template-columns: 1fr 1fr; overflow: visible; }
+@media (max-width: 700px) { .resa2 .resa__mois { grid-template-columns: 1fr; } .resa2 .resa__m + .resa__m { display: none; } }
+.jour.is-trop-court { color: color-mix(in srgb, var(--calcaire) 22%, transparent); background: none; cursor: not-allowed; }
+.compteur-inv { display: inline-flex; align-items: center; border: 1px solid color-mix(in srgb, var(--calcaire) 30%, transparent); border-radius: 999px; }
+.compteur-inv button { width: 44px; height: 44px; font: inherit; font-size: 1.2rem; color: var(--calcaire); background: none; border: 0; cursor: pointer; }
+.compteur-inv output { min-width: 2.5rem; text-align: center; font-family: var(--serif); font-size: 1.4rem; }
+.resa2__compte { text-align: right; font-size: var(--t-xs); color: var(--brume); }
+.resa2__cote { position: sticky; top: calc(var(--header-h) + 1.5rem); padding: 1.75rem; background: var(--pin); display: grid; gap: 1.25rem; }
+.resa2__cote .resa__dates { font-size: 1.5rem; }
+.echeancier { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; font-size: var(--t-s); }
+.echeancier li { display: grid; grid-template-columns: 1fr auto; gap: 0.2rem 1rem; }
+.echeancier li small { grid-column: 1 / -1; font-size: var(--t-xs); color: var(--brume); line-height: 1.45; }
+.echeancier b { font-weight: 400; font-variant-numeric: tabular-nums; }
+.resa2__total { display: flex; justify-content: space-between; align-items: baseline; padding-top: 1rem; border-top: 1px solid color-mix(in srgb, var(--laiton) 40%, transparent); }
+.resa2__total b { font-family: var(--serif); font-weight: 400; font-size: 2rem; color: var(--laiton); }
+.tva { font-size: var(--t-xs); color: var(--brume); }
+.resa2__mention { font-size: var(--t-xs); line-height: 1.6; color: var(--brume); }
+@media (max-width: 999px) {
+  .resa2__cote { position: sticky; bottom: 0; top: auto; z-index: 30; padding: 1rem var(--gutter); margin: 0 calc(var(--gutter) * -1); border-top: 1px solid color-mix(in srgb, var(--laiton) 35%, transparent); }
+  .resa2__cote:not([open]) > :not(summary) { display: none; }
+}
+.resa2__cote > summary { display: none; list-style: none; cursor: pointer; }
+.resa2__cote > summary::-webkit-details-marker { display: none; }
+@media (max-width: 999px) { .resa2__cote > summary { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; font-size: var(--t-s); } .resa2__cote > summary b { font-family: var(--serif); font-weight: 400; font-size: 1.4rem; color: var(--laiton); } }
+.resa2__erreur { padding: 0.9rem 1.1rem; border-left: 2px solid #E3A48A; background: rgb(227 164 138 / 0.08); font-size: var(--t-s); color: var(--calcaire); }
+.resa2__erreur b { color: #E3A48A; font-weight: 500; }
+
+/* Panneau latéral : textes du contrat et des conditions */
+.panneau-lat { position: absolute; top: 0; right: 0; bottom: 0; width: min(36rem, 100%); background: var(--calcaire); color: var(--encre); padding: 2rem clamp(1.5rem, 4vw, 2.5rem); overflow-y: auto; box-shadow: -30px 0 80px rgb(0 0 0 / 0.4); display: grid; align-content: start; gap: 1rem; }
+.panneau-lat h2 { font-family: var(--serif); font-weight: 400; font-size: 1.9rem; line-height: 1.1; }
+.panneau-lat h3 { font-family: var(--serif); font-weight: 400; font-size: 1.25rem; margin-top: 0.75rem; }
+.panneau-lat p { font-size: var(--t-s); line-height: 1.7; max-width: 68ch; }
+.panneau-lat .fermer { justify-self: end; min-height: 40px; padding: 0 1rem; font: inherit; font-size: var(--t-xs); letter-spacing: 0.12em; text-transform: uppercase; color: var(--encre); background: none; border: 1px solid rgb(11 21 19 / 0.25); border-radius: 999px; cursor: pointer; }
+
+/* Mot de passe : afficher / masquer et indicateur */
+.champ--mdp { position: relative; }
+.champ--mdp .voir { position: absolute; right: 0; bottom: 0.6rem; font: inherit; font-size: var(--t-xs); letter-spacing: 0.08em; color: var(--laiton); background: none; border: 0; cursor: pointer; }
+.force { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 0.4rem; }
+.force i { height: 2px; background: color-mix(in srgb, var(--calcaire) 18%, transparent); }
+.force i.is-on { background: var(--laiton); }
+.force + small { font-size: var(--t-xs); color: var(--brume); }
+
+/* Retour de paiement : la rose qui pivote lentement */
+.rose-fete { width: 5rem; height: 5rem; fill: none; stroke: var(--laiton); stroke-width: 0.8; animation: pivote 24s linear infinite; }
+@keyframes pivote { to { transform: rotate(360deg); } }
+.rose-attente { width: 4rem; height: 4rem; fill: none; stroke: var(--laiton); stroke-width: 0.8; animation: pivote 3s var(--ease-out) infinite; }
+.copie { display: grid; grid-template-columns: 9rem minmax(0, 1fr) auto; gap: 0.75rem; align-items: center; padding: 0.85rem 0; border-bottom: 1px solid var(--filet, rgb(11 21 19 / 0.14)); font-size: var(--t-s); }
+.copie code { font-family: var(--sans); font-size: var(--t-m); letter-spacing: 0.04em; font-variant-numeric: tabular-nums; word-break: break-all; }
+@media (max-width: 600px) { .copie { grid-template-columns: 1fr auto; } .copie > span:first-child { grid-column: 1 / -1; } }
+.rose-fete, .rose-attente { display: block; }

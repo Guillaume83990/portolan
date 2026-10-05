@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portolan · Maquettes du MVP</title>
+  <link rel="stylesheet" href="../../../css/fonts.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <style>
+    body { display: grid; grid-template-columns: 19rem 1fr; min-height: 100vh; }
+    .nav { position: sticky; top: 0; height: 100vh; overflow-y: auto; padding: 2rem 1.5rem; border-right: 1px solid color-mix(in srgb, var(--laiton) 30%, transparent); background: var(--abysse); }
+    .nav h1 { font-family: var(--serif); font-weight: 400; font-size: 1.6rem; display: flex; gap: .6rem; align-items: center; }
+    .nav h1 svg { width: 1.4rem; height: 1.4rem; fill: none; stroke: var(--laiton); stroke-width: 1; }
+    .nav p { color: var(--brume); font-size: var(--t-xs); margin: .5rem 0 1.5rem; line-height: 1.5; }
+    .lot { margin-top: 1.5rem; font-size: var(--t-xs); letter-spacing: .18em; text-transform: uppercase; color: var(--laiton); }
+    .lot small { letter-spacing: 0; text-transform: none; color: var(--brume); }
+    .nav ol { list-style: none; margin: .6rem 0 0; padding: 0; }
+    .nav button { width: 100%; text-align: left; font: inherit; font-size: var(--t-s); color: var(--brume); background: none; border: 0; border-left: 1px solid color-mix(in srgb, var(--laiton) 25%, transparent); padding: .45rem 0 .45rem .9rem; cursor: pointer; }
+    .nav button:hover { color: var(--calcaire); }
+    .nav button[aria-current] { color: var(--calcaire); border-left-color: var(--laiton); }
+    .nav .bientot { padding: .45rem 0 .45rem .9rem; font-size: var(--t-s); color: color-mix(in srgb, var(--brume) 60%, transparent); border-left: 1px solid color-mix(in srgb, var(--calcaire) 8%, transparent); }
+    .vue { padding: 1.5rem 2rem 3rem; min-width: 0; }
+    .vue__barre { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1.5rem; margin-bottom: 1.25rem; }
+    .vue__titre { font-family: var(--serif); font-size: 2rem; }
+    .vue__note { flex-basis: 100%; color: var(--brume); font-size: var(--t-s); max-width: 80ch; }
+    .vue__barre a, .vue__barre label { font-size: var(--t-s); color: var(--calcaire); }
+    .vue__barre label { display: inline-flex; gap: .5rem; align-items: center; cursor: pointer; }
+    .cadres { display: grid; grid-template-columns: minmax(0, 1fr) 312px; gap: 2rem; align-items: start; }
+    .cadre p { font-size: var(--t-xs); letter-spacing: .14em; text-transform: uppercase; color: var(--brume); margin-bottom: .5rem; }
+    .ecran { position: relative; overflow: hidden; border: 1px solid color-mix(in srgb, var(--calcaire) 14%, transparent); background: var(--pin); }
+    .ecran iframe { position: absolute; top: 0; left: 0; border: 0; transform-origin: 0 0; background: var(--abysse); }
+    .ecran--ordi { aspect-ratio: 1440 / 900; }
+    .ecran--tel { width: 312px; height: 675px; border-radius: 18px; }
+    @media (max-width: 1100px) { body { grid-template-columns: 1fr; } .nav { position: static; height: auto; } .cadres { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Écrans">
+    <h1><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1v30M1 16h30M5.4 5.4l21.2 21.2M26.6 5.4L5.4 26.6"/><circle cx="16" cy="16" r="6.5"/></svg>Maquettes</h1>
+    <p>Chaque écran en ordinateur (1440 px) et en téléphone (390 px). Les cadres sont des pages vivantes : on peut y faire défiler et cliquer. Les étiquettes laiton « MVP » signalent ce qui change par rapport au site actuel.</p>
+    <div id="liste"></div>
+  </nav>
+  <main class="vue">
+    <div class="vue__barre">
+      <h2 class="vue__titre" id="titre"></h2>
+      <a id="ouvrir" href="#" target="_blank" rel="noopener">Ouvrir en plein écran</a>
+      <label><input type="checkbox" id="notes" checked> Annotations MVP</label>
+      <p class="vue__note" id="note"></p>
+    </div>
+    <div class="cadres">
+      <div class="cadre"><p>Ordinateur · 1440 px</p><div class="ecran ecran--ordi" id="ordi"><iframe title="Ordinateur" width="1440" height="900"></iframe></div></div>
+      <div class="cadre"><p>Téléphone · 390 px</p><div class="ecran ecran--tel" id="tel"><iframe title="Téléphone" width="390" height="844"></iframe></div></div>
+    </div>
+  </main>
+  <script>
+    const LOTS = [
+      { nom: 'Lot 2 · Réservation et paiement', etat: 'à valider', ecrans: [
+        ['lot-2/module.html', '2.1 Module de réservation', 'Sur la fiche Mistral Blanc : calendrier, embarquement, récapitulatif et conditions, récapitulatif collant à droite (repliable en bas sur téléphone). Faire défiler jusqu\'à « Réserver en ligne ».'],
+        ['lot-2/module-etats.html', '2.1 États du module', 'Aucune date, embarquement choisi, dates prises en direct, deux saisons, départ proche, contrat en panneau latéral, confirmation, cinq erreurs.'],
+        ['lot-2/connexion.html', '2.2 Fenêtre de compte', 'Ouverte depuis la réservation, onglet « Créer mon compte », avec le rappel de la demande.'],
+        ['lot-2/connexion-etats.html', '2.2 États de la fenêtre', 'Erreurs, chargement, e-mail non confirmé, vérifiez votre e-mail, mot de passe oublié, nouveau mot de passe, adresse confirmée.'],
+        ['lot-2/acompte.html', '2.3 Régler l\'acompte', 'Rappel du séjour, mot du courtier, délai, montant, carte ou virement, bouton vers Stripe.'],
+        ['lot-2/solde.html', '2.3 Régler le solde', 'Solde + APA = 172 000 €.'],
+        ['lot-2/acompte-etats.html', '2.3 États', 'Lien expiré, déjà payé, annulée ou refusée.'],
+        ['lot-2/retour-verification.html?fixe', '2.4 Vérification', 'Quelques secondes, puis passage automatique à « Acompte reçu » (bloqué ici).'],
+        ['lot-2/retour-carte.html', '2.4 Paiement par carte réussi', 'Avec la rose qui pivote lentement.'],
+        ['lot-2/retour-virement.html', '2.4 Virement en attente', 'Coordonnées à copier.'],
+        ['lot-2/retour-echec.html', '2.4 Paiement non abouti', 'Causes, dates conservées, réessayer ou virement.'],
+        ['lot-2/stripe.html', '2.4 Personnalisation Stripe', 'Les seuls réglages possibles de la page Stripe Checkout.'],
+      ]},
+      { nom: 'Lot 3 · Mon espace (client)', etat: 'à valider', ecrans: [
+        ['lot-3/reservations.html', '3.1 Mes réservations', 'Accueil de Mon espace : encadré « À faire », réservations à venir (en attente, confirmée, à payer) avec la frise en 5 étapes, mot du courtier, réservations passées, bloc « Votre courtier ».'],
+        ['lot-3/reservation.html', '3.2 Détail · PTL-00042', 'Mistral Blanc, confirmée : frise datée, croisière, paiements, documents, annulation. Variantes en attente, refusée, expirée dans « États ».'],
+        ['lot-3/documents.html', '3.3 Mes documents', 'Documents classés par réservation, filtres par type, recherche par référence.'],
+        ['lot-3/compte.html', '3.4 Mon compte', 'Coordonnées, facturation, e-mail de connexion (changement en cours), mot de passe (erreur et chargement), déconnexion, suppression.'],
+        ['lot-3/etats.html', 'États du lot 3', 'Aucune réservation, chargement, erreur, annulation d\'une demande, refusée, expirée, documents vides, notification, suppression du compte (possible et bloquée).'],
+      ]},
+      { nom: 'Lot 4 · Espace directeur', etat: 'à valider', ecrans: [
+        ['lot-4/connexion.html', '4.1 Connexion', 'Fond abysse, erreur d\'identifiants, encadré « Visiter en démonstration ».'],
+        ['lot-4/tableau-de-bord.html', '4.2 Tableau de bord', 'Indicateurs, à traiter maintenant, prochains embarquements, occupation par yacht, chiffre d\'affaires par mois. Sur téléphone : barre de navigation en bas.'],
+        ['lot-4/tableau-de-bord-demo.html', '4.1 Mode démonstration', 'Bandeau laiton, noms masqués, actions désactivées.'],
+        ['lot-4/reservations.html', '4.3 Réservations', 'Liste filtrée et panneau de détail de PTL-00061 (en attente). Les boîtes de dialogue sont dans « États ».'],
+        ['lot-4/calendrier.html', '4.4 Calendrier de la flotte', 'Frise de la saison par yacht, barres par statut, infobulle. Sur téléphone : liste par yacht et par semaine.'],
+        ['lot-4/yachts.html', '4.5 Yachts', 'Liste réordonnable, badges, traductions à revoir, menu d\'actions.'],
+        ['lot-4/editeur.html', '4.6 Éditeur de yacht', 'Sept onglets cliquables : Identité, Caractéristiques, Prix (simulateur), Textes (traduction par l\'IA), Photos (envoi, erreurs), Visite, Publication.'],
+        ['lot-4/demandes.html', '4.7 Demandes', 'Colonnes par statut, détail de la demande, sous-onglet Hors marché.'],
+        ['lot-4/clients.html', '4.8 Clients', 'Tableau et fiche client complète.'],
+        ['lot-4/reglages.html', '4.9 Réglages', 'Saison, paiement, société (aperçu de facture), contrat, notifications, équipe.'],
+        ['lot-4/etats.html', 'États du lot 4', 'Recherche globale, valider et refuser, paiement manuel, annuler et rembourser, bloquer des dates (conflit), ajouter et supprimer un yacht, enregistrement et conflit, listes vides, erreur réseau, démonstration.'],
+      ]},
+    ];
+    const liste = document.getElementById('liste');
+    const boutons = [];
+    LOTS.forEach(l => {
+      const t = document.createElement('p'); t.className = 'lot'; t.innerHTML = `${l.nom} <small>· ${l.etat}</small>`; liste.append(t);
+      const ol = document.createElement('ol'); liste.append(ol);
+      if (!l.ecrans.length) { const li = document.createElement('li'); li.className = 'bientot'; li.textContent = 'En préparation'; ol.append(li); }
+      l.ecrans.forEach(e => { const li = document.createElement('li'); const b = document.createElement('button'); b.type = 'button'; b.textContent = e[1]; b.onclick = () => montre(e); li.append(b); ol.append(li); boutons.push([b, e]); });
+    });
+    const ordi = document.querySelector('#ordi iframe'), tel = document.querySelector('#tel iframe'), notes = document.getElementById('notes');
+    let courant;
+    function adresse(e) { return notes.checked ? e[0] : e[0] + (e[0].includes('?') ? '&propre' : '?propre'); }
+    function montre(e) {
+      courant = e;
+      boutons.forEach(([b, x]) => b.toggleAttribute('aria-current', x === e));
+      document.getElementById('titre').textContent = e[1];
+      document.getElementById('note').textContent = e[2];
+      document.getElementById('ouvrir').href = adresse(e);
+      ordi.src = adresse(e); tel.src = adresse(e);
+      history.replaceState(null, '', '#' + e[0]);
+    }
+    notes.onchange = () => courant && montre(courant);
+    function echelle() {
+      const o = document.getElementById('ordi'); ordi.style.transform = `scale(${o.clientWidth / 1440})`;
+      tel.style.transform = `scale(${312 / 390})`;
+    }
+    addEventListener('resize', echelle); echelle();
+    const depart = boutons.find(([, e]) => '#' + e[0] === location.hash) || boutons[0];
+    montre(depart[1]);
+  </script>
+</body>
+</html>

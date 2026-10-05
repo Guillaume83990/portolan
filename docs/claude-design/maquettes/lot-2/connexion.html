@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maquette · 2.2 Fenêtre de compte</title>
+  <script>if(/propre/.test(location.search))document.documentElement.classList.add("sans-notes")</script>
+  <link rel="stylesheet" href="../../../../css/fonts.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/compte.css">
+  <link rel="stylesheet" href="../../../../css/flotte.css">
+  <link rel="stylesheet" href="../ajouts.css">
+  <link rel="stylesheet" href="../espaces.css">
+  <link rel="stylesheet" href="../maquette.css">
+</head>
+<body>
+  <header class="header is-solid">
+    <a class="brand" href="#" aria-label="Portolan, accueil"><svg class="brand__rose" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1v30M1 16h30M5.4 5.4l21.2 21.2M26.6 5.4L5.4 26.6"/><circle cx="16" cy="16" r="6.5"/></svg><span>Portolan</span></a>
+    <nav class="header__nav" aria-label="Navigation principale"><a href="#">La flotte</a><a href="#">Acheter</a><a href="#">Louer</a><a href="#">Méthode</a><a href="#">Nos eaux</a><a href="#">Contact</a></nav>
+    <a class="compte-lien" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20.5c1.2-3.6 4-5.4 7.5-5.4s6.3 1.8 7.5 5.4"/></svg><span>Mon espace</span></a>
+    <div class="lang"><button class="lang__current" type="button"><span class="visually-hidden">Langue : </span>FR</button></div>
+  </header>
+  <main style="padding-top:var(--header-h)">
+<div style="position:relative;min-height:100vh;display:grid;place-items:center;padding:3rem 1rem;background:linear-gradient(rgb(8 15 13 / .82),rgb(8 15 13 / .82)),url(../../../../assets/img/flotte/mistral-blanc-1600.webp) center/cover"><div class="auth" role="dialog" aria-labelledby="at" style="position:relative;margin:0 auto;width:100%;max-width:30rem"><div class="auth__inner"><button class="auth__close" type="button">Fermer</button><svg class="auth__rose" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1v30M1 16h30M5.4 5.4l21.2 21.2M26.6 5.4L5.4 26.6"/><circle cx="16" cy="16" r="6.5"/></svg><p class="auth__title" id="at">Votre compte Portolan</p><p class="auth__raison">Pour envoyer votre demande pour <em>Mistral Blanc</em> (10 → 17 juillet), connectez-vous ou créez votre compte en une minute. Vos choix sont conservés.</p><div class="auth__tabs" role="tablist"><button role="tab" aria-selected="false">J’ai un compte</button><button role="tab" aria-selected="true">Créer mon compte</button></div><form onsubmit="return false"><div class="champs champs--2"><div class="champ"><label>Prénom</label><input value="Charlotte"></div><div class="champ"><label>Nom</label><input value="Delaunay"></div></div>
+      <div class="champ"><label>E-mail</label><input type="email" value="charlotte@exemple.com"></div>
+      <div class="champ"><label>Téléphone <small>(facultatif, pour que votre courtier puisse vous appeler)</small></label><input type="tel" value="+33 6 12 34 56 78"></div>
+      <div class="champ champ--mdp"><label>Mot de passe</label><input type="password" value="xxxxxxxxxx"><button class="voir" type="button">Afficher</button><div class="force" aria-hidden="true"><i class="is-on"></i><i class="is-on"></i><i class="is-on"></i><i></i></div><small>8 caractères au moins.</small></div>
+      <div class="champ"><label>Langue de correspondance</label><select><option>Français</option><option>English</option><option>Deutsch</option><option>Italiano</option></select></div>
+      <label class="lead__consent"><input type="checkbox" checked> <span>J’accepte les <a href="#" style="color:var(--laiton)">conditions générales</a> et la <a href="#" style="color:var(--laiton)">politique de confidentialité</a>.</span></label>
+      <p class="robot is-ok">Vérification de sécurité automatique, rien à faire de votre part.</p>
+      <div class="auth__actions"><span></span><button class="btn btn--light " type="submit">Créer mon compte</button></div></form></div></div></div>
+  </main>
+  <footer class="footer">
+    <p class="footer__mark" aria-hidden="true">Portolan</p>
+    <div class="footer__row"><p>Portolan, courtier en yachts, Saint&#8209;Tropez et Monaco.</p><p class="footer__credit">Site de démonstration conçu par <a href="https://www.sudwebproject.com/">SudWebProject</a>. Société, yachts, numéros et témoignage fictifs.</p></div>
+    <nav class="footer__legal" aria-label="Informations légales"><a href="#">Mentions légales</a><a href="#">Confidentialité et cookies</a><a href="#">Conditions générales</a></nav>
+  </footer>
+</body>
+</html>

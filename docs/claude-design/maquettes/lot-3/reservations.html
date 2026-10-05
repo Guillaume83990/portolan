@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maquette · 3.1 Mes réservations</title>
+  <script>if(/propre/.test(location.search))document.documentElement.classList.add("sans-notes")</script>
+  <link rel="stylesheet" href="../../../../css/fonts.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/compte.css">
+  <link rel="stylesheet" href="../../../../css/flotte.css">
+  <link rel="stylesheet" href="../ajouts.css">
+  <link rel="stylesheet" href="../espaces.css">
+  <link rel="stylesheet" href="../maquette.css">
+</head>
+<body class="clair">
+  <header class="header is-solid">
+    <a class="brand" href="#" aria-label="Portolan, accueil"><svg class="brand__rose" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1v30M1 16h30M5.4 5.4l21.2 21.2M26.6 5.4L5.4 26.6"/><circle cx="16" cy="16" r="6.5"/></svg><span>Portolan</span></a>
+    <nav class="header__nav" aria-label="Navigation principale"><a href="#">La flotte</a><a href="#">Acheter</a><a href="#">Louer</a><a href="#">Méthode</a><a href="#">Nos eaux</a><a href="#">Contact</a></nav>
+    <a class="compte-lien is-connecte" href="#" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20.5c1.2-3.6 4-5.4 7.5-5.4s6.3 1.8 7.5 5.4"/></svg><span>Mon espace</span></a>
+    <div class="lang"><button class="lang__current" type="button"><span class="visually-hidden">Langue : </span>FR</button></div>
+  </header>
+  <main class="esp">
+    <p class="esp__bonjour">Bonjour Charlotte</p>
+    <p class="esp__sous">Vos croisières, vos documents, votre courtier.</p>
+    <nav class="onglets" aria-label="Mon espace"><a href="reservations.html" aria-current="page">Mes réservations</a><a href="documents.html">Mes documents</a><a href="compte.html">Mon compte</a></nav>
+    <div class="esp__grille">
+      <div><div class="afaire" data-mvp="Seulement s'il y a une action en attente">
+        <p><span class="etiq">À faire</span>Régler l'acompte de Solenne&#8239;: <strong>20&#8239;570&nbsp;€</strong>, avant le mardi 6 octobre à 18:40</p>
+        <a class="btn btn--light btn--petit" href="#">Régler l'acompte</a>
+      </div>
+      <section class="esp__section"><h2>À venir</h2><article class="carte resa-c"><figure class="resa-c__photo"><img src="../../../../assets/img/flotte/tramontane-900.webp" alt=""></figure><div class="resa-c__corps">
+          <div class="resa-c__tete"><h3 class="resa-c__nom">Tramontane</h3><span class="badge badge--attente">En attente</span><span class="second" style="margin-left:auto;font-size:var(--t-xs);letter-spacing:.08em">PTL-00061</span></div>
+          <p class="resa-c__infos"><span><b>Du mer. 2 au dim. 6 juin 2027 · 4 nuits</b></span><span>Embarquement <b>16:00, Saint&#8209;Tropez</b></span><span><b>8</b> invités</span><span><b>Demande envoyée il y a 3&nbsp;h</b></span></p>
+          <ol class="frise" aria-label="Avancement"><li class="is-courant" aria-current="step">Demande</li><li class="">Validée</li><li class="">Acompte</li><li class="">Solde</li><li class="">Embarquement</li></ol>
+          <div class="resa-c__action"><p>Votre courtier vous répond sous 24&nbsp;heures.</p><button class="lien lien--discret" type="button">Annuler ma demande</button></div></div></article><article class="carte resa-c"><figure class="resa-c__photo"><img src="../../../../assets/img/flotte/mistral-blanc-900.webp" alt=""></figure><div class="resa-c__corps">
+          <div class="resa-c__tete"><h3 class="resa-c__nom">Mistral Blanc</h3><span class="badge badge--confirmee">Confirmée</span><span class="second" style="margin-left:auto;font-size:var(--t-xs);letter-spacing:.08em">PTL-00042</span></div>
+          <p class="resa-c__infos"><span><b>Du sam. 10 au sam. 17 juillet 2027 · 7 nuits</b></span><span>Embarquement <b>12:00, Monaco</b></span><span><b>10</b> invités</span><span><b>215&#8239;000&nbsp;€</b></span></p>
+          <ol class="frise" aria-label="Avancement"><li class="is-fait">Demande</li><li class="is-fait">Validée</li><li class="is-fait">Acompte</li><li class="is-courant" aria-current="step">Solde</li><li class="">Embarquement</li></ol>
+          <div class="resa-c__action"><p>Solde et APA&#8239;: <strong>172&#8239;000&nbsp;€</strong> avant le 10 juin 2027</p><a class="btn btn--filet btn--petit" href="#">Télécharger mon contrat</a></div></div></article><article class="carte resa-c"><figure class="resa-c__photo"><img src="../../../../assets/img/flotte/solenne-900.webp" alt=""></figure><div class="resa-c__corps">
+          <div class="resa-c__tete"><h3 class="resa-c__nom">Solenne</h3><span class="badge badge--payer">À payer</span><span class="second" style="margin-left:auto;font-size:var(--t-xs);letter-spacing:.08em">PTL-00057</span></div>
+          <p class="resa-c__infos"><span><b>Du sam. 4 au mer. 8 septembre 2027 · 4 nuits</b></span><span>Embarquement <b>10:30, Saint&#8209;Tropez</b></span><span><b>6</b> invités</span><span><b>41&#8239;140&nbsp;€</b></span></p>
+          <ol class="frise" aria-label="Avancement"><li class="is-fait">Demande</li><li class="is-fait">Validée</li><li class="is-courant" aria-current="step">Acompte</li><li class="">Solde</li><li class="">Embarquement</li></ol>
+          <div class="resa-c__action"><p class="decompte">Acompte de 20&#8239;570&nbsp;€ · reste 2&nbsp;j 04&nbsp;h 12&nbsp;min</p><a class="btn btn--plein btn--petit" href="#">Régler l'acompte</a></div></div></article></section>
+      <section class="esp__section"><div class="mot"><p>«&#8239;Charlotte, le chef de Mistral Blanc vous enverra ses menus en mai. Dites-lui pour l'anniversaire de votre fils, il a une idée.&#8239;»</p><footer>Hélène, le 5 octobre</footer></div></section>
+      <section class="esp__section"><h2>Passées</h2><article class="carte resa-c resa-c--compacte"><figure class="resa-c__photo"><img src="../../../../assets/img/flotte/camarat-900.webp" alt=""></figure><div class="resa-c__corps">
+          <div class="resa-c__tete"><h3 class="resa-c__nom">Camarat</h3><span class="badge badge--terminee">Terminée</span></div>
+          <p class="resa-c__infos"><span>Du 14 au 21 août 2026 · 7 nuits</span><span>PTL-00019</span><span>240&#8239;000&nbsp;€</span></p><p style="margin-top:.3rem"><a class="lien" href="#">Réserver de nouveau</a></p></div></article></section></div>
+      <aside class="esp__cote carte courtier" aria-label="Votre courtier">
+        <p class="etiq">Votre courtier</p>
+        <div class="courtier__id"><span class="courtier__photo" style="display:grid;place-items:center;font-family:var(--serif);font-size:1.4rem;color:var(--calcaire)" data-mvp="Photo d'Hélène à fournir">HM</span><div><p class="courtier__nom">Hélène Marchetti</p><p class="second" style="font-size:var(--t-s)">Courtière, bureau de Monaco</p></div></div>
+        <div class="courtier__actions"><a class="btn btn--plein btn--petit" href="tel:+37793000000">Appeler</a><a class="btn btn--filet btn--petit" href="#">WhatsApp</a><a class="btn btn--filet btn--petit" href="mailto:helene@portolan.example">Écrire</a></div>
+        <p class="second" style="font-size:var(--t-xs)">Réponse sous 24&nbsp;heures, week&#8209;end compris.</p>
+      </aside>
+    </div>
+  </main>
+  <footer class="footer">
+    <p class="footer__mark" aria-hidden="true">Portolan</p>
+    <div class="footer__row"><p>Portolan, courtier en yachts, Saint&#8209;Tropez et Monaco.</p><p class="footer__credit">Site de démonstration conçu par <a href="https://www.sudwebproject.com/">SudWebProject</a>. Société, yachts, numéros et témoignage fictifs.</p></div>
+    <nav class="footer__legal" aria-label="Informations légales"><a href="#">Mentions légales</a><a href="#">Confidentialité et cookies</a><a href="#">Conditions générales</a></nav>
+  </footer>
+</body>
+</html>

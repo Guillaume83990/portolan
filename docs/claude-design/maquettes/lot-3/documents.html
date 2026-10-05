@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maquette · 3.3 Mes documents</title>
+  <script>if(/propre/.test(location.search))document.documentElement.classList.add("sans-notes")</script>
+  <link rel="stylesheet" href="../../../../css/fonts.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/compte.css">
+  <link rel="stylesheet" href="../../../../css/flotte.css">
+  <link rel="stylesheet" href="../ajouts.css">
+  <link rel="stylesheet" href="../espaces.css">
+  <link rel="stylesheet" href="../maquette.css">
+</head>
+<body class="clair">
+  <header class="header is-solid">
+    <a class="brand" href="#" aria-label="Portolan, accueil"><svg class="brand__rose" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1v30M1 16h30M5.4 5.4l21.2 21.2M26.6 5.4L5.4 26.6"/><circle cx="16" cy="16" r="6.5"/></svg><span>Portolan</span></a>
+    <nav class="header__nav" aria-label="Navigation principale"><a href="#">La flotte</a><a href="#">Acheter</a><a href="#">Louer</a><a href="#">Méthode</a><a href="#">Nos eaux</a><a href="#">Contact</a></nav>
+    <a class="compte-lien is-connecte" href="#" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20.5c1.2-3.6 4-5.4 7.5-5.4s6.3 1.8 7.5 5.4"/></svg><span>Mon espace</span></a>
+    <div class="lang"><button class="lang__current" type="button"><span class="visually-hidden">Langue : </span>FR</button></div>
+  </header>
+  <main class="esp">
+    <p class="esp__bonjour">Bonjour Charlotte</p>
+    <p class="esp__sous">Vos croisières, vos documents, votre courtier.</p>
+    <nav class="onglets" aria-label="Mon espace"><a href="reservations.html">Mes réservations</a><a href="documents.html" aria-current="page">Mes documents</a><a href="compte.html">Mon compte</a></nav>
+    <div class="esp__grille">
+      <div><div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin-bottom:2rem">
+        <button class="chip" aria-pressed="true">Tous</button><button class="chip" aria-pressed="false">Contrats</button><button class="chip" aria-pressed="false">Factures</button><button class="chip" aria-pressed="false">Reçus APA</button>
+        <div class="champ" style="margin-left:auto;min-width:14rem"><label for="q">Rechercher une référence</label><input id="q" placeholder="PTL-…"></div>
+      </div>
+      <section class="esp__section"><h2 style="display:flex;flex-wrap:wrap;gap:.25rem 1rem;align-items:baseline"><em>Mistral Blanc</em> <span class="second" style="font-family:var(--sans);font-size:var(--t-s)">10 → 17 juillet 2027 · PTL-00042</span></h2><div class="doc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2.5h8l4 4v15H6z"/><path d="M14 2.5v4h4"/><path d="M9 13h6M9 16h6M9 10h3"/></svg><p class="doc__nom"><b>Contrat de location PTL-00042</b><span>PDF · 5 oct. 2026 · 412 Ko</span></p><a class="btn btn--filet btn--petit" href="#">Télécharger</a></div><div class="doc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2.5h8l4 4v15H6z"/><path d="M14 2.5v4h4"/><path d="M9 13h6M9 16h6M9 10h3"/></svg><p class="doc__nom"><b>Facture d'acompte F-2026-0031</b><span>PDF · 5 oct. 2026 · 96 Ko</span></p><a class="btn btn--filet btn--petit" href="#">Télécharger</a></div></section>
+      <section class="esp__section"><h2 style="display:flex;flex-wrap:wrap;gap:.25rem 1rem;align-items:baseline"><em>Camarat</em> <span class="second" style="font-family:var(--sans);font-size:var(--t-s)">14 → 21 août 2026 · PTL-00019</span></h2><div class="doc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2.5h8l4 4v15H6z"/><path d="M14 2.5v4h4"/><path d="M9 13h6M9 16h6M9 10h3"/></svg><p class="doc__nom"><b>Facture de solde F-2026-0012</b><span>PDF · 14 juil. 2026 · 98 Ko</span></p><a class="btn btn--filet btn--petit" href="#">Télécharger</a></div><div class="doc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2.5h8l4 4v15H6z"/><path d="M14 2.5v4h4"/><path d="M9 13h6M9 16h6M9 10h3"/></svg><p class="doc__nom"><b>Reçu de l'avance sur frais (APA) R-2026-0007</b><span>PDF · 14 juil. 2026 · 88 Ko</span></p><a class="btn btn--filet btn--petit" href="#">Télécharger</a></div><div class="doc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2.5h8l4 4v15H6z"/><path d="M14 2.5v4h4"/><path d="M9 13h6M9 16h6M9 10h3"/></svg><p class="doc__nom"><b>Facture d'acompte F-2026-0004</b><span>PDF · 2 févr. 2026 · 95 Ko</span></p><a class="btn btn--filet btn--petit" href="#">Télécharger</a></div><div class="doc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2.5h8l4 4v15H6z"/><path d="M14 2.5v4h4"/><path d="M9 13h6M9 16h6M9 10h3"/></svg><p class="doc__nom"><b>Contrat de location PTL-00019</b><span>PDF · 2 févr. 2026 · 408 Ko</span></p><a class="btn btn--filet btn--petit" href="#">Télécharger</a></div></section>
+      <p class="second" style="font-size:var(--t-s);margin-top:2.5rem;max-width:60ch">Vos documents restent disponibles ici aussi longtemps que votre compte existe. Les factures sont conservées 10&nbsp;ans, comme la loi l'exige.</p></div>
+      <aside class="esp__cote carte courtier" aria-label="Votre courtier">
+        <p class="etiq">Votre courtier</p>
+        <div class="courtier__id"><span class="courtier__photo" style="display:grid;place-items:center;font-family:var(--serif);font-size:1.4rem;color:var(--calcaire)" data-mvp="Photo d'Hélène à fournir">HM</span><div><p class="courtier__nom">Hélène Marchetti</p><p class="second" style="font-size:var(--t-s)">Courtière, bureau de Monaco</p></div></div>
+        <div class="courtier__actions"><a class="btn btn--plein btn--petit" href="tel:+37793000000">Appeler</a><a class="btn btn--filet btn--petit" href="#">WhatsApp</a><a class="btn btn--filet btn--petit" href="mailto:helene@portolan.example">Écrire</a></div>
+        <p class="second" style="font-size:var(--t-xs)">Réponse sous 24&nbsp;heures, week&#8209;end compris.</p>
+      </aside>
+    </div>
+  </main>
+  <footer class="footer">
+    <p class="footer__mark" aria-hidden="true">Portolan</p>
+    <div class="footer__row"><p>Portolan, courtier en yachts, Saint&#8209;Tropez et Monaco.</p><p class="footer__credit">Site de démonstration conçu par <a href="https://www.sudwebproject.com/">SudWebProject</a>. Société, yachts, numéros et témoignage fictifs.</p></div>
+    <nav class="footer__legal" aria-label="Informations légales"><a href="#">Mentions légales</a><a href="#">Confidentialité et cookies</a><a href="#">Conditions générales</a></nav>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!-- Portolan · modèle Supabase « magic_link » (4 langues selon la langue du compte : {{ .Data.langue }}) -->
+<!doctype html><html><head><meta charset="utf-8"><meta name="color-scheme" content="light dark"></head>
+<body style="margin:0;padding:24px 0;background:#E7E6DF">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#FBFAF6">
+<tr><td style="background:#0B1513;border-bottom:2px solid #B39A62;padding:22px 32px;font-family:Georgia,serif;font-size:22px;color:#E7E6DF">Portolan</td></tr>
+<tr><td style="padding:36px 32px 32px">
+{{ if eq .Data.langue "en" }}
+<p style="font-family:Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8A7343;margin:0 0 10px">Portolan</p>
+<h1 style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:28px;line-height:1.2;color:#0B1513;margin:0 0 18px">Your sign-in link</h1>
+<p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:#25302C;margin:0 0 24px">Portolan has sent you a link to access your account, without a password.</p>
+<table role="presentation" cellpadding="0" cellspacing="0"><tr><td style="background:#B39A62;border-radius:999px"><a href="{{ .ConfirmationURL }}" style="display:inline-block;padding:14px 28px;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:600;color:#0B1513;text-decoration:none">Open my account</a></td></tr></table>
+<p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:1.5;color:#5E6A64;margin:24px 0 0">If you did not make this request, please ignore this e-mail.</p>
+<p style="font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:1.5;color:#9AA49F;margin:16px 0 0">Portolan is a demonstration website by SudWebProject.</p>
+{{ else if eq .Data.langue "de" }}
+<p style="font-family:Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8A7343;margin:0 0 10px">Portolan</p>
+<h1 style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:28px;line-height:1.2;color:#0B1513;margin:0 0 18px">Ihr Anmeldelink</h1>
+<p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:#25302C;margin:0 0 24px">Portolan hat Ihnen einen Link geschickt, mit dem Sie ohne Passwort auf Ihr Konto zugreifen.</p>
+<table role="presentation" cellpadding="0" cellspacing="0"><tr><td style="background:#B39A62;border-radius:999px"><a href="{{ .ConfirmationURL }}" style="display:inline-block;padding:14px 28px;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:600;color:#0B1513;text-decoration:none">Mein Konto öffnen</a></td></tr></table>
+<p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:1.5;color:#5E6A64;margin:24px 0 0">Wenn Sie diese Anfrage nicht gestellt haben, ignorieren Sie diese E-Mail.</p>
+<p style="font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:1.5;color:#9AA49F;margin:16px 0 0">Portolan ist eine Demonstrationsseite von SudWebProject.</p>
+{{ else if eq .Data.langue "it" }}
+<p style="font-family:Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8A7343;margin:0 0 10px">Portolan</p>
+<h1 style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:28px;line-height:1.2;color:#0B1513;margin:0 0 18px">Il suo link di accesso</h1>
+<p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:#25302C;margin:0 0 24px">Portolan le ha inviato un link per accedere alla sua area riservata, senza password.</p>
+<table role="presentation" cellpadding="0" cellspacing="0"><tr><td style="background:#B39A62;border-radius:999px"><a href="{{ .ConfirmationURL }}" style="display:inline-block;padding:14px 28px;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:600;color:#0B1513;text-decoration:none">Aprire l’area riservata</a></td></tr></table>
+<p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:1.5;color:#5E6A64;margin:24px 0 0">Se non ha fatto questa richiesta, ignori questa e-mail.</p>
+<p style="font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:1.5;color:#9AA49F;margin:16px 0 0">Portolan è un sito dimostrativo di SudWebProject.</p>
+{{ else }}
+<p style="font-family:Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8A7343;margin:0 0 10px">Portolan</p>
+<h1 style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:28px;line-height:1.2;color:#0B1513;margin:0 0 18px">Votre lien de connexion</h1>
+<p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:#25302C;margin:0 0 24px">Portolan vous a envoyé un lien pour accéder à votre espace, sans mot de passe.</p>
+<table role="presentation" cellpadding="0" cellspacing="0"><tr><td style="background:#B39A62;border-radius:999px"><a href="{{ .ConfirmationURL }}" style="display:inline-block;padding:14px 28px;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:600;color:#0B1513;text-decoration:none">Ouvrir mon espace</a></td></tr></table>
+<p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:1.5;color:#5E6A64;margin:24px 0 0">Si vous n’êtes pas à l’origine de cette demande, ignorez cet e-mail.</p>
+<p style="font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:1.5;color:#9AA49F;margin:16px 0 0">Portolan est un site de démonstration conçu par SudWebProject.</p>
+{{ end }}
+</td></tr>
+<tr><td style="background:#0B1513;padding:20px 32px;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#E7E6DF">Portolan · Quai Suffren, Saint-Tropez · Quai Antoine Ier, Monaco</td></tr>
+</table></td></tr></table></body></html>

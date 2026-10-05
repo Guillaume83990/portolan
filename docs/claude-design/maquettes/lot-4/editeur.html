@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maquette · 4 · Éditeur de yacht</title>
+  <script>if(/propre/.test(location.search))document.documentElement.classList.add("sans-notes")</script>
+  <link rel="stylesheet" href="../../../../css/fonts.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/compte.css">
+  <link rel="stylesheet" href="../../../../css/flotte.css">
+  <link rel="stylesheet" href="../ajouts.css">
+  <link rel="stylesheet" href="../espaces.css">
+  <link rel="stylesheet" href="../maquette.css">
+</head>
+<body class="clair">
+<div class="dir2">
+  <aside class="lat" aria-label="Navigation de la direction">
+    <a class="brand" href="tableau-de-bord.html"><svg class="brand__rose" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1v30M1 16h30M5.4 5.4l21.2 21.2M26.6 5.4L5.4 26.6"/><circle cx="16" cy="16" r="6.5"/></svg><span>Portolan<small>Direction</small></span></a>
+    <nav><a href="tableau-de-bord.html"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">01</span>Tableau de bord</a><a href="reservations.html"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">02</span>Réservations<span class="compteur">3</span></a><a href="calendrier.html"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">03</span>Calendrier</a><a href="demandes.html"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">04</span>Demandes<span class="compteur">5</span></a><a href="clients.html"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">05</span>Clients</a><a href="yachts.html" aria-current="page"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">06</span>Yachts</a><a href="reglages.html"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">07</span>Réglages</a></nav>
+    <div class="lat__pied"><b>Hélène Marchetti</b><span class="second" style="color:var(--brume)">Directrice</span><a href="#">Voir le site</a><a href="connexion.html">Se déconnecter</a></div>
+  </aside>
+  <div>
+    <header class="haut" hidden><h1>Éditeur de yacht</h1>
+      <div class="recherche"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg><input placeholder="Rechercher : PTL-, client, e-mail, yacht" aria-label="Recherche globale"><kbd>/</kbd></div>
+      <button class="btn btn--plein btn--petit" type="button">+ Nouveau</button>
+    </header>
+    <header class="ed-tete">
+      <a class="lien lien--discret" href="yachts.html" style="font-size:var(--t-s)">← Yachts</a><h1>Mistral Blanc</h1><span class="badge badge--confirmee">Publié</span>
+      <span class="ed-modif" style="margin-left:auto">2 modifications non enregistrées</span>
+      <a class="btn btn--filet btn--petit" href="#">Voir sur le site</a><button class="btn btn--plein btn--petit">Enregistrer</button>
+    </header>
+    <div class="contenu">
+      <nav class="onglets" role="tablist" aria-label="Sections"><button role="tab" aria-selected="false" data-t="identite">Identité</button><button role="tab" aria-selected="false" data-t="carac">Caractéristiques</button><button role="tab" aria-selected="false" data-t="prix">Prix</button><button role="tab" aria-selected="true" data-t="textes">Textes <span class="point-r" aria-label="à revoir"></span></button><button role="tab" aria-selected="false" data-t="photos">Photos</button><button role="tab" aria-selected="false" data-t="visite">Visite</button><button role="tab" aria-selected="false" data-t="publi">Publication</button></nav>
+
+      <div data-p="identite" hidden>
+        <div class="ed-sec"><div><h2>Identité</h2></div><div class="champs champs--2">
+          <div class="champ"><label>Nom</label><input value="Mistral Blanc"></div><div class="champ"><label>Adresse de la page</label><input value="mistral-blanc"><p class="champ__aide">Si vous la changez, l'ancienne adresse sera redirigée.</p></div>
+          <div class="champ"><label>Chantier</label><input value="Benetti"></div><div class="champ"><label>Nom court du chantier</label><input value="Benetti"></div>
+          <div class="champ"><label>Type</label><select><option>Moteur</option><option>Voilier</option></select></div><div class="champ"><label>Numéro dans la flotte</label><input value="03"></div>
+          <div class="champ"><label>Port d'attache</label><input value="Monaco"></div><div class="champ"><label>Pavillon</label><input value="Monaco"></div>
+          <p><label class="inter"><i></i>Exclusivité Portolan</label></p><p><label class="inter is-on"><i></i>Mis en avant à l'accueil</label></p>
+        </div></div>
+        <div class="ed-sec"><div><h2>Vente et location</h2><p>Les prix correspondants s'affichent dans l'onglet Prix.</p></div><div style="display:flex;gap:2rem"><label class="lead__consent" style="color:var(--texte)"><input type="checkbox"> À vendre</label><label class="lead__consent" style="color:var(--texte)"><input type="checkbox" checked> À louer</label></div></div>
+      </div>
+
+      <div data-p="carac" hidden><div class="ed-sec"><div><h2>Caractéristiques</h2><p>Unités affichées à droite de chaque champ.</p></div><div class="champs champs--3">
+        <div class="champ"><label>Année</label><input value="2019"></div><div class="champ"><label>Refit</label><input value="2024"></div><div class="champ"><label>Longueur (m)</label><input value="44,5"></div>
+        <div class="champ"><label>Largeur (m)</label><input value="8,6"></div><div class="champ"><label>Tirant d'eau (m)</label><input value="2,5"></div><div class="champ"><label>Coque</label><input value="Acier et aluminium"></div>
+        <div class="champ"><label>Architecte</label><input value="Giorgio M. Cassetta"></div><div class="champ"><label>Invités</label><input value="12"></div><div class="champ"><label>Cabines</label><input value="6"></div>
+        <div class="champ champ--large"><label>Description des cabines</label><input value="Suite du propriétaire, 2 VIP, 2 doubles, 1 twin"></div>
+        <div class="champ"><label>Équipage</label><input value="9"></div><div class="champ"><label>Croisière (nœuds)</label><input value="12"></div><div class="champ"><label>Pointe (nœuds)</label><input value="15"></div>
+        <div class="champ"><label>Autonomie (milles)</label><input value="3 500"></div><div class="champ"><label>Motorisation</label><input value="2 × Caterpillar C32"></div><div class="champ"><label>Stabilisateurs</label><input value="À ailerons, actifs au mouillage"></div>
+      </div></div></div>
+
+      <div data-p="prix" hidden>
+        <div class="ed-sec"><div><h2>Location</h2><p>Saison 2027 : haute saison du 3 juillet au 4 septembre (Réglages).</p></div><div class="champs champs--2">
+          <div class="champ"><label>Basse saison, la semaine (€)</label><input value="185 000"><p class="champ__aide">Soit 26&#8239;429&nbsp;€ la nuit.</p></div><div class="champ"><label>Haute saison, la semaine (€)</label><input value="215 000"><p class="champ__aide">Soit 30&#8239;714&nbsp;€ la nuit.</p></div></div></div>
+        <div class="ed-sec"><div><h2>Simulateur</h2><p>Exactement ce que le client verra.</p></div><div class="panneau-c" style="display:grid;gap:1rem;max-width:34rem">
+          <div class="champs champs--2"><div class="champ"><label>Du</label><input value="10/07/2027"></div><div class="champ"><label>Au</label><input value="17/07/2027"></div></div>
+          <dl class="paires"><div><dt>7 nuits, haute saison</dt><dd>215&#8239;000&nbsp;€</dd></div><div><dt>Acompte 50&nbsp;%</dt><dd>107&#8239;500&nbsp;€</dd></div><div><dt>Solde</dt><dd>107&#8239;500&nbsp;€</dd></div><div><dt>APA 30&nbsp;%</dt><dd>64&#8239;500&nbsp;€</dd></div></dl></div></div>
+      </div>
+
+      <div data-p="textes">
+        <div style="display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:1.5rem 0 .5rem"><div class="langues"><button aria-pressed="false">FR</button><button aria-pressed="true" class="is-manque">EN</button><button aria-pressed="false" class="is-manque">DE</button><button aria-pressed="false">IT</button></div><button class="btn btn--filet btn--petit" style="margin-left:auto">Traduire toute la langue avec l'IA</button></div>
+        <div class="ed-sec"><div><h2>Accroche</h2><p>Une phrase, sous le nom.</p></div><div class="champ"><p class="ref-fr">FR : L'élégance italienne, à quai à Monaco, prête à appareiller.</p><label>Accroche (EN)</label><input value="Italian elegance, berthed in Monaco and ready to sail."></div></div>
+        <div class="ed-sec"><div><h2>Présentation</h2><p>Paragraphes, réordonnables.</p></div><div style="display:grid;gap:1.25rem">
+          <div class="champ"><p class="ref-fr">FR : Mistral Blanc a été livré à Livourne et entièrement rafraîchi en 2024 : laque blanche, frêne clair, cuir ivoire et touches d'or pâle…</p><label>Paragraphe 1 (EN) <span class="badge badge--payer" style="margin-left:.5rem">À revoir</span></label><textarea rows="3">Mistral Blanc was delivered in Livorno and fully refreshed in 2024: white lacquer, pale ash and ivory leather.</textarea><p class="champ__aide">Le français a changé depuis cette traduction.</p></div>
+          <div class="proposition" data-mvp="Proposition de l'IA : jamais enregistrée sans relecture"><p class="etiq" style="color:var(--accent)">Proposition de traduction</p><p>Mistral Blanc was delivered in Livorno and fully refreshed in 2024: white lacquer, pale ash, ivory leather and touches of pale gold. Everything is bright, down to the main deck's grand salon.</p><p style="display:flex;gap:.5rem"><button class="btn btn--plein btn--petit">Accepter</button><button class="btn btn--filet btn--petit">Modifier</button><button class="lien lien--discret" style="font-size:var(--t-s)">Ignorer</button></p></div>
+          <div class="champ"><p class="ref-fr">FR : Basé à Monaco, il part volontiers vers Portofino ou la Corse…</p><label>Paragraphe 2 (EN)</label><textarea rows="3">Based in Monaco, she happily heads for Portofino or Corsica.</textarea></div>
+          <p style="display:flex;gap:1rem"><button class="lien">+ Ajouter un paragraphe</button><button class="lien lien--discret">Traduire ce champ avec l'IA</button></p>
+        </div></div>
+        <div class="ed-sec"><div><h2>Points forts</h2></div><div class="champs champs--2"><div class="champ"><p class="ref-fr">FR : Table</p><label>Titre (EN)</label><input value="Dining"></div><div class="champ"><p class="ref-fr">FR : Un chef formé dans les maisons étoilées de la Riviera</p><label>Texte (EN)</label><input value="A chef trained in the Riviera's starred houses"></div></div></div>
+      </div>
+
+      <div data-p="photos" hidden>
+        <div class="ed-sec" style="grid-template-columns:1fr"><div class="depot">Glissez vos photos ici (JPEG, PNG ou WebP, 5&nbsp;Mo au plus par photo)<button class="btn btn--filet btn--petit">Choisir des photos</button></div>
+        <div class="photos2">
+          <div class="photo2 photo2--principale"><img src="../../../../assets/img/galerie/mistral-blanc-salon-900.webp" alt=""><div><p><span class="badge badge--confirmee">★ Principale</span></p><label class="champ"><span class="champ__label">Pont</span><select><option>Pont principal</option></select></label><p class="second">Description&#8239;: FR ✓ EN ✓ DE ✓ IT ✓</p></div></div>
+          <div class="photo2"><img src="../../../../assets/img/galerie/mistral-blanc-suite-900.webp" alt=""><div><label class="champ"><span class="champ__label">Pont</span><select><option>Pont principal</option></select></label><p class="second">Description&#8239;: FR ✓ EN ✓ DE <span class="point-r"></span> IT ✓</p><p style="display:flex;gap:1rem"><button class="lien">Définir comme principale</button><button class="lien lien--discret">Supprimer</button></p></div></div>
+          <div class="photo2"><img src="../../../../assets/img/galerie/mistral-blanc-diner-900.webp" alt=""><div><label class="champ"><span class="champ__label">Pont</span><select><option>Extérieur</option></select></label><p class="second">Description&#8239;: FR ✓ EN ✓ DE ✓ IT ✓</p></div></div>
+          <div class="photo2"><div class="squelette" style="aspect-ratio:16/10"></div><div><p>pont-soleil.jpg</p><div class="prog"><i style="width:62%"></i></div><p class="second">Envoi… 62&nbsp;%</p></div></div>
+          <div class="photo2"><div style="aspect-ratio:16/10;display:grid;place-items:center;background:rgb(11 21 19 / .06);color:var(--alerte);font-size:var(--t-xs)">Refusée</div><div><p>salon-HD.tif</p><p class="champ__erreur">Format refusé : JPEG, PNG ou WebP seulement.</p></div></div>
+        </div></div>
+      </div>
+
+      <div data-p="visite" hidden><div class="ed-sec"><div><h2>Visite à bord</h2><p>Réalisée par l'agence.</p></div><div style="display:grid;gap:1rem;max-width:34rem"><label class="inter is-on"><i></i>Afficher la visite à bord sur la fiche</label><img src="../../../../assets/img/galerie/mistral-blanc-jacuzzi-900.webp" alt="" style="width:100%;aspect-ratio:16/10;object-fit:cover"><p class="second" style="font-size:var(--t-s)">Six étapes · environ 40 secondes de défilement. Pour une nouvelle visite, contactez SudWebProject.</p></div></div></div>
+
+      <div data-p="publi" hidden><div class="ed-sec"><div><h2>Publication</h2><p>Publié : visible sur le site.</p></div><div style="display:grid;gap:1rem;max-width:40rem">
+        <ul class="ct-promises" style="margin:0"><li>Photo principale ✓</li><li>Accroche en 4 langues ✓</li><li>Prix ✓</li><li style="color:var(--alerte)">Descriptions de photos&#8239;: 1 manquante (DE)</li></ul>
+        <p class="bandeau-info">La publication reste possible : les points manquants s'afficheront en français.</p>
+        <p style="display:flex;gap:.75rem"><button class="btn btn--filet btn--petit">Repasser en brouillon</button></p></div></div>
+        <div class="ed-sec zone-sensible"><div><h2>Zone sensible</h2></div><p style="display:flex;gap:.75rem"><button class="btn btn--filet btn--petit">Archiver</button><button class="btn btn--danger btn--petit">Supprimer</button></p></div></div>
+    </div>
+    <script>document.querySelectorAll('[role=tab]').forEach(t=>t.onclick=()=>{document.querySelectorAll('[role=tab]').forEach(x=>x.setAttribute('aria-selected',x===t));document.querySelectorAll('[data-p]').forEach(p=>p.hidden=p.dataset.p!==t.dataset.t)})</script>
+  </div>
+</div>
+<nav class="nav-bas" aria-label="Navigation"><a href="tableau-de-bord.html"><span style="font-size:.7rem;color:var(--laiton)">01</span>Tableau</a><a href="reservations.html"><span style="font-size:.7rem;color:var(--laiton)">02</span>Réservations</a><a href="calendrier.html"><span style="font-size:.7rem;color:var(--laiton)">03</span>Calendrier</a><a href="#"><span style="font-size:.7rem;color:var(--laiton)">04</span>Plus</a></nav>
+</body>
+</html>

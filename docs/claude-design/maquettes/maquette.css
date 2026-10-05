@@ -1,0 +1,13 @@
+/* Annotations de maquette : à ne pas intégrer. Ajouter ?propre à l'adresse pour les masquer. */
+[data-mvp] { outline: 1px dashed #B39A62; outline-offset: 6px; }
+[data-mvp]:not(.demo-pill):not(.fi-bar):not(.wa):not(.fl-empty):not(.robot):not(span) { position: relative; }
+[data-mvp]:not(.demo-pill):not(.fi-bar):not(.wa):not(span)::after {
+  content: "MVP · " attr(data-mvp);
+  position: absolute; top: -1.75rem; left: 0; z-index: 90; max-width: min(46rem, 90vw);
+  padding: 2px 8px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+  font: 500 11px/1.5 'Hanken Grotesk', system-ui, sans-serif; letter-spacing: 0.04em; text-transform: none;
+  color: #0B1513; background: #B39A62; pointer-events: none;
+}
+.robot[data-mvp]::after { position: static; display: block; margin-top: 0.4rem; width: max-content; }
+html.sans-notes [data-mvp] { outline: none; }
+html.sans-notes [data-mvp]::after { display: none; }

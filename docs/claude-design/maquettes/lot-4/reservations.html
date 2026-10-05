@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maquette · 4 · Réservations</title>
+  <script>if(/propre/.test(location.search))document.documentElement.classList.add("sans-notes")</script>
+  <link rel="stylesheet" href="../../../../css/fonts.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/compte.css">
+  <link rel="stylesheet" href="../../../../css/flotte.css">
+  <link rel="stylesheet" href="../ajouts.css">
+  <link rel="stylesheet" href="../espaces.css">
+  <link rel="stylesheet" href="../maquette.css">
+</head>
+<body class="clair">
+<div class="dir2">
+  <aside class="lat" aria-label="Navigation de la direction">
+    <a class="brand" href="tableau-de-bord.html"><svg class="brand__rose" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1v30M1 16h30M5.4 5.4l21.2 21.2M26.6 5.4L5.4 26.6"/><circle cx="16" cy="16" r="6.5"/></svg><span>Portolan<small>Direction</small></span></a>
+    <nav><a href="tableau-de-bord.html"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">01</span>Tableau de bord</a><a href="reservations.html" aria-current="page"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">02</span>Réservations<span class="compteur">3</span></a><a href="calendrier.html"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">03</span>Calendrier</a><a href="demandes.html"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">04</span>Demandes<span class="compteur">5</span></a><a href="clients.html"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">05</span>Clients</a><a href="yachts.html"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">06</span>Yachts</a><a href="reglages.html"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">07</span>Réglages</a></nav>
+    <div class="lat__pied"><b>Hélène Marchetti</b><span class="second" style="color:var(--brume)">Directrice</span><a href="#">Voir le site</a><a href="connexion.html">Se déconnecter</a></div>
+  </aside>
+  <div>
+    <header class="haut"><h1>Réservations</h1>
+      <div class="recherche"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg><input placeholder="Rechercher : PTL-, client, e-mail, yacht" aria-label="Recherche globale"><kbd>/</kbd></div>
+      <button class="btn btn--plein btn--petit" type="button">+ Nouveau</button>
+    </header>
+    <div class="maitre"><div class="maitre__liste">
+      <nav class="onglets" aria-label="Filtres"><a aria-current="page">À traiter <span class="compteur">3</span></a><a>À payer <span class="compteur">2</span></a><a>Confirmées</a><a>Soldées</a><a>Passées</a><a>Blocages</a><a>Toutes</a></nav>
+      <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:end;margin:1.25rem 0">
+        <div class="champ" style="min-width:11rem"><label>Yacht</label><select><option>Tous les yachts</option></select></div>
+        <div class="champ" style="min-width:11rem"><label>Embarquement</label><select><option>Tous les mois</option></select></div>
+        <button class="btn btn--filet btn--petit" style="margin-left:auto">Bloquer des dates</button>
+      </div>
+      <div style="overflow-x:auto"><table class="tab tab--mobile"><thead><tr><th>Réf.</th><th>Yacht</th><th>Client</th><th aria-sort="ascending"><button>Embarquement → retour ↑</button></th><th class="nb">Nuits</th><th class="nb">Montant</th><th>Statut</th><th>Échéance</th></tr></thead><tbody><tr class="is-choisie"><td>PTL-00061</td><td class="serif"><em>Tramontane</em></td><td>Charlotte Delaunay</td><td class="cache-m">2 → 6 juin</td><td class="nb cache-m">4</td><td class="nb">54&#8239;286&nbsp;€</td><td><span class="badge badge--attente">En attente</span></td><td class="cache-m second">expire dans 45&nbsp;h</td></tr><tr class=""><td>PTL-00063</td><td class="serif"><em>Camarat</em></td><td>Thomas Keller</td><td class="cache-m">24 → 31 juil.</td><td class="nb cache-m">7</td><td class="nb">240&#8239;000&nbsp;€</td><td><span class="badge badge--attente">En attente</span></td><td class="cache-m second">expire dans 30&nbsp;h</td></tr><tr class=""><td>PTL-00064</td><td class="serif"><em>Solenne</em></td><td>Giulia Conti</td><td class="cache-m">14 → 21 août</td><td class="nb cache-m">7</td><td class="nb">72&#8239;000&nbsp;€</td><td><span class="badge badge--attente">En attente</span></td><td class="cache-m second">expire dans 6&nbsp;h</td></tr><tr class=""><td>PTL-00057</td><td class="serif"><em>Solenne</em></td><td>Charlotte Delaunay</td><td class="cache-m">4 → 8 sept.</td><td class="nb cache-m">4</td><td class="nb">41&#8239;140&nbsp;€</td><td><span class="badge badge--payer">À payer</span></td><td class="cache-m second">acompte dans 71&nbsp;h</td></tr><tr class=""><td>PTL-00058</td><td class="serif"><em>Mistral Blanc</em></td><td>Pieter de Vries</td><td class="cache-m">29 mai → 3 juin</td><td class="nb cache-m">5</td><td class="nb">132&#8239;143&nbsp;€</td><td><span class="badge badge--payer">À payer</span></td><td class="cache-m second">acompte dans 22&nbsp;h</td></tr><tr class=""><td>PTL-00042</td><td class="serif"><em>Mistral Blanc</em></td><td>Charlotte Delaunay</td><td class="cache-m">10 → 17 juil.</td><td class="nb cache-m">7</td><td class="nb">215&#8239;000&nbsp;€</td><td><span class="badge badge--confirmee">Confirmée</span></td><td class="cache-m second">solde le 10/06</td></tr><tr class=""><td>PTL-00039</td><td class="serif"><em>Camarat</em></td><td>Marco Rossi</td><td class="cache-m">12 → 19 juin</td><td class="nb cache-m">7</td><td class="nb">240&#8239;000&nbsp;€</td><td><span class="badge badge--soldee">Soldée</span></td><td class="cache-m second">—</td></tr></tbody></table></div>
+    </div><aside class="maitre__detail" aria-label="Détail de la réservation PTL-00061">
+      <p style="display:flex;gap:.75rem;align-items:center;flex-wrap:wrap"><span class="etiq">PTL-00061</span><span class="badge badge--attente">En attente</span><span class="second" style="font-size:var(--t-xs)">expire dans 45&nbsp;h</span></p>
+      <p class="titre-s" style="margin-top:.6rem"><em>Tramontane</em></p>
+      <p class="second">Du mer. 2 au dim. 6 juin 2027 · 4 nuits · <b style="color:var(--texte);font-weight:500">54&#8239;286&nbsp;€</b></p>
+      <h2>Client</h2>
+      <dl class="paires"><div><dt>Nom</dt><dd><a class="lien" href="clients.html">Charlotte Delaunay</a> · 2 réservations passées</dd></div><div><dt>E-mail</dt><dd>charlotte@exemple.com</dd></div><div><dt>Téléphone</dt><dd>+33 6 12 34 56 78</dd></div><div><dt>Langue</dt><dd>Français</dd></div></dl>
+      <p style="display:flex;gap:.5rem;margin-top:.9rem"><a class="btn btn--filet btn--petit" href="#">Appeler</a><a class="btn btn--filet btn--petit" href="#">WhatsApp</a><a class="btn btn--filet btn--petit" href="#">E-mail</a></p>
+      <h2>Croisière</h2>
+      <dl class="paires"><div><dt>Embarquement</dt><dd>16:00, Saint&#8209;Tropez</dd></div><div><dt>Invités</dt><dd>8</dd></div><div><dt>Souhaits</dt><dd>Mouillage à Porquerolles le 3, plongée si possible.</dd></div></dl>
+      <h2>Échéancier</h2>
+      <dl class="paires"><div><dt>Acompte 50&nbsp;%</dt><dd>27&#8239;143&nbsp;€ · sous 72&nbsp;h après validation</dd></div><div><dt>Solde</dt><dd>27&#8239;143&nbsp;€ · avant le 2 mai 2027</dd></div><div><dt>APA 30&nbsp;%</dt><dd>16&#8239;286&nbsp;€ · avant le 2 mai 2027</dd></div></dl>
+      <h2>Historique</h2>
+      <ol class="journal"><li><time>4 oct. 11:02</time><span>Demande créée depuis la fiche Tramontane</span></li><li><time>4 oct. 11:02</time><span>E-mail de réception envoyé à la cliente</span></li><li><time>4 oct. 11:03</time><span>Alerte envoyée à la direction</span></li></ol>
+      <h2>Notes</h2>
+      <div class="champs"><div class="champ"><label>Note interne <small>(direction seulement)</small></label><textarea rows="2">Cliente fidèle, a déjà loué Camarat en 2026.</textarea></div><div class="champ"><label>Mot au client <small>(visible et repris dans l'e-mail)</small></label><textarea rows="2"></textarea></div></div>
+      <div class="barre-actions"><button class="btn btn--plein btn--petit">Valider la demande</button><button class="btn btn--danger btn--petit">Refuser</button></div>
+    </aside></div>
+  </div>
+</div>
+<nav class="nav-bas" aria-label="Navigation"><a href="tableau-de-bord.html"><span style="font-size:.7rem;color:var(--laiton)">01</span>Tableau</a><a href="reservations.html" aria-current="page"><span style="font-size:.7rem;color:var(--laiton)">02</span>Réservations</a><a href="calendrier.html"><span style="font-size:.7rem;color:var(--laiton)">03</span>Calendrier</a><a href="#"><span style="font-size:.7rem;color:var(--laiton)">04</span>Plus</a></nav>
+</body>
+</html>

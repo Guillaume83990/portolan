@@ -1,0 +1,48 @@
+/* Portolan : raccords d'intégration (rien de visuel nouveau) : les maquettes dessinent la boîte de dialogue
+   dans un voile ; ici elle est un vrai <dialog> (focus piégé, Échap), donc son voile est le ::backdrop. */
+dialog.dialogue:not([open]), dialog.panneau-lat:not([open]) { display: none; }
+dialog.dialogue { margin: auto; max-height: calc(100vh - 2rem); overflow-y: auto; }
+dialog.dialogue::backdrop { background: rgb(11 21 19 / 0.55); }
+dialog.panneau-lat { margin: 0 0 0 auto; height: 100vh; max-height: 100vh; width: min(34rem, 100%); padding: clamp(1.5rem, 4vw, 2.25rem); background: var(--surface); color: var(--texte); border: 0; border-left: 1px solid var(--filet-fort); overflow-y: auto; }
+dialog.panneau-lat::backdrop { background: rgb(11 21 19 / 0.45); }
+
+/* Notifications brèves : en bas à droite, empilées */
+.notifs { position: fixed; z-index: 300; right: 1.5rem; bottom: 1.5rem; display: grid; gap: 0.5rem; justify-items: end; pointer-events: none; }
+.notifs .notif { pointer-events: auto; max-width: min(36rem, calc(100vw - 2rem)); }
+@media (max-width: 900px) { .notifs { left: 1rem; right: 1rem; bottom: 5.5rem; justify-items: stretch; } }
+
+/* Menu « + Nouveau » et résultats de la recherche globale */
+.menu-d { position: absolute; z-index: 40; top: calc(100% + 0.4rem); right: 0; min-width: 14rem; padding: 0.4rem 0; background: var(--surface); border: 1px solid var(--filet-fort); box-shadow: 0 12px 30px rgb(11 21 19 / 0.15); display: grid; }
+.menu-d a, .menu-d button { display: flex; align-items: center; min-height: 42px; padding: 0 1rem; font: inherit; font-size: var(--t-s); color: var(--texte); text-decoration: none; background: none; border: 0; text-align: left; cursor: pointer; }
+.menu-d a:hover, .menu-d button:hover, .menu-d .is-actif { background: color-mix(in srgb, var(--laiton) 14%, transparent); }
+.menu-d .danger { color: var(--alerte); }
+.menu-d__titre { padding: 0.75rem 1rem 0.25rem; font-size: var(--t-xs); letter-spacing: 0.14em; text-transform: uppercase; color: var(--second); }
+.menu-d .second { font-size: var(--t-xs); margin-left: 0.5rem; }
+.recherche .menu-d { left: 0; right: 0; }
+
+/* Liste en lecture seule (compte de démonstration) */
+[data-demo] [data-ecrit], .clair [aria-disabled="true"] { opacity: 0.45; cursor: not-allowed; }
+
+/* Corrections de détails relevées sur les maquettes */
+.tache .tache__type { display: grid; margin: 0; }                       /* numéro centré dans son cercle */
+.kpi2 strong { font-size: clamp(1.7rem, 2.1vw, 2.3rem); white-space: nowrap; }  /* les montants à 7 chiffres tiennent */
+.histo { height: auto; min-height: 12rem; }
+
+/* Réservations sur téléphone : le détail remplace la liste quand une ligne est choisie */
+@media (max-width: 900px) {
+  .maitre.a-detail .maitre__liste { display: none; }
+  .maitre.a-detail .maitre__detail { display: block; position: static; max-height: none; padding: 1.25rem var(--gutter) 7rem; }
+}
+.maitre__detail .barre-actions { bottom: -3rem; }
+
+/* Sélecteur de langue de l'éditeur, sur fond clair (la règle d'origine est pour le fond sombre) */
+.clair .langues { display: flex; gap: 0.4rem; }
+.clair .langues button { min-height: 36px; min-width: 44px; padding: 0 0.8rem; font: inherit; font-size: var(--t-xs); letter-spacing: 0.1em; color: var(--texte); background: none; border: 1px solid var(--filet-fort); border-radius: 999px; cursor: pointer; }
+.clair .langues button[aria-pressed="true"] { background: var(--texte); color: var(--fond); border-color: var(--texte); }
+.clair .langues button.is-manque::after { content: ' •'; color: var(--alerte); }
+.clair .onglets [role="tab"] { font-family: inherit; }
+.ed-sec .champs, .reg .champs { align-items: start; }
+
+/* La fenêtre de compte reste sombre (abysse) même dans les espaces clairs : on y rétablit les couleurs sur fond sombre */
+.clair .auth { --texte: var(--calcaire); --second: var(--brume); --filet: rgb(231 230 223 / 0.14); --filet-fort: rgb(231 230 223 / 0.32); --accent: var(--laiton); --alerte: #E3A487; --fond: var(--abysse); }
+.clair .auth .btn--light { color: var(--encre); }

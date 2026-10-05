@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maquette · Lot 1 · États</title>
+  <script>if(/propre/.test(location.search))document.documentElement.classList.add("sans-notes")</script>
+  <link rel="stylesheet" href="../../../../css/fonts.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/compte.css">
+  <link rel="stylesheet" href="../../../../css/flotte.css">
+  <link rel="stylesheet" href="../../../../css/pages.css">
+  <link rel="stylesheet" href="../../../../css/visite-fiche.css">
+  <link rel="stylesheet" href="../ajouts.css">
+  <link rel="stylesheet" href="../maquette.css">
+  <style>
+    /* Mise en page de la planche seulement */
+    .pl { padding: 4rem var(--gutter) 2rem; border-top: 1px solid color-mix(in srgb, var(--laiton) 30%, transparent); }
+    .pl__t { font-family: var(--serif); font-size: 2rem; margin-bottom: .4rem; }
+    .pl__d { color: var(--brume); font-size: var(--t-s); max-width: 70ch; margin-bottom: 2rem; }
+    .pl__grille { display: grid; gap: 1.5rem; }
+    @media (min-width: 960px) { .pl__grille--2 { grid-template-columns: 1fr 1fr; } }
+    .pl__case { position: relative; }
+    .pl__nom { font-size: var(--t-xs); letter-spacing: .18em; text-transform: uppercase; color: var(--laiton); margin-bottom: .75rem; }
+    .ecran { position: relative; height: min(56.25vw, 100svh); min-height: 40rem; overflow: hidden; background: var(--abysse); }
+    .ecran > img.fond { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .ecran .shot { opacity: 1; visibility: visible; }
+  </style>
+</head>
+<body>
+  <header class="pl" style="border:0">
+    <p class="kicker">Maquette · Lot 1</p>
+    <h1 class="section-title">États des écrans du site public</h1>
+    <p class="pl__d" style="margin-top:1rem">Tout ce que les pages ne montrent pas au premier affichage : les étapes de la visite, les envois de formulaires, l'état vide, le chargement, les plein écrans. Les annotations « MVP » signalent ce qui change par rapport au site actuel.</p>
+  </header>
+
+  <!-- 1. La visite : trois états clés -->
+  <section class="pl">
+    <h2 class="pl__t">Accueil · La visite, trois états clés</h2>
+    <p class="pl__d">La séquence est pilotée au défilement : la carte s'ouvre en brûlant depuis le yacht, puis la caméra monte à bord. Les instruments, le repère de progression et le texte changent à chaque étape.</p>
+    <div class="pl__grille">
+      <div class="pl__case">
+        <p class="pl__nom">Début · sur la carte</p>
+        <div class="ecran">
+          <img class="fond" src="../../../../assets/plan-sequence/carte.webp" alt="">
+          <div class="film__veil"></div>
+          <a class="skip" href="#" style="position:absolute;top:1rem">Passer la visite et aller à la flotte</a>
+          <div class="hud" aria-hidden="true">
+            <svg class="hud__rose" viewBox="-50 -50 100 100"><g class="hud__dial"><circle r="46"/><line x1="0" y1="-46" x2="0" y2="-38"/><line x1="46" y1="0" x2="38" y2="0"/><line x1="0" y1="46" x2="0" y2="38"/><line x1="-46" y1="0" x2="-38" y2="0"/><text x="0" y="-26" text-anchor="middle">N</text></g><path class="hud__needle" d="M0 -30L4 0L0 30L-4 0Z" transform="rotate(128)"/><circle r="2.2"/></svg>
+            <dl class="hud__data"><div><dt>Cap</dt><dd>128°</dd></div><div><dt>Position</dt><dd>43°13′ N · 6°40′ E</dd></div><div><dt>Altitude</dt><dd>300 m</dd></div></dl>
+            <p class="hud__chapter">I / IV</p>
+          </div>
+          <div class="film__shots"><article class="shot"><div class="chapter__text">
+            <p class="chapter__kicker">Courtier en yachts sur la Côte d'Azur</p>
+            <h1 class="chapter__title">Yachts à vendre et à louer, de Saint&#8209;Tropez à Monaco</h1>
+            <p class="chapter__body">Chaque traversée commence sur une carte. Faites défiler pour embarquer.</p>
+          </div></article></div>
+          <nav class="route" aria-label="Étapes"><ol><li><a class="is-current"><span>La carte</span></a></li><li><a><span>L'approche</span></a></li><li><a><span>À bord</span></a></li><li><a><span>Le salon</span></a></li><li><a><span>La suite</span></a></li><li><a><span>Le pont supérieur</span></a></li></ol></nav>
+          <p class="film__hint">Faire défiler</p>
+        </div>
+      </div>
+      <div class="pl__case">
+        <p class="pl__nom">Milieu · à bord</p>
+        <div class="ecran">
+          <img class="fond" src="../../../../assets/img/bord/salon-1600.webp" alt="">
+          <div class="film__veil"></div>
+          <div class="hud" aria-hidden="true">
+            <svg class="hud__rose" viewBox="-50 -50 100 100"><g class="hud__dial"><circle r="46"/><line x1="0" y1="-46" x2="0" y2="-38"/><line x1="46" y1="0" x2="38" y2="0"/><line x1="0" y1="46" x2="0" y2="38"/><line x1="-46" y1="0" x2="-38" y2="0"/><text x="0" y="-26" text-anchor="middle">N</text></g><path class="hud__needle" d="M0 -30L4 0L0 30L-4 0Z" transform="rotate(24)"/><circle r="2.2"/></svg>
+            <dl class="hud__data"><div><dt>Cap</dt><dd>024°</dd></div><div><dt>Position</dt><dd>43°13′ N · 6°40′ E</dd></div><div><dt>Pont</dt><dd>Principal</dd></div></dl>
+            <p class="hud__chapter">III / IV</p>
+          </div>
+          <div class="film__shots"><article class="shot"><div class="chapter__text">
+            <p class="chapter__kicker">Le salon, 62 m²</p>
+            <h2 class="chapter__title">Noyer, travertin, velours</h2>
+            <p class="chapter__body">Les baies toute hauteur s'ouvrent sur la mer des deux côtés.</p>
+          </div></article></div>
+          <nav class="route" aria-label="Étapes"><ol><li><a><span>La carte</span></a></li><li><a><span>L'approche</span></a></li><li><a><span>À bord</span></a></li><li><a class="is-current"><span>Le salon</span></a></li><li><a><span>La suite</span></a></li><li><a><span>Le pont supérieur</span></a></li></ol></nav>
+        </div>
+      </div>
+      <div class="pl__case">
+        <p class="pl__nom">Fin · le pont supérieur</p>
+        <div class="ecran">
+          <img class="fond" src="../../../../assets/img/bord/pont-superieur-jacuzzi-1600.webp" alt="">
+          <div class="film__veil"></div>
+          <div class="hud" aria-hidden="true">
+            <svg class="hud__rose" viewBox="-50 -50 100 100"><g class="hud__dial"><circle r="46"/><line x1="0" y1="-46" x2="0" y2="-38"/><line x1="46" y1="0" x2="38" y2="0"/><line x1="0" y1="46" x2="0" y2="38"/><line x1="-46" y1="0" x2="-38" y2="0"/><text x="0" y="-26" text-anchor="middle">N</text></g><path class="hud__needle" d="M0 -30L4 0L0 30L-4 0Z" transform="rotate(270)"/><circle r="2.2"/></svg>
+            <dl class="hud__data"><div><dt>Cap</dt><dd>270°</dd></div><div><dt>Position</dt><dd>43°13′ N · 6°40′ E</dd></div><div><dt>Pont</dt><dd>Supérieur</dd></div></dl>
+            <p class="hud__chapter">IV / IV</p>
+          </div>
+          <div class="film__shots"><article class="shot shot--final"><div class="chapter__text">
+            <p class="chapter__kicker">Camarat · 50 m · livré en 2024</p>
+            <h2 class="chapter__title">Ce yacht peut être le vôtre</h2>
+            <p class="chapter__body">À vendre, 42&#8239;000&#8239;000&nbsp;€. Ou à louer à la semaine, dès 240&#8239;000&nbsp;€, avec son équipage. Visite à Saint&#8209;Tropez sur rendez&#8209;vous.</p>
+            <div class="chapter__actions"><a class="btn btn--light" href="#">Acheter ce yacht</a><a class="btn btn--ghost" href="#">Le louer une semaine</a><a class="link chapter__more" href="#">Voir toute la flotte</a></div>
+          </div></article></div>
+          <nav class="route" aria-label="Étapes"><ol><li><a><span>La carte</span></a></li><li><a><span>L'approche</span></a></li><li><a><span>À bord</span></a></li><li><a><span>Le salon</span></a></li><li><a><span>La suite</span></a></li><li><a class="is-current"><span>Le pont supérieur</span></a></li></ol></nav>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Hors marché -->
+  <section class="pl">
+    <h2 class="pl__t">Accueil · Hors marché, envoi</h2>
+    <p class="pl__d">Repos, envoi en cours (bouton désactivé), confirmation, erreur. Le message s'affiche sous le champ, en laiton, ou en rose corail pour une erreur.</p>
+    <div class="pl__grille pl__grille--2" data-mvp="Nouveau texte, nouveau bouton, trois états">
+      <div class="pl__case"><p class="pl__nom">Repos</p>
+        <form class="offmarket" style="padding:2rem 0;grid-template-columns:1fr" onsubmit="return false"><div><p class="kicker">Hors marché</p><h3 class="offmarket__title">Un tiers de nos ventes ne sont jamais annoncées.</h3><p class="offmarket__text">Laissez-nous votre e-mail&#8239;: nous vous écrivons, en confidence, dès qu'un yacht qui vous ressemble change de mains, avant sa mise en ligne.</p></div>
+        <div class="offmarket__fields"><input type="email" placeholder="Votre e-mail"><button class="btn btn--light" type="button">Être prévenu</button><p class="offmarket__note"></p></div></form></div>
+      <div class="pl__case"><p class="pl__nom">Envoi en cours</p>
+        <div class="offmarket__fields" style="padding-top:2rem"><input type="email" value="c.martin@exemple.fr" disabled><button class="btn btn--light is-envoi" type="button" disabled>Être prévenu</button><p class="offmarket__note"></p></div></div>
+      <div class="pl__case"><p class="pl__nom">Confirmation</p>
+        <div class="offmarket__fields" style="padding-top:2rem"><input type="email" value="c.martin@exemple.fr"><button class="btn btn--light" type="button">Être prévenu</button><p class="offmarket__note">C'est noté. Nous vous écrirons.</p></div></div>
+      <div class="pl__case"><p class="pl__nom">Erreur</p>
+        <div class="offmarket__fields" style="padding-top:2rem"><input type="email" value="c.martin@" aria-invalid="true" style="border-bottom-color:#D98B6A"><button class="btn btn--light" type="button">Être prévenu</button><p class="offmarket__note is-erreur">Indiquez une adresse e-mail complète.</p></div></div>
+    </div>
+  </section>
+
+  <!-- 3. Formulaire de contact -->
+  <section class="pl" style="background:var(--pin)">
+    <h2 class="pl__t">Accueil · Contact, étape 3 et confirmation</h2>
+    <p class="pl__d" style="color:color-mix(in srgb,var(--calcaire) 75%,var(--pin))">La vérification anti-robot reste une ligne discrète sous le consentement. Elle ne demande une action que si le doute persiste.</p>
+    <div class="pl__grille pl__grille--2">
+      <form class="lead" onsubmit="return false">
+        <div class="lead__progress"><span style="transform:scaleX(1)"></span></div>
+        <p class="lead__step-label">3 / 3 · Vos coordonnées</p>
+        <fieldset class="lead__step"><legend class="lead__q">Comment vous joindre&#8239;?</legend>
+          <div class="lead__grid">
+            <div class="lead__group"><label class="lead__label">Nom</label><input class="lead__input" value="Claire Martin"></div>
+            <div class="lead__group"><label class="lead__label">E&#8209;mail</label><input class="lead__input" value="c.martin@" aria-invalid="true"></div>
+            <div class="lead__group"><label class="lead__label">Téléphone <span>(facultatif)</span></label><input class="lead__input"></div>
+            <div class="lead__group"><label class="lead__label">Langue</label><select class="lead__input"><option>Français</option></select></div>
+          </div>
+          <div class="lead__group"><p class="lead__label">Être recontacté</p><div class="lead__chips"><label><input type="radio" name="r" checked><span>Par téléphone</span></label><label><input type="radio" name="r"><span>Par e-mail</span></label><label><input type="radio" name="r"><span>Sur WhatsApp</span></label></div></div>
+          <p class="robot is-ok" data-mvp="Anti-robot invisible ; ne s'affiche en défi que si le doute persiste">Vérification de sécurité automatique, rien à faire de votre part.</p>
+          <label class="lead__consent"><input type="checkbox" checked> <span>J'accepte que Portolan utilise ces informations pour me recontacter au sujet de mon projet.</span></label>
+        </fieldset>
+        <div class="lead__nav"><button class="lead__back" type="button">Retour</button><button class="btn btn--light lead__next" type="button">Envoyer</button></div>
+        <p class="lead__error">Indiquez une adresse e-mail complète.</p>
+      </form>
+      <div class="lead">
+        <div class="lead__done">
+          <p class="kicker">Demande reçue</p>
+          <p class="lead__done-title">Merci Claire.</p>
+          <p class="lead__done-text" data-mvp="Mention de l'e-mail de confirmation (lot 5)">Un courtier vous recontacte sous 24&#8239;heures. Un e-mail de confirmation vient de vous être envoyé.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Flotte : vide et chargement -->
+  <section class="pl">
+    <h2 class="pl__t">La flotte · État vide et chargement</h2>
+    <p class="pl__d">Quand un filtre ne trouve rien, et pendant que la liste arrive de la base.</p>
+    <div class="pl__case" data-mvp="Texte d'état vide"><p class="pl__nom">Filtre « Voiliers » + « À vendre », aucun résultat</p>
+      <p class="fl-empty">Aucun voilier à vendre en ce moment. Nous en suivons hors marché&#8239;: <a class="link" href="#">parlons-en</a>.</p></div>
+    <div class="pl__case" style="margin-top:3rem"><p class="pl__nom">Chargement (squelette des planches)</p>
+      <ul class="fl-plates" aria-busy="true">
+        <li class="plate"><div class="plate__media squelette"></div><div class="plate__body" style="width:100%"><div class="squelette squelette--texte" style="width:30%"></div><div class="squelette squelette--titre"></div><div class="squelette squelette--texte" style="width:80%"></div><div class="squelette squelette--texte" style="width:65%"></div><div class="squelette" style="height:4.5rem;width:100%;margin-top:1rem"></div></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 5. Fiche : brochure, visite ouverte, visionneuse, barre mobile -->
+  <section class="pl">
+    <h2 class="pl__t">Fiche · Brochure envoyée</h2>
+    <div class="fi-main"><section class="fi-brochure" data-mvp="La brochure PDF part vraiment (lot 6)">
+      <div><p class="kicker">Brochure</p><h2 class="fi-brochure__title">Mistral Blanc, en vingt pages.</h2><p>Plans, inventaire, historique d'entretien et photographies en haute définition. Envoyée par e-mail, en toute discrétion.</p></div>
+      <form class="form fi-brochure__form" onsubmit="return false"><input class="form__input" value="c.martin@exemple.fr"><button class="btn btn--light" type="button">Recevoir la brochure</button><p class="form__note">La brochure de Mistral Blanc est partie. Vérifiez votre boîte de réception d'ici quelques minutes.</p></form>
+    </section></div>
+  </section>
+
+  <section class="pl">
+    <h2 class="pl__t">Fiche · La visite à bord, ouverte en plein écran</h2>
+    <div class="tour" style="position:relative;display:block;width:100%;height:min(56.25vw,100svh);min-height:36rem">
+      <img class="tour__canvas" src="../../../../assets/visites/mistral-blanc/d/f0161.webp" alt="" style="object-fit:cover">
+      <div class="tour__veil"></div>
+      <div class="tour__bar"><span style="transform:scaleX(.4)"></span></div>
+      <div class="tour__head"><p class="tour__name">Mistral Blanc <span>Visite à bord</span></p><button class="tour__close" type="button">Fermer</button></div>
+      <p class="tour__hint">Molette, doigt ou flèches</p>
+      <div class="tour__room"><p class="tour__count">03 / 06</p><p class="tour__title">Le salon</p></div>
+      <nav class="tour__route"><ol><li><button><span>À quai, Port Hercule</span></button></li><li><button><span>Le pont arrière</span></button></li><li><button aria-current="step"><span>Le salon</span></button></li><li><button><span>L'escalier</span></button></li><li><button><span>Le pont soleil</span></button></li><li><button><span>Face à Monaco</span></button></li></ol></nav>
+    </div>
+  </section>
+
+  <section class="pl">
+    <h2 class="pl__t">Fiche · La visionneuse photo</h2>
+    <div class="fi-lightbox" style="position:relative;display:grid;grid-template-rows:1fr auto;width:100%;height:min(56.25vw,100svh);min-height:34rem">
+      <figure style="overflow:hidden"><img src="../../../../assets/img/galerie/mistral-blanc-salon-1600.webp" alt="Le grand salon de Mistral Blanc" style="width:100%;height:100%;object-fit:contain"></figure>
+      <div class="fi-lightbox__bar"><p>Le grand salon de Mistral Blanc&#8239;: laque blanche, cuir ivoire et or pâle, face au port de Monaco</p><span>02 / 05</span><button type="button" aria-label="Photo précédente">←</button><button type="button" aria-label="Photo suivante">→</button></div>
+      <button class="fi-lightbox__close" type="button">Fermer</button>
+    </div>
+  </section>
+
+  <section class="pl">
+    <h2 class="pl__t">Fiche · Barre du bas sur téléphone</h2>
+    <p class="pl__d">Sous 1100 px, la colonne « En bref » laisse place à cette barre, qui apparaît après l'ouverture.</p>
+    <div class="pl__grille pl__grille--2">
+      <div class="pl__case"><p class="pl__nom">À louer</p><div class="fi-bar is-on" style="position:relative;display:flex"><p>Mistral Blanc<small>La semaine dès 185 000 €</small></p><a class="btn btn--light" href="#">Réserver</a></div></div>
+      <div class="pl__case"><p class="pl__nom">À vendre</p><div class="fi-bar is-on" style="position:relative;display:flex"><p>Castellane<small>34 500 000 €</small></p><a class="btn btn--light" href="#">Demander le dossier</a></div></div>
+    </div>
+  </section>
+
+  <!-- 6. Pastille de démonstration -->
+  <section class="pl" style="padding-bottom:8rem">
+    <h2 class="pl__t">Toutes les pages · Pastille de démonstration</h2>
+    <p class="pl__d">Visible seulement en mode démonstration (avec), absente sur le site d'un vrai client (sans). Rien d'autre ne change.</p>
+    <div class="pl__grille pl__grille--2">
+      <div class="pl__case" style="height:9rem;background:var(--pin)"><p class="pl__nom" style="padding:1rem">Avec</p><a class="demo-pill" style="position:absolute" href="#"><span class="demo-pill__dot" aria-hidden="true"></span>Projet de démonstration<span class="demo-pill__by"> · SudWebProject</span></a></div>
+      <div class="pl__case" style="height:9rem;background:var(--pin)"><p class="pl__nom" style="padding:1rem">Sans</p></div>
+    </div>
+  </section>
+</body>
+</html>

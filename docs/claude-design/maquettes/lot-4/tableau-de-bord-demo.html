@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maquette · 4 · Tableau de bord</title>
+  <script>if(/propre/.test(location.search))document.documentElement.classList.add("sans-notes")</script>
+  <link rel="stylesheet" href="../../../../css/fonts.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/compte.css">
+  <link rel="stylesheet" href="../../../../css/flotte.css">
+  <link rel="stylesheet" href="../ajouts.css">
+  <link rel="stylesheet" href="../espaces.css">
+  <link rel="stylesheet" href="../maquette.css">
+</head>
+<body class="clair">
+<p class="bandeau-demo" data-mvp="Mode démonstration : lecture seule, noms masqués">Démonstration en lecture seule&#8239;: les données des clients sont masquées</p><div class="dir2">
+  <aside class="lat" aria-label="Navigation de la direction">
+    <a class="brand" href="tableau-de-bord.html"><svg class="brand__rose" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1v30M1 16h30M5.4 5.4l21.2 21.2M26.6 5.4L5.4 26.6"/><circle cx="16" cy="16" r="6.5"/></svg><span>Portolan<small>Direction</small></span></a>
+    <nav><a href="tableau-de-bord.html" aria-current="page"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">01</span>Tableau de bord</a><a href="reservations.html"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">02</span>Réservations<span class="compteur">3</span></a><a href="calendrier.html"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">03</span>Calendrier</a><a href="demandes.html"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">04</span>Demandes<span class="compteur">5</span></a><a href="clients.html"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">05</span>Clients</a><a href="yachts.html"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">06</span>Yachts</a><a href="reglages.html"><span style="font-size:.7rem;color:var(--laiton);letter-spacing:.1em;width:1.2rem">07</span>Réglages</a></nav>
+    <div class="lat__pied"><b>Hélène Marchetti</b><span class="second" style="color:var(--brume)">Directrice</span><a href="#">Voir le site</a><a href="connexion.html">Se déconnecter</a></div>
+  </aside>
+  <div>
+    <header class="haut"><h1>Tableau de bord</h1>
+      <div class="recherche"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg><input placeholder="Rechercher : PTL-, client, e-mail, yacht" aria-label="Recherche globale"><kbd>/</kbd></div>
+      <button class="btn btn--plein btn--petit" type="button">+ Nouveau</button>
+    </header>
+    <div class="contenu">
+      <p style="display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem 1.5rem;margin-bottom:1.5rem"><span class="titre-s">Bonjour Hélène</span><span class="second">Dimanche 4 octobre 2026 · Saison 2027 · J&#8209;209 avant l'ouverture</span></p>
+      <div class="kpis">
+        <div class="kpi2"><span class="etiq">Encaissé</span><strong>1&#8239;284&#8239;500&nbsp;€</strong><small>Acomptes et soldes reçus</small></div>
+        <div class="kpi2"><span class="etiq">À encaisser</span><strong>2&#8239;016&#8239;000&nbsp;€</strong><small>Soldes et APA à venir, acomptes attendus</small></div>
+        <div class="kpi2 kpi2--alerte"><span class="etiq">Demandes à traiter</span><strong>3</strong><small>Dont 1 depuis plus de 24&nbsp;h</small></div>
+        <div class="kpi2"><span class="etiq">Occupation de la saison</span><strong>46&nbsp;%</strong><small>Nuits réservées sur nuits ouvertes</small></div>
+        <div class="kpi2"><span class="etiq">Nouveaux clients</span><strong>7</strong><small>Ce mois-ci</small></div>
+      </div>
+      <div class="grille-d grille-d--2">
+        <section class="bloc-d"><div class="bloc-d__tete"><h2>À traiter maintenant</h2><a class="lien lien--discret" href="reservations.html" style="font-size:var(--t-xs)">Tout voir</a></div><div class="bloc-d__corps">
+          <div class="tache"><span class="tache__type">01</span><p><b>Demande PTL-00061 · <em>Tramontane</em>, 2 → 6 juin · C. D.</b><span>Reçue il y a 3&nbsp;h · expire dans 45&nbsp;h</span></p><span class="tache__act"><button aria-disabled="true" title="Lecture seule en démonstration" class="btn btn--plein btn--petit">Valider</button><button aria-disabled="true" title="Lecture seule en démonstration" class="btn btn--filet btn--petit">Refuser</button></span></div>
+          <div class="tache"><span class="tache__type tache__type--alerte">02</span><p><b>Acompte attendu PTL-00057 · <em>Solenne</em> · 20&#8239;570&nbsp;€</b><span>Échéance dans 71&nbsp;h</span></p><span class="tache__act"><button aria-disabled="true" title="Lecture seule en démonstration" class="btn btn--filet btn--petit">Relancer</button></span></div>
+          <div class="tache"><span class="tache__type">03</span><p><b>Virement reçu à rapprocher · 64&#8239;500&nbsp;€</b><span>Référence bancaire incomplète</span></p><span class="tache__act"><button aria-disabled="true" title="Lecture seule en démonstration" class="btn btn--filet btn--petit">Voir</button></span></div>
+          <div class="tache"><span class="tache__type">04</span><p><b>Demande de dossier · <em>Castellane</em> · M. W.</b><span>Il y a 1 jour</span></p><span class="tache__act"><button aria-disabled="true" title="Lecture seule en démonstration" class="btn btn--filet btn--petit">Ouvrir</button></span></div>
+        </div></section>
+        <section class="bloc-d"><div class="bloc-d__tete"><h2>Prochains embarquements</h2></div><div class="bloc-d__corps" style="padding-top:0">
+          <table class="tab tab--mobile"><tbody>
+            <tr><td>2 juin</td><td class="serif"><em>Tramontane</em></td><td class="cache-m">C. D.</td><td class="cache-m">Saint&#8209;Tropez, 16:00</td><td><span class="badge badge--attente">En attente</span></td></tr>
+            <tr><td>12 juin</td><td class="serif"><em>Camarat</em></td><td class="cache-m">M. Rossi</td><td class="cache-m">Saint&#8209;Tropez, 12:00</td><td><span class="badge badge--soldee">Soldée</span></td></tr>
+            <tr><td>19 juin</td><td class="serif"><em>Solenne</em></td><td class="cache-m">J. Hartmann</td><td class="cache-m">Cannes, 11:00</td><td><span class="badge badge--retard">Solde en retard</span></td></tr>
+            <tr><td>3 juil.</td><td class="serif"><em>Mistral Blanc</em></td><td class="cache-m">A. Laurent</td><td class="cache-m">Monaco, 12:00</td><td><span class="badge badge--confirmee">Confirmée</span></td></tr>
+            <tr><td>10 juil.</td><td class="serif"><em>Mistral Blanc</em></td><td class="cache-m">C. D.</td><td class="cache-m">Monaco, 12:00</td><td><span class="badge badge--confirmee">Confirmée</span></td></tr>
+          </tbody></table></div></section>
+      </div>
+      <div class="grille-d grille-d--2">
+        <section class="bloc-d"><div class="bloc-d__tete"><h2>Occupation par yacht</h2><span class="second" style="font-size:var(--t-xs)">Nuits réservées / nuits de saison</span></div><div class="bloc-d__corps">
+          <div class="barre-occ"><span><em>Camarat</em></span><i style="--v:58%"></i><b>58&nbsp;%</b></div>
+          <div class="barre-occ"><span><em>Mistral Blanc</em></span><i style="--v:62%"></i><b>62&nbsp;%</b></div>
+          <div class="barre-occ"><span><em>Solenne</em></span><i style="--v:31%"></i><b>31&nbsp;%</b></div>
+          <div class="barre-occ"><span><em>Tramontane</em></span><i style="--v:34%"></i><b>34&nbsp;%</b></div>
+        </div></section>
+        <section class="bloc-d"><div class="bloc-d__tete"><h2>Chiffre d'affaires par mois</h2><span class="second" style="font-size:var(--t-xs)">Saison 2027, en k€</span></div><div class="bloc-d__corps">
+          <div class="histo" role="img" aria-label="Mai 180 confirmés, juin 420 dont 120 en attente, juillet 860, août 920, septembre 310, octobre 60">
+            <div><b>180</b><span class="pile"><i style="height:2.3rem"></i></span>Mai</div>
+            <div><b>420</b><span class="pile"><i style="height:3.9rem"></i><i style="height:1.5rem"></i></span>Juin</div>
+            <div><b>860</b><span class="pile"><i style="height:9.5rem"></i><i style="height:1.4rem"></i></span>Juil.</div>
+            <div><b>920</b><span class="pile"><i style="height:10.3rem"></i><i style="height:1.3rem"></i></span>Août</div>
+            <div><b>310</b><span class="pile"><i style="height:2.8rem"></i><i style="height:1.2rem"></i></span>Sept.</div>
+            <div><b>60</b><span class="pile"><i style="height:.8rem"></i></span>Oct.</div>
+          </div>
+          <p class="legende-d"><span>Confirmé</span><span>En attente</span></p>
+        </div></section>
+      </div>
+    </div>
+  </div>
+</div>
+<nav class="nav-bas" aria-label="Navigation"><a href="tableau-de-bord.html" aria-current="page"><span style="font-size:.7rem;color:var(--laiton)">01</span>Tableau</a><a href="reservations.html"><span style="font-size:.7rem;color:var(--laiton)">02</span>Réservations</a><a href="calendrier.html"><span style="font-size:.7rem;color:var(--laiton)">03</span>Calendrier</a><a href="#"><span style="font-size:.7rem;color:var(--laiton)">04</span>Plus</a></nav>
+</body>
+</html>

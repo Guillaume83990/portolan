@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maquette · 3.2 Détail d'une réservation</title>
+  <script>if(/propre/.test(location.search))document.documentElement.classList.add("sans-notes")</script>
+  <link rel="stylesheet" href="../../../../css/fonts.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/compte.css">
+  <link rel="stylesheet" href="../../../../css/flotte.css">
+  <link rel="stylesheet" href="../ajouts.css">
+  <link rel="stylesheet" href="../espaces.css">
+  <link rel="stylesheet" href="../maquette.css">
+</head>
+<body class="clair">
+  <header class="header is-solid">
+    <a class="brand" href="#" aria-label="Portolan, accueil"><svg class="brand__rose" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1v30M1 16h30M5.4 5.4l21.2 21.2M26.6 5.4L5.4 26.6"/><circle cx="16" cy="16" r="6.5"/></svg><span>Portolan</span></a>
+    <nav class="header__nav" aria-label="Navigation principale"><a href="#">La flotte</a><a href="#">Acheter</a><a href="#">Louer</a><a href="#">Méthode</a><a href="#">Nos eaux</a><a href="#">Contact</a></nav>
+    <a class="compte-lien is-connecte" href="#" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20.5c1.2-3.6 4-5.4 7.5-5.4s6.3 1.8 7.5 5.4"/></svg><span>Mon espace</span></a>
+    <div class="lang"><button class="lang__current" type="button"><span class="visually-hidden">Langue : </span>FR</button></div>
+  </header>
+  <main>
+    <section class="det-hero" style="margin-top:var(--header-h)">
+      <img src="../../../../assets/img/flotte/mistral-blanc-1600.webp" alt="">
+      <p style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap"><span class="badge badge--confirmee">Confirmée</span><span style="font-size:var(--t-xs);letter-spacing:.14em">PTL-00042</span></p>
+      <h1 class="det-hero__nom">Mistral Blanc</h1>
+      <p style="font-size:var(--t-l);font-weight:300;margin-top:.5rem">Du samedi 10 au samedi 17 juillet 2027</p>
+    </section>
+    <div class="det">
+      <aside>
+        <p class="etiq" style="margin-bottom:1.25rem"><a class="lien lien--discret" href="reservations.html">← Mes réservations</a></p>
+        <ol class="frise frise--verticale">
+          <li class="is-fait"><strong>Demande envoyée</strong><span>3 oct. 2026, 14:12</span></li>
+          <li class="is-fait"><strong>Validée par Hélène</strong><span>4 oct. 2026, 09:30</span></li>
+          <li class="is-fait"><strong>Acompte reçu (carte)</strong><span>5 oct. 2026, 11:02 · 107&#8239;500&nbsp;€</span></li>
+          <li class="is-courant" aria-current="step"><strong>Solde et APA</strong><span>À régler avant le 10 juin 2027 · 172&#8239;000&nbsp;€</span><span>Rappel automatique le 10 mai</span></li>
+          <li><strong>Embarquement</strong><span>Sam. 10 juillet 2027, 12:00, Monaco</span></li>
+        </ol>
+      </aside>
+      <div>
+        <section><h2>Votre croisière</h2>
+          <dl class="paires"><div><dt>Embarquement</dt><dd>Sam. 10 juillet 2027, 12:00, Monaco</dd></div><div><dt>Débarquement</dt><dd>Sam. 17 juillet 2027, Monaco</dd></div><div><dt>Invités</dt><dd>10</dd></div><div><dt>Vos souhaits</dt><dd>Une escale à Portofino, un dîner d'anniversaire le 14 au soir, pas de fruits à coque à bord.</dd></div></dl>
+          <div class="mot" style="margin-top:1.25rem"><p>«&#8239;Le capitaine valide Portofino le 13. J'ai transmis pour les fruits à coque.&#8239;»</p><footer>Hélène, le 5 octobre</footer></div>
+        </section>
+        <section><h2>Paiements</h2>
+          <div style="overflow-x:auto"><table class="tab tab--mobile"><thead><tr><th>Échéance</th><th class="nb">Montant</th><th>Statut</th><th>Moyen</th><th>Date</th></tr></thead><tbody>
+            <tr><td>Acompte (50&nbsp;%)</td><td class="nb">107&#8239;500&nbsp;€</td><td><span class="badge badge--soldee">Payé</span></td><td class="cache-m">Carte</td><td class="cache-m">5 oct. 2026</td></tr>
+            <tr><td>Solde</td><td class="nb">107&#8239;500&nbsp;€</td><td><span class="badge badge--neutre">À venir</span></td><td class="cache-m">—</td><td class="cache-m">Avant le 10 juin 2027</td></tr>
+            <tr><td>Avance sur frais (APA, 30&nbsp;%)</td><td class="nb">64&#8239;500&nbsp;€</td><td><span class="badge badge--neutre">À venir</span></td><td class="cache-m">—</td><td class="cache-m">Avant le 10 juin 2027</td></tr>
+          </tbody></table></div>
+          <p style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;margin-top:1rem;font-size:var(--t-s)"><span>Total réglé <strong class="chiffre-c" style="font-size:1.3rem">107&#8239;500&nbsp;€</strong> <span class="second">sur 279&#8239;500&nbsp;€</span></span><span class="second" data-mvp="Le bouton « Régler le solde » apparaît à partir du 10 mai">Le règlement du solde ouvre le 10 mai 2027.</span></p>
+        </section>
+        <section><h2>Documents</h2>
+          <div class="doc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2.5h8l4 4v15H6z"/><path d="M14 2.5v4h4"/><path d="M9 13h6M9 16h6M9 10h3"/></svg><p class="doc__nom"><b>Contrat de location PTL-00042</b><span>PDF · 5 oct. 2026 · 412 Ko</span></p><a class="btn btn--filet btn--petit" href="#">Télécharger</a></div>
+          <div class="doc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2.5h8l4 4v15H6z"/><path d="M14 2.5v4h4"/><path d="M9 13h6M9 16h6M9 10h3"/></svg><p class="doc__nom"><b>Facture d'acompte F-2026-0031</b><span>PDF · 5 oct. 2026 · 96 Ko</span></p><a class="btn btn--filet btn--petit" href="#">Télécharger</a></div>
+        </section>
+        <section><h2>Annulation</h2>
+          <p class="bandeau-info">Votre contrat est signé et l'acompte versé&#8239;: les conditions d'annulation du contrat MYBA s'appliquent. Parlez-en d'abord à votre courtier. <a class="lien" href="#">Conditions générales</a></p>
+          <p style="margin-top:1.5rem"><a class="lien" href="mailto:helene@portolan.example?subject=PTL-00042">Une question sur cette réservation&#8239;? Écrire à Hélène</a></p>
+        </section>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <p class="footer__mark" aria-hidden="true">Portolan</p>
+    <div class="footer__row"><p>Portolan, courtier en yachts, Saint&#8209;Tropez et Monaco.</p><p class="footer__credit">Site de démonstration conçu par <a href="https://www.sudwebproject.com/">SudWebProject</a>. Société, yachts, numéros et témoignage fictifs.</p></div>
+    <nav class="footer__legal" aria-label="Informations légales"><a href="#">Mentions légales</a><a href="#">Confidentialité et cookies</a><a href="#">Conditions générales</a></nav>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maquette · 3.4 Mon compte</title>
+  <script>if(/propre/.test(location.search))document.documentElement.classList.add("sans-notes")</script>
+  <link rel="stylesheet" href="../../../../css/fonts.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/compte.css">
+  <link rel="stylesheet" href="../../../../css/flotte.css">
+  <link rel="stylesheet" href="../ajouts.css">
+  <link rel="stylesheet" href="../espaces.css">
+  <link rel="stylesheet" href="../maquette.css">
+</head>
+<body class="clair">
+  <header class="header is-solid">
+    <a class="brand" href="#" aria-label="Portolan, accueil"><svg class="brand__rose" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1v30M1 16h30M5.4 5.4l21.2 21.2M26.6 5.4L5.4 26.6"/><circle cx="16" cy="16" r="6.5"/></svg><span>Portolan</span></a>
+    <nav class="header__nav" aria-label="Navigation principale"><a href="#">La flotte</a><a href="#">Acheter</a><a href="#">Louer</a><a href="#">Méthode</a><a href="#">Nos eaux</a><a href="#">Contact</a></nav>
+    <a class="compte-lien is-connecte" href="#" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20.5c1.2-3.6 4-5.4 7.5-5.4s6.3 1.8 7.5 5.4"/></svg><span>Mon espace</span></a>
+    <div class="lang"><button class="lang__current" type="button"><span class="visually-hidden">Langue : </span>FR</button></div>
+  </header>
+  <main class="esp">
+    <p class="esp__bonjour">Bonjour Charlotte</p>
+    <p class="esp__sous">Vos croisières, vos documents, votre courtier.</p>
+    <nav class="onglets" aria-label="Mon espace"><a href="reservations.html">Mes réservations</a><a href="documents.html">Mes documents</a><a href="compte.html" aria-current="page">Mon compte</a></nav>
+    <div class="esp__grille">
+      <div><section class="compte-sec" style="border-top:0;padding-top:0"><div><h2>Coordonnées</h2></div><div class="champs champs--2">
+        <div class="champ"><label>Prénom</label><input value="Charlotte"></div><div class="champ"><label>Nom</label><input value="Delaunay"></div>
+        <div class="champ"><label>Téléphone</label><input value="+33 6 12 34 56 78"></div>
+        <div class="champ"><label>Langue de correspondance</label><select><option>Français</option><option>English</option><option>Deutsch</option><option>Italiano</option></select><p class="champ__aide">Vos e-mails, contrats et factures seront rédigés dans cette langue.</p></div>
+        <p><button class="btn btn--plein btn--petit">Enregistrer</button></p></div></section>
+      <section class="compte-sec"><div><h2>Adresse de facturation</h2><p>Facultative, reprise sur vos factures.</p></div><div class="champs champs--2">
+        <div class="champ champ--large"><label>Société <small>(facultatif)</small></label><input></div>
+        <div class="champ champ--large"><label>Adresse</label><input value="18 avenue Montaigne"></div>
+        <div class="champ"><label>Code postal</label><input value="75008"></div><div class="champ"><label>Ville</label><input value="Paris"></div>
+        <div class="champ"><label>Pays</label><select><option>France</option></select></div><div class="champ"><label>N° de TVA <small>(facultatif)</small></label><input></div>
+        <p><button class="btn btn--plein btn--petit">Enregistrer</button></p></div></section>
+      <section class="compte-sec"><div><h2>E-mail de connexion</h2></div><div style="display:grid;gap:1rem;max-width:44rem">
+        <p>charlotte@exemple.com <button class="lien" style="margin-left:1rem">Changer d'adresse</button></p>
+        <div class="champs champs--2" data-mvp="Après « Changer d'adresse »"><div class="champ"><label>Nouvelle adresse</label><input value="c.delaunay@exemple.com"></div><p style="align-self:end"><button class="btn btn--plein btn--petit">Envoyer le lien</button></p></div>
+        <p class="note">Un lien de confirmation vient de partir à la nouvelle adresse. Votre adresse actuelle reste active en attendant.</p></div></section>
+      <section class="compte-sec"><div><h2>Mot de passe</h2></div><div class="champs champs--3">
+        <div class="champ"><label>Mot de passe actuel</label><input type="password" value="xxxxxxxxxx"></div><div class="champ"><label>Nouveau</label><input type="password" value="xxxxxxxxxxxx"><p class="champ__aide">10 caractères au moins.</p></div><div class="champ"><label>Confirmation</label><input type="password" value="xxxxxxxxx" aria-invalid="true"><p class="champ__erreur">Les deux mots de passe ne correspondent pas.</p></div>
+        <p><button class="btn btn--plein btn--petit is-envoi" disabled>Changer le mot de passe</button></p></div></section>
+      <section class="compte-sec"><div><h2>Session</h2></div><p><button class="btn btn--filet btn--petit">Se déconnecter</button></p></section>
+      <section class="compte-sec zone-sensible"><div><h2>Supprimer mon compte</h2></div><div style="display:grid;gap:.75rem;max-width:44rem"><p class="second" style="font-size:var(--t-s)">Vos données personnelles seront effacées. Les réservations et factures passées sont conservées de façon anonyme, comme la loi l'exige.</p><p><button class="btn btn--danger btn--petit">Supprimer mon compte</button></p></div></section></div>
+      <aside class="esp__cote carte courtier" aria-label="Votre courtier">
+        <p class="etiq">Votre courtier</p>
+        <div class="courtier__id"><span class="courtier__photo" style="display:grid;place-items:center;font-family:var(--serif);font-size:1.4rem;color:var(--calcaire)" data-mvp="Photo d'Hélène à fournir">HM</span><div><p class="courtier__nom">Hélène Marchetti</p><p class="second" style="font-size:var(--t-s)">Courtière, bureau de Monaco</p></div></div>
+        <div class="courtier__actions"><a class="btn btn--plein btn--petit" href="tel:+37793000000">Appeler</a><a class="btn btn--filet btn--petit" href="#">WhatsApp</a><a class="btn btn--filet btn--petit" href="mailto:helene@portolan.example">Écrire</a></div>
+        <p class="second" style="font-size:var(--t-xs)">Réponse sous 24&nbsp;heures, week&#8209;end compris.</p>
+      </aside>
+    </div>
+  </main>
+  <footer class="footer">
+    <p class="footer__mark" aria-hidden="true">Portolan</p>
+    <div class="footer__row"><p>Portolan, courtier en yachts, Saint&#8209;Tropez et Monaco.</p><p class="footer__credit">Site de démonstration conçu par <a href="https://www.sudwebproject.com/">SudWebProject</a>. Société, yachts, numéros et témoignage fictifs.</p></div>
+    <nav class="footer__legal" aria-label="Informations légales"><a href="#">Mentions légales</a><a href="#">Confidentialité et cookies</a><a href="#">Conditions générales</a></nav>
+  </footer>
+</body>
+</html>

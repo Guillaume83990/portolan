@@ -7,3 +7,10 @@ node_modules/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Kit Claude Design : copies des images du site et captures, régénérables
+docs/claude-design/kit/
+docs/claude-design/kit-portolan.zip
+
+# Fichiers de vérification des maquettes
+docs/claude-design/maquettes/_tmp/

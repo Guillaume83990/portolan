@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maquette · 2.1 Module de réservation</title>
+  <script>if(/propre/.test(location.search))document.documentElement.classList.add("sans-notes")</script>
+  <link rel="stylesheet" href="../../../../css/fonts.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/compte.css">
+  <link rel="stylesheet" href="../../../../css/flotte.css">
+  <link rel="stylesheet" href="../ajouts.css">
+  <link rel="stylesheet" href="../espaces.css">
+  <link rel="stylesheet" href="../maquette.css">
+</head>
+<body>
+  <header class="header is-solid">
+    <a class="brand" href="#" aria-label="Portolan, accueil"><svg class="brand__rose" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1v30M1 16h30M5.4 5.4l21.2 21.2M26.6 5.4L5.4 26.6"/><circle cx="16" cy="16" r="6.5"/></svg><span>Portolan</span></a>
+    <nav class="header__nav" aria-label="Navigation principale"><a href="#">La flotte</a><a href="#">Acheter</a><a href="#">Louer</a><a href="#">Méthode</a><a href="#">Nos eaux</a><a href="#">Contact</a></nav>
+    <a class="compte-lien" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20.5c1.2-3.6 4-5.4 7.5-5.4s6.3 1.8 7.5 5.4"/></svg><span>Mon espace</span></a>
+    <div class="lang"><button class="lang__current" type="button"><span class="visually-hidden">Langue : </span>FR</button></div>
+  </header>
+  <main style="padding-top:var(--header-h)">
+<section class="fi-charter" id="disponibilites" aria-labelledby="charter-title" style="padding:clamp(4rem,8vw,6rem) var(--gutter)">
+      <div class="fi-section-head"><p class="kicker">Location avec équipage</p><h2 id="charter-title" class="section-title">Réserver en ligne</h2></div>
+      <dl class="fi-rates">
+            <div><dt>Basse saison</dt><dd>185&#8239;000&nbsp;€<small> la semaine</small></dd></div>
+            <div><dt>Haute saison, du 3 juillet au 4 septembre</dt><dd>215&#8239;000&nbsp;€<small> la semaine</small></dd></div>
+          </dl>
+      <div class="resa2">
+        <div class="resa2__etapes">
+          <div class="resa2__etape is-faite"><p class="resa__etape"><span class="resa__num">01</span><span>Choisissez vos dates</span></p><div class="resa2__mois-nav"><button type="button" aria-label="Mois précédent">←</button><button type="button" aria-label="Mois suivant">→</button><span class="resa__live">Disponibilités mises à jour en direct</span></div>
+            <div class="resa__mois" role="group" aria-label="Calendrier de la saison 2027"><div class="resa__m"><h3>Juillet 2027</h3><ol class="resa__jours"><li class="dow" aria-hidden="true">L</li><li class="dow" aria-hidden="true">M</li><li class="dow" aria-hidden="true">M</li><li class="dow" aria-hidden="true">J</li><li class="dow" aria-hidden="true">V</li><li class="dow" aria-hidden="true">S</li><li class="dow" aria-hidden="true">D</li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li><button type="button" class="jour">1</button></li><li><button type="button" class="jour">2</button></li><li><button type="button" class="jour is-haute is-pris">3</button></li><li><button type="button" class="jour is-haute is-pris">4</button></li><li><button type="button" class="jour is-haute is-pris">5</button></li><li><button type="button" class="jour is-haute is-pris">6</button></li><li><button type="button" class="jour is-haute is-pris">7</button></li><li><button type="button" class="jour is-haute is-pris">8</button></li><li><button type="button" class="jour is-haute is-pris">9</button></li><li><button type="button" class="jour is-haute is-debut">10</button></li><li><button type="button" class="jour is-haute is-plage">11</button></li><li><button type="button" class="jour is-haute is-plage">12</button></li><li><button type="button" class="jour is-haute is-plage">13</button></li><li><button type="button" class="jour is-haute is-plage">14</button></li><li><button type="button" class="jour is-haute is-plage">15</button></li><li><button type="button" class="jour is-haute is-plage">16</button></li><li><button type="button" class="jour is-haute is-fin">17</button></li><li><button type="button" class="jour is-haute">18</button></li><li><button type="button" class="jour is-haute">19</button></li><li><button type="button" class="jour is-haute">20</button></li><li><button type="button" class="jour is-haute">21</button></li><li><button type="button" class="jour is-haute">22</button></li><li><button type="button" class="jour is-haute">23</button></li><li><button type="button" class="jour is-haute is-option">24</button></li><li><button type="button" class="jour is-haute is-option">25</button></li><li><button type="button" class="jour is-haute is-option">26</button></li><li><button type="button" class="jour is-haute is-option">27</button></li><li><button type="button" class="jour is-haute is-option">28</button></li><li><button type="button" class="jour is-haute is-option">29</button></li><li><button type="button" class="jour is-haute is-option">30</button></li><li><button type="button" class="jour is-haute is-option">31</button></li></ol></div><div class="resa__m"><h3>Août 2027</h3><ol class="resa__jours"><li class="dow" aria-hidden="true">L</li><li class="dow" aria-hidden="true">M</li><li class="dow" aria-hidden="true">M</li><li class="dow" aria-hidden="true">J</li><li class="dow" aria-hidden="true">V</li><li class="dow" aria-hidden="true">S</li><li class="dow" aria-hidden="true">D</li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li><button type="button" class="jour is-haute is-pris">1</button></li><li><button type="button" class="jour is-haute is-pris">2</button></li><li><button type="button" class="jour is-haute is-pris">3</button></li><li><button type="button" class="jour is-haute is-pris">4</button></li><li><button type="button" class="jour is-haute is-pris">5</button></li><li><button type="button" class="jour is-haute is-pris">6</button></li><li><button type="button" class="jour is-haute is-pris">7</button></li><li><button type="button" class="jour is-haute is-pris">8</button></li><li><button type="button" class="jour is-haute is-pris">9</button></li><li><button type="button" class="jour is-haute is-pris">10</button></li><li><button type="button" class="jour is-haute is-pris">11</button></li><li><button type="button" class="jour is-haute is-pris">12</button></li><li><button type="button" class="jour is-haute is-pris">13</button></li><li><button type="button" class="jour is-haute is-pris">14</button></li><li><button type="button" class="jour is-haute is-pris">15</button></li><li><button type="button" class="jour is-haute is-pris">16</button></li><li><button type="button" class="jour is-haute is-pris">17</button></li><li><button type="button" class="jour is-haute is-pris">18</button></li><li><button type="button" class="jour is-haute is-pris">19</button></li><li><button type="button" class="jour is-haute is-pris">20</button></li><li><button type="button" class="jour is-haute">21</button></li><li><button type="button" class="jour is-haute">22</button></li><li><button type="button" class="jour is-haute">23</button></li><li><button type="button" class="jour is-haute">24</button></li><li><button type="button" class="jour is-haute">25</button></li><li><button type="button" class="jour is-haute">26</button></li><li><button type="button" class="jour is-haute">27</button></li><li><button type="button" class="jour is-haute is-option">28</button></li><li><button type="button" class="jour is-haute is-option">29</button></li><li><button type="button" class="jour is-haute is-option">30</button></li><li><button type="button" class="jour is-haute is-option">31</button></li></ol></div></div>
+            <p class="resa__legende"><span class="l-libre">Disponible</span><span class="l-option">En option</span><span class="l-pris">Réservé</span><span class="l-haute">Haute saison</span><span class="l-choix">Votre séjour</span></p>
+            <p class="resa__aide" role="status">Du sam. 10 au sam. 17 juillet · 7 nuits. Vous pouvez encore changer vos dates.</p></div>
+          <div class="resa2__etape is-faite"><p class="resa__etape"><span class="resa__num">02</span><span>Votre embarquement</span></p><div class="champs champs--3">
+              <div class="champ"><label for="h">Heure d'embarquement</label><select id="h"><option>10:00</option><option>10:30</option><option>11:00</option><option>11:30</option><option selected>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option><option>14:00</option><option>14:30</option><option>15:00</option><option>15:30</option><option>16:00</option><option>16:30</option><option>17:00</option><option>17:30</option><option>18:00</option></select></div>
+              <div class="champ"><label for="p">Port d'embarquement</label><select id="p"><option>Monaco, port d'attache</option><option>Saint-Tropez</option><option>Cannes</option><option>Saint-Raphaël</option></select></div>
+              <div class="champ"><span class="champ__label">Invités</span><div class="compteur-inv"><button type="button" aria-label="Un invité de moins">−</button><output>10</output><button type="button" aria-label="Un invité de plus">+</button></div></div>
+              <div class="champ champ--large"><label for="s">Vos souhaits <small>(facultatif)</small></label><textarea id="s" rows="3" maxlength="2000">Une escale à Portofino, un dîner d'anniversaire le 14 au soir, pas de fruits à coque à bord.</textarea><p class="resa2__compte">108 / 2&#8239;000</p></div>
+            </div></div>
+          <div class="resa2__etape"><p class="resa__etape"><span class="resa__num">03</span><span>Récapitulatif et conditions</span></p><div class="resa__resume" style="margin-bottom:1.25rem"><p class="resa__dates">Du samedi 10 au samedi 17 juillet 2027 · 7 nuits</p><p class="resa__nuits">Mistral Blanc · embarquement 12:00, Monaco · 10 invités</p></div>
+            <label class="lead__consent"><input type="checkbox" checked> <span>J'ai lu et j'accepte le <a href="#" style="color:var(--laiton)">contrat de location</a> et les <a href="#" style="color:var(--laiton)">conditions générales</a>.</span></label>
+            <p class="robot is-ok" style="margin-top:1rem">Vérification de sécurité automatique, rien à faire de votre part.</p>
+            <div class="resa__envoi" style="margin-top:1.5rem"><button class="btn btn--light" type="button">Envoyer ma demande</button></div>
+            <p class="resa2__mention" style="margin-top:1rem;max-width:52ch">Rien n'est débité maintenant. Votre courtier confirme sous 24&nbsp;heures, puis vous recevez un lien pour régler l'acompte. Vos dates sont réservées pour vous pendant ce temps.</p></div>
+        </div>
+        <details class="resa2__cote" open>
+          <summary><span>Votre séjour · 10 → 17 juil.</span><b>279&#8239;500&nbsp;€</b></summary>
+          <p class="kicker" style="margin:0">Votre séjour</p>
+          <div class="resa__resume"><p class="resa__dates"><em>Mistral Blanc</em></p><p class="resa__nuits">Du samedi 10 au samedi 17 juillet 2027 · 7 nuits</p><p class="resa__nuits">Embarquement 12:00, Monaco · 10 invités</p></div>
+          <dl class="resa__prix"><div class="is-total"><dt>Location, équipage compris, 7 nuits en haute saison</dt><dd>215&#8239;000&nbsp;€</dd></div></dl><p class="tva" data-mvp="Montant de TVA provisoire, à valider avec l'expert-comptable">dont TVA&#8239;: montant provisoire</p>
+          <ul class="echeancier">
+              <li><span>Acompte de 50&nbsp;%</span><b>107&#8239;500&nbsp;€</b><small>À régler sous 72&nbsp;h après la validation par votre courtier</small></li>
+              <li><span>Solde de 50&nbsp;%</span><b>107&#8239;500&nbsp;€</b><small>Au plus tard le 10 juin 2027</small></li>
+              <li><span>Avance sur frais de croisière (APA), 30&nbsp;%</span><b>64&#8239;500&nbsp;€</b><small>Avec le solde. Carburant, vivres, ports&#8239;: le capitaine vous rend le reliquat en fin de croisière.</small></li>
+            </ul>
+          <p class="resa2__total"><span>Total</span><b>279&#8239;500&nbsp;€</b></p>
+        </details>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__mark" aria-hidden="true">Portolan</p>
+    <div class="footer__row"><p>Portolan, courtier en yachts, Saint&#8209;Tropez et Monaco.</p><p class="footer__credit">Site de démonstration conçu par <a href="https://www.sudwebproject.com/">SudWebProject</a>. Société, yachts, numéros et témoignage fictifs.</p></div>
+    <nav class="footer__legal" aria-label="Informations légales"><a href="#">Mentions légales</a><a href="#">Confidentialité et cookies</a><a href="#">Conditions générales</a></nav>
+  </footer>
+<script>if(matchMedia("(max-width: 999px)").matches)document.querySelectorAll("details.resa2__cote").forEach(d=>d.removeAttribute("open"))</script>
+</body>
+</html>

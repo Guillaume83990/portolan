@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maquette · 2.4 Personnalisation Stripe</title>
+  <script>if(/propre/.test(location.search))document.documentElement.classList.add("sans-notes")</script>
+  <link rel="stylesheet" href="../../../../css/fonts.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/compte.css">
+  <link rel="stylesheet" href="../../../../css/flotte.css">
+  <link rel="stylesheet" href="../ajouts.css">
+  <link rel="stylesheet" href="../espaces.css">
+  <link rel="stylesheet" href="../maquette.css">
+</head>
+<body class="clair">
+  <header class="header is-solid">
+    <a class="brand" href="#" aria-label="Portolan, accueil"><svg class="brand__rose" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1v30M1 16h30M5.4 5.4l21.2 21.2M26.6 5.4L5.4 26.6"/><circle cx="16" cy="16" r="6.5"/></svg><span>Portolan</span></a>
+    <nav class="header__nav" aria-label="Navigation principale"><a href="#">La flotte</a><a href="#">Acheter</a><a href="#">Louer</a><a href="#">Méthode</a><a href="#">Nos eaux</a><a href="#">Contact</a></nav>
+    <a class="compte-lien is-connecte" href="#" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20.5c1.2-3.6 4-5.4 7.5-5.4s6.3 1.8 7.5 5.4"/></svg><span>Mon espace</span></a>
+    <div class="lang"><button class="lang__current" type="button"><span class="visually-hidden">Langue : </span>FR</button></div>
+  </header>
+  <main class="esp" style="max-width:68rem">
+<p class="kicker">Lot 2 · Stripe Checkout</p><h1 class="esp__bonjour">Personnaliser la page de paiement</h1>
+    <p class="esp__sous" style="max-width:56ch">La page de paiement appartient à Stripe&#8239;: on ne la dessine pas. On règle seulement ce que Stripe permet, dans <b style="font-weight:500">Paramètres → Image de marque</b> du tableau de bord Stripe.</p>
+    <section class="panneau-c" style="margin-top:2rem"><dl class="paires">
+      <div><dt>Nom affiché</dt><dd>Portolan, courtier en yachts</dd></div>
+      <div><dt>Icône</dt><dd>La rose des vents en tuile (<code>logo-rose-des-vents.svg</code>, à exporter en PNG carré)</dd></div>
+      <div><dt>Logo</dt><dd>La rose + « Portolan » en Bodoni Moda, en calcaire, exporté en PNG sur fond transparent</dd></div>
+      <div><dt>Couleur de marque</dt><dd><span style="display:inline-block;width:1rem;height:1rem;background:#0B1513;vertical-align:-2px;margin-right:.5rem"></span>#0B1513 (abysse) : fond du bandeau de la marque</dd></div>
+      <div><dt>Couleur d’accent</dt><dd><span style="display:inline-block;width:1rem;height:1rem;background:#B39A62;vertical-align:-2px;margin-right:.5rem"></span>#B39A62 (laiton) : boutons et liens</dd></div>
+      <div><dt>Police</dt><dd>La sans-serif la plus sobre de la liste proposée par Stripe, au plus près de Hanken Grotesk (Bodoni Moda n’y est pas)</dd></div>
+      <div><dt>Forme des boutons</dt><dd>Arrondie, si l’option est proposée, pour rappeler les pilules du site</dd></div>
+      <div><dt>Retour</dt><dd>URL de succès&#8239;: <code>retour-verification</code> ; URL d’abandon&#8239;: <code>retour-echec</code></dd></div>
+    </dl></section>
+    <p class="second" style="font-size:var(--t-s);margin-top:1.5rem">Rien d’autre n’est modifiable sur cette page. Les libellés et la langue suivent la langue du client, transmise à Stripe à la création de la session.</p>
+  </main>
+  <footer class="footer">
+    <p class="footer__mark" aria-hidden="true">Portolan</p>
+    <div class="footer__row"><p>Portolan, courtier en yachts, Saint&#8209;Tropez et Monaco.</p><p class="footer__credit">Site de démonstration conçu par <a href="https://www.sudwebproject.com/">SudWebProject</a>. Société, yachts, numéros et témoignage fictifs.</p></div>
+    <nav class="footer__legal" aria-label="Informations légales"><a href="#">Mentions légales</a><a href="#">Confidentialité et cookies</a><a href="#">Conditions générales</a></nav>
+  </footer>
+</body>
+</html>
