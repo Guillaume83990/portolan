@@ -20,7 +20,8 @@ const ROUTES: Record<Langue, Record<string, string>> = {
   de: { flotte: 'flotte', acheter: 'kaufen', louer: 'chartern', methode: 'methode', eaux: 'reviere', contact: 'kontakt', mentions: 'impressum', confidentialite: 'datenschutz', conditions: 'agb' },
   it: { flotte: 'flotta', acheter: 'acquistare', louer: 'noleggio', methode: 'metodo', eaux: 'le-nostre-acque', contact: 'contatti', mentions: 'note-legali', confidentialite: 'privacy', conditions: 'condizioni' },
 };
-const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://portolan.sudwebproject.com';
+// Les pages vitrines sont servies par l'application (méthode hybride) : liens vers sa propre adresse (absolue, pour les e-mails)
+const SITE = process.env.NEXT_PUBLIC_APP_URL ?? process.env.NEXT_PUBLIC_SITE_URL ?? 'https://portolan.sudwebproject.com';
 export const pageSite = (l: Langue, page = '', suite = '') => `${SITE}/${l}/${page ? `${ROUTES[l][page] ?? page}/` : ''}${suite}`;
 export const ficheYacht = (l: Langue, slug: string) => pageSite(l, 'flotte', `${slug}/`);
 // Fonction du courtier dans la langue du client (saisie en français, traductions facultatives dans Réglages)

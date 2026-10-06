@@ -24,7 +24,7 @@ function charger() {
   return chargement;
 }
 
-export function Turnstile({ ref, langue = 'fr', sombre = false }: { ref: Ref<TurnstileApi>; langue?: string; sombre?: boolean }) {
+export function Turnstile({ ref, langue = 'fr', sombre = false, marge = true }: { ref: Ref<TurnstileApi>; langue?: string; sombre?: boolean; marge?: boolean }) {
   const boite = useRef<HTMLDivElement>(null);
   const id = useRef<string | null>(null);
   const jeton = useRef<string | undefined>(undefined);
@@ -57,5 +57,5 @@ export function Turnstile({ ref, langue = 'fr', sombre = false }: { ref: Ref<Tur
   }), []);
 
   if (!CLE) return null;
-  return <div ref={boite} className="turnstile" style={{ marginTop: '.75rem' }} />;
+  return <div ref={boite} className="turnstile" style={marge ? { marginTop: '.75rem' } : undefined} />;
 }

@@ -5,6 +5,7 @@ import { Rose } from '@/components/Rose';
 import { cheminEspace, dico, pageSite } from '@/lib/i18n';
 import type { Langue } from '@/lib/format';
 import { ChoixLangue } from './ChoixLangue';
+import { deconnexion } from '@/app/[locale]/espace/actions';
 
 export function EnTete({ langue, connecte }: { langue: Langue; connecte: boolean }) {
   const t = dico(langue).nav;
@@ -19,6 +20,11 @@ export function EnTete({ langue, connecte }: { langue: Langue; connecte: boolean
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.8" /><path d="M4.5 20.5c1.2-3.6 4-5.4 7.5-5.4s6.3 1.8 7.5 5.4" /></svg>
         <span>{t.espace}</span>
       </Link>
+      {connecte && (
+        <form action={deconnexion.bind(null, langue)} className="header__deco">
+          <button type="submit">{dico(langue).compte.deconnecter}</button>
+        </form>
+      )}
       <Suspense><ChoixLangue langue={langue} libelle={t.langue} /></Suspense>
     </header>
   );

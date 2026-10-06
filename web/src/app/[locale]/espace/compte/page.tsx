@@ -12,7 +12,7 @@ export default async function MonCompte({ params }: PageProps<'/[locale]/espace/
   const { locale } = await params;
   if (!estLangue(locale)) notFound();
   const { user, profil } = await session();
-  if (!user || !profil) redirect(cheminEspace(locale));
+  if (!user || !profil || profil.role !== 'client') redirect(cheminEspace(locale));
   const r = await reglagesPublics();
   const sb = await supabaseServeur();
   const { data: avenir } = await sb.rpc('croisiere_a_venir');

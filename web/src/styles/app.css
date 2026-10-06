@@ -46,3 +46,8 @@ dialog.panneau-lat::backdrop { background: rgb(11 21 19 / 0.45); }
 /* La fenêtre de compte reste sombre (abysse) même dans les espaces clairs : on y rétablit les couleurs sur fond sombre */
 .clair .auth { --texte: var(--calcaire); --second: var(--brume); --filet: rgb(231 230 223 / 0.14); --filet-fort: rgb(231 230 223 / 0.32); --accent: var(--laiton); --alerte: #E3A487; --fond: var(--abysse); }
 .clair .auth .btn--light { color: var(--encre); }
+
+/* En-tête de Mon espace : déconnexion toujours visible quand une session est ouverte */
+.header__deco { display: flex; align-items: center; }
+.header__deco button { background: none; border: 0; padding: .5rem .25rem; color: inherit; font: inherit; font-size: var(--t-xs); opacity: .8; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.header__deco button:hover, .header__deco button:focus-visible { opacity: 1; }

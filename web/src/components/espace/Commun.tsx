@@ -6,6 +6,7 @@ import { initiales, type Langue } from '@/lib/format';
 import { session, type ReglagesPublics } from '@/lib/espace/donnees';
 import { estClientDemo } from '@/lib/demo/comptes';
 import { deconnexion } from '@/app/[locale]/espace/actions';
+import { BoutonsDemo } from '@/components/BoutonsDemo';
 
 export async function CadreEspace({ langue, prenom, actif, courtier, children }: {
   langue: Langue; prenom: string; actif: 'reservations' | 'documents' | 'compte'; courtier: ReglagesPublics['courtier']; children: React.ReactNode;
@@ -22,7 +23,10 @@ export async function CadreEspace({ langue, prenom, actif, courtier, children }:
       {estClientDemo(user?.email) && (
         <div className="bandeau-info" role="note" style={{ marginTop: '1.25rem', display: 'flex', flexWrap: 'wrap', gap: '.5rem 1.25rem', alignItems: 'center', justifyContent: 'space-between' }}>
           <span>{d.auth.porte.demoConnecte}</span>
-          <form action={quitter}><button className="btn btn--filet btn--petit" type="submit">{d.auth.porte.demoQuitter}</button></form>
+          <span style={{ display: 'flex', flexWrap: 'wrap', gap: '.5rem' }}>
+            <BoutonsDemo comptes={[{ compte: 'directeur', libelle: d.auth.porte.versDirecteur }]} destinationClient={cheminEspace(langue)} robotTexte={d.auth.erreurs.robot} indisponible={d.auth.porte.demo.indisponible} />
+            <form action={quitter}><button className="btn btn--filet btn--petit" type="submit">{d.auth.porte.demoQuitter}</button></form>
+          </span>
         </div>
       )}
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>

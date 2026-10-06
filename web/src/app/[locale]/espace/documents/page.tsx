@@ -15,7 +15,7 @@ export default async function MesDocuments({ params, searchParams }: PageProps<'
   const { locale } = await params;
   if (!estLangue(locale)) notFound();
   const { user, profil } = await session();
-  if (!user || !profil) redirect(cheminEspace(locale));
+  if (!user || !profil || profil.role !== 'client') redirect(cheminEspace(locale));
   const sp = await searchParams;
   const t = dico(locale).documents;
   const [docs, resas, r] = await Promise.all([mesDocuments(), mesReservations(), reglagesPublics()]);
