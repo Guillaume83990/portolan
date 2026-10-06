@@ -3,9 +3,10 @@ import { useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabaseNavigateur } from '@/lib/supabase/navigateur';
 import { Turnstile, type TurnstileApi } from '@/components/Turnstile';
+import { connexionDemo } from '@/lib/demo/actions';
 
-// Le compte de démonstration est volontairement public : il ne peut rien modifier (règles de la base)
-const DEMO = { email: 'demo@portolan.example', mdp: 'portolan-demo-2027' };
+// Démonstration : le serveur ouvre la session du compte « directeur de démonstration » (lecture seule, règles de la base) ;
+// ses identifiants restent dans les variables d'environnement du serveur, jamais dans le navigateur.
 
 export function FormulaireConnexion({ refus = false, demo = false }: { refus?: boolean; demo?: boolean }) {
   const router = useRouter();
@@ -22,9 +23,13 @@ export function FormulaireConnexion({ refus = false, demo = false }: { refus?: b
   async function connecter(e?: React.FormEvent) {
     e?.preventDefault();
     setEnvoi(true); setErreur(''); setInfo('');
-    const sb = supabaseNavigateur();
     const captchaToken = await jeton();
-    const { error } = await sb.auth.signInWithPassword(demo ? { email: DEMO.email, password: DEMO.mdp, options: { captchaToken } } : { email, password: mdp, options: { captchaToken } });
+    if (demo) {
+      const r = await connexionDemo('directeur', captchaToken);
+      if (!r.ok) { setEnvoi(false); setErreur(r.code === 'robot' ? ROBOT : 'La démonstration est momentanément indisponible.'); return; }
+      router.replace('/direction/tableau-de-bord'); router.refresh(); return;
+    }
+    const { error } = await supabaseNavigateur().auth.signInWithPassword({ email, password: mdp, options: { captchaToken } });
     if (error) {
       setEnvoi(false);
       setErreur(/captcha/i.test(error.message) ? ROBOT : /confirm/i.test(error.message) ? "Votre adresse n'est pas encore confirmée." : "Identifiants incorrects. Vérifiez l'e-mail et le mot de passe.");

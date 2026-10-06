@@ -49,6 +49,22 @@ export function FormulairesCompte({ langue, profil, avenir, courtier }: {
   const btn = (libelle: string, onClick: () => void, classe = 'btn--plein') =>
     <p><button className={`btn ${classe} btn--petit${envoi ? ' is-envoi' : ''}`} type="button" disabled={envoi} onClick={onClick}>{libelle}</button></p>;
 
+  // Changement de mot de passe (le jeton anti-robot est lu au clic, jamais pendant l'affichage)
+  const changerMdp = () => {
+      if (mdp.nouveau.length < 10) { setErreurMdp({ champ: 'nouveau', texte: t.regle }); return; }
+      if (mdp.nouveau !== mdp.confirmation) { setErreurMdp({ champ: 'confirmation', texte: t.differents }); return; }
+      setErreurMdp(null);
+      demarrer(async () => {
+        const j = await robot.current?.jeton(); robot.current?.reinitialiser();
+        const r = await changerMotDePasse(mdp.actuel, mdp.nouveau, j);
+        if (r.ok) { notifier(t.change); setMdp({ actuel: '', nouveau: '', confirmation: '' }); }
+        else if (r.code === 'actuel') setErreurMdp({ champ: 'actuel', texte: t.actuelFaux });
+        else if (r.code === 'robot') notifier(dico(langue).auth.erreurs.robot);
+        else if (r.code === 'demo') notifier(dico(langue).auth.porte.demoBloque);
+        else notifier(dico(langue).espace.erreur.texte);
+      });
+  };
+
   return (
     <>
       <section className="compte-sec" style={{ borderTop: 0 }}>
@@ -94,7 +110,7 @@ export function FormulairesCompte({ langue, profil, avenir, courtier }: {
             {emailEnvoye && <p className="note" role="status">{t.lienEnvoye}</p>}
             {btn(t.envoyerLien, () => demarrer(async () => {
               const r = await changerEmail(email, langue);
-              if (r.ok) setEmailEnvoye(true); else notifier(r.code === 'existe' ? dico(langue).auth.erreurs.existe : r.code === 'trop' ? dico(langue).auth.erreurs.trop : dico(langue).espace.erreur.texte);
+              if (r.ok) setEmailEnvoye(true); else notifier(r.code === 'demo' ? dico(langue).auth.porte.demoBloque : r.code === 'existe' ? dico(langue).auth.erreurs.existe : r.code === 'trop' ? dico(langue).auth.erreurs.trop : dico(langue).espace.erreur.texte);
             }))}
           </>}
         </div>
@@ -108,19 +124,7 @@ export function FormulairesCompte({ langue, profil, avenir, courtier }: {
             <Champ id="m-new" label={t.nouveau} type="password" auto="new-password" v={mdp.nouveau} set={(v) => setMdp({ ...mdp, nouveau: v })} aide={t.regle} erreur={erreurMdp?.champ === 'nouveau' ? erreurMdp.texte : undefined} />
             <Champ id="m-conf" label={t.confirmation} type="password" auto="new-password" v={mdp.confirmation} set={(v) => setMdp({ ...mdp, confirmation: v })} erreur={erreurMdp?.champ === 'confirmation' ? erreurMdp.texte : undefined} />
           </div>
-          {btn(t.changer, () => {
-            if (mdp.nouveau.length < 10) { setErreurMdp({ champ: 'nouveau', texte: t.regle }); return; }
-            if (mdp.nouveau !== mdp.confirmation) { setErreurMdp({ champ: 'confirmation', texte: t.differents }); return; }
-            setErreurMdp(null);
-            demarrer(async () => {
-              const j = await robot.current?.jeton(); robot.current?.reinitialiser();
-              const r = await changerMotDePasse(mdp.actuel, mdp.nouveau, j);
-              if (r.ok) { notifier(t.change); setMdp({ actuel: '', nouveau: '', confirmation: '' }); }
-              else if (r.code === 'actuel') setErreurMdp({ champ: 'actuel', texte: t.actuelFaux });
-              else if (r.code === 'robot') notifier(dico(langue).auth.erreurs.robot);
-              else notifier(dico(langue).espace.erreur.texte);
-            });
-          }, 'btn--filet')}
+          <p><button className={`btn btn--filet btn--petit${envoi ? ' is-envoi' : ''}`} type="button" disabled={envoi} onClick={changerMdp}>{t.changer}</button></p>
           <Turnstile ref={robot} langue={langue} />
         </div>
       </section>
@@ -145,7 +149,7 @@ export function FormulairesCompte({ langue, profil, avenir, courtier }: {
         <Dialogue ouvert={suppr} onFermer={() => { setSuppr(false); setErreurSuppr(''); }} titre={t.supprimerTitre} role="alertdialog" actions={<>
           <button className="btn btn--filet btn--petit" type="button" onClick={() => setSuppr(false)}>{t.garder}</button>
           <button className={`btn btn--danger btn--petit${envoi ? ' is-envoi' : ''}`} type="button" disabled={confirm.trim().toUpperCase() !== t.mot || envoi}
-            onClick={() => demarrer(async () => { const r = await supprimerCompte(langue); if (r && !r.ok) setErreurSuppr(r.code === 'indisponible' ? t.indisponible : dico(langue).espace.erreur.texte); })}>{t.definitivement}</button></>}>
+            onClick={() => demarrer(async () => { const r = await supprimerCompte(langue); if (r && !r.ok) setErreurSuppr(r.code === 'demo' ? dico(langue).auth.porte.demoBloque : r.code === 'indisponible' ? t.indisponible : dico(langue).espace.erreur.texte); })}>{t.definitivement}</button></>}>
           <p className="second">{t.supprimerTexte}</p>
           <div className="champ"><label htmlFor="s-conf">{t.taper}</label><input id="s-conf" value={confirm} onChange={(e) => setConfirm(e.target.value)} autoComplete="off" /></div>
           {erreurSuppr && <p className="note is-erreur" role="alert">{erreurSuppr}</p>}

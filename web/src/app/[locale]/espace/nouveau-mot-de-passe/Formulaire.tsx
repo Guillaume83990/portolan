@@ -19,7 +19,7 @@ export function FormulaireNouveau({ langue }: { langue: Langue }) {
       if (a.length < 8) { setErreur(t.auth.erreurs.court); return; }
       if (a !== b) { setErreur(t.compte.differents); return; }
       setErreur('');
-      demarrer(async () => { const r = await nouveauMotDePasse(a); if (r.ok) setFait(true); else setErreur(t.auth.nouveauMdp.lienInvalide); });
+      demarrer(async () => { const r = await nouveauMotDePasse(a); if (r.ok) setFait(true); else setErreur(r.code === 'demo' ? t.auth.porte.demoBloque : t.auth.nouveauMdp.lienInvalide); });
     }}>
       <div className="champ"><label htmlFor="n1">{t.auth.nouveauMdp.nouveau}</label><input id="n1" type="password" autoComplete="new-password" value={a} onChange={(e) => setA(e.target.value)} /><p className="champ__aide">{t.auth.regle}</p></div>
       <div className="champ"><label htmlFor="n2">{t.auth.nouveauMdp.confirmation}</label><input id="n2" type="password" autoComplete="new-password" value={b} onChange={(e) => setB(e.target.value)} aria-invalid={erreur ? true : undefined} /></div>
