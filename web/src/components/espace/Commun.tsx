@@ -3,20 +3,34 @@ import Link from 'next/link';
 import { cheminEspace, dico, titreCourtier } from '@/lib/i18n';
 import { BADGE, etapesFaites, libelleStatut, type Statut } from '@/lib/statuts';
 import { initiales, type Langue } from '@/lib/format';
-import type { ReglagesPublics } from '@/lib/espace/donnees';
+import { session, type ReglagesPublics } from '@/lib/espace/donnees';
+import { estClientDemo } from '@/lib/demo/comptes';
+import { deconnexion } from '@/app/[locale]/espace/actions';
 
-export function CadreEspace({ langue, prenom, actif, courtier, children }: {
+export async function CadreEspace({ langue, prenom, actif, courtier, children }: {
   langue: Langue; prenom: string; actif: 'reservations' | 'documents' | 'compte'; courtier: ReglagesPublics['courtier']; children: React.ReactNode;
 }) {
   const t = dico(langue).espace;
   const onglets = [['reservations', '', t.onglets.reservations], ['documents', 'documents', t.onglets.documents], ['compte', 'compte', t.onglets.compte]] as const;
+  const d = dico(langue);
+  const { user } = await session();
+  const quitter = deconnexion.bind(null, langue);
   return (
     <main className="esp">
       <h1 className="esp__bonjour">{t.bonjour(prenom)}</h1>
       <p className="esp__sous">{t.sous}</p>
-      <nav className="onglets" aria-label={t.titre}>
-        {onglets.map(([cle, sous, libelle]) => <Link key={cle} href={cheminEspace(langue, sous)} aria-current={actif === cle ? 'page' : undefined}>{libelle}</Link>)}
-      </nav>
+      {estClientDemo(user?.email) && (
+        <div className="bandeau-info" role="note" style={{ marginTop: '1.25rem', display: 'flex', flexWrap: 'wrap', gap: '.5rem 1.25rem', alignItems: 'center', justifyContent: 'space-between' }}>
+          <span>{d.auth.porte.demoConnecte}</span>
+          <form action={quitter}><button className="btn btn--filet btn--petit" type="submit">{d.auth.porte.demoQuitter}</button></form>
+        </div>
+      )}
+      <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
+        <nav className="onglets" aria-label={t.titre} style={{ flex: '1 1 auto' }}>
+          {onglets.map(([cle, sous, libelle]) => <Link key={cle} href={cheminEspace(langue, sous)} aria-current={actif === cle ? 'page' : undefined}>{libelle}</Link>)}
+        </nav>
+        <form action={quitter}><button className="lien lien--discret" type="submit" style={{ fontSize: 'var(--t-xs)', padding: '.6rem 0' }}>{d.compte.deconnecter}</button></form>
+      </div>
       <div className="esp__grille">
         <div>{children}</div>
         <Courtier langue={langue} courtier={courtier} />
