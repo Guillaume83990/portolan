@@ -1,0 +1,4 @@
+# Jamais envoyé à Vercel : secrets locaux, dépendances, constructions
+.env*
+node_modules
+.next
