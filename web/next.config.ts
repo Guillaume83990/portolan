@@ -5,8 +5,9 @@ import type { NextConfig } from 'next';
 const ESPACES: Record<string, string> = { en: 'my-account', de: 'mein-konto', it: 'area-riservata' };
 
 // Site public hybride : les pages vitrines statiques sont dans public/ (scripts/site-statique.mjs) ; leurs médias
-// lourds (photos, séquence et visites à bord, 190 Mo) restent sur l'hébergement statique et sont relayés ici.
-const MEDIAS = process.env.SITE_MEDIAS_URL ?? 'https://portolan.sudwebproject.com';
+// lourds (photos, séquence et visites à bord, 190 Mo, au-delà de la limite d'envoi de Vercel Hobby) sont servis par
+// GitHub Pages depuis le dépôt « portolan-medias » et relayés ici, sous /assets, à la même adresse que le site.
+const MEDIAS = process.env.SITE_MEDIAS_URL ?? 'https://guillaume83990.github.io/portolan-medias';
 
 const nextConfig: NextConfig = {
   // PDF (contrat, factures) produits côté serveur : bibliothèques Node et polices embarquées dans le déploiement
