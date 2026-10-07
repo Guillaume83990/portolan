@@ -156,7 +156,8 @@ async function rendre(langue: Langue, slug: string | null): Promise<string | nul
   return finaliser(res.html, langue);
 }
 
-export const pageFlotte = unstable_cache(rendre, ['site-flotte-v4'], { tags: ['flotte'], revalidate: 600 });
+// L'adresse du site fait partie de la clé : un changement de domaine ne sert jamais une page mise en cache avec l'ancienne
+export const pageFlotte = unstable_cache(rendre, ['site-flotte-v4', SITE], { tags: ['flotte'], revalidate: 600 });
 
 // Le segment d'adresse de « La flotte » dans chaque langue (flotte, fleet, flotte, flotta)
 export const segmentFlotte = (l: Langue) => (ROUTES as Record<string, Record<string, string>>)[l].flotte;
