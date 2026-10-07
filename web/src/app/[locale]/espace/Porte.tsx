@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useRef, useState, useTransition } from 'react';
 import { FenetreCompte } from '@/components/espace/FenetreCompte';
 import { Turnstile, type TurnstileApi } from '@/components/Turnstile';
-import { connexionDemo } from '@/lib/demo/actions';
+import { entrerDemo } from '@/lib/demo/entrer';
 import { dico } from '@/lib/i18n';
 import type { Langue } from '@/lib/format';
 
@@ -23,8 +23,7 @@ export function Porte({ langue, lienInvalide, retour }: { langue: Langue; lienIn
   // Compte client : on reste dans Mon espace ; compte directeur (lecture seule) : on ouvre l'espace directeur
   const essayer = (compte: 'client' | 'directeur') => demarrer(async () => {
     setErreur('');
-    const j = await robot.current?.jeton(); robot.current?.reinitialiser();
-    const r = await connexionDemo(compte, j);
+    const r = await entrerDemo(compte, async () => { const j = await robot.current?.jeton(); robot.current?.reinitialiser(); return j; });
     if (!r.ok) { setErreur(r.code === 'robot' ? t.erreurs.robot : t.porte.demo.indisponible); return; }
     if (compte === 'directeur') router.push('/direction/tableau-de-bord'); else if (retour) location.assign(retour); else router.refresh();
   });

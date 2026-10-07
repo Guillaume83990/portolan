@@ -57,6 +57,7 @@ export const nomYacht = (y: Record<string, YachtResume>, slug: string) =>
 
 export const reglagesPublics = cache(async () => {
   const sb = await supabaseServeur();
-  const { data } = await sb.from('reglages').select('annee, taux_acompte, taux_apa, solde_jours, delai_paiement_h, paiement_carte, paiement_virement, societe, contrat_version, courtier').single<ReglagesPublics>();
-  return data!;
+  // Réglages visibles des clients (sans IBAN ni e-mails internes) : la table complète est réservée à la direction
+  const { data } = await sb.rpc('reglages_publics');
+  return data as ReglagesPublics;
 });

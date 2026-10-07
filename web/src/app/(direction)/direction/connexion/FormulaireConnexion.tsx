@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabaseNavigateur } from '@/lib/supabase/navigateur';
 import { Turnstile, type TurnstileApi } from '@/components/Turnstile';
-import { connexionDemo } from '@/lib/demo/actions';
+import { entrerDemo } from '@/lib/demo/entrer';
 
 // Démonstration : le serveur ouvre la session du compte « directeur de démonstration » (lecture seule, règles de la base) ;
 // ses identifiants restent dans les variables d'environnement du serveur, jamais dans le navigateur.
@@ -23,12 +23,12 @@ export function FormulaireConnexion({ refus = false, demo = false }: { refus?: b
   async function connecter(e?: React.FormEvent) {
     e?.preventDefault();
     setEnvoi(true); setErreur(''); setInfo('');
-    const captchaToken = await jeton();
     if (demo) {
-      const r = await connexionDemo('directeur', captchaToken);
+      const r = await entrerDemo('directeur', jeton);
       if (!r.ok) { setEnvoi(false); setErreur(r.code === 'robot' ? ROBOT : 'La démonstration est momentanément indisponible.'); return; }
       router.replace('/direction/tableau-de-bord'); router.refresh(); return;
     }
+    const captchaToken = await jeton();
     const { error } = await supabaseNavigateur().auth.signInWithPassword({ email, password: mdp, options: { captchaToken } });
     if (error) {
       setEnvoi(false);

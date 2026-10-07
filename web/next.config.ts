@@ -14,6 +14,23 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: { '/**': ['./src/lib/pdf/polices/*.woff'] },
   // Les pages vitrines ont des adresses en « …/ » (liens relatifs) : proxy.ts gère la barre finale page par page
   skipTrailingSlashRedirect: true,
+  poweredByHeader: false,
+  // En-têtes de sécurité sur toutes les réponses (pages, API, fichiers de public/) :
+  // - aucune page ne s'affiche dans le cadre d'un autre site (anti « clickjacking ») ;
+  // - pas de balise <base> ni de plug-in injectables, types de fichiers respectés, adresse d'origine réduite ;
+  // - caméra, micro, géolocalisation et paiement intégré désactivés (Stripe s'ouvre sur sa propre page).
+  async headers() {
+    return [{
+      source: '/:chemin*',
+      headers: [
+        { key: 'Content-Security-Policy', value: "frame-ancestors 'none'; base-uri 'self'; object-src 'none'" },
+        { key: 'X-Frame-Options', value: 'DENY' },
+        { key: 'X-Content-Type-Options', value: 'nosniff' },
+        { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+        { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=()' },
+      ],
+    }];
+  },
   async rewrites() {
     return {
       beforeFiles: [],

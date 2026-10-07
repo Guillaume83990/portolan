@@ -15,6 +15,7 @@ async function clientDemo() {
 }
 
 type R = { ok: true } | { ok: false; code: string };
+const CHAMPS_PROFIL = new Set(['prenom', 'nom', 'telephone', 'langue', 'societe', 'adresse', 'code_postal', 'ville', 'pays', 'tva']);
 const rafraichir = () => revalidatePath('/', 'layout');
 
 export async function annulerDemande(id: string): Promise<R> {
@@ -30,8 +31,11 @@ export async function enregistrerProfil(modif: Partial<Record<'prenom' | 'nom' |
   const sb = await supabaseServeur();
   const { data: { user } } = await sb.auth.getUser();
   if (!user) return { ok: false, code: 'connexion' };
+  if (estClientDemo(user.email)) return { ok: false, code: 'demo' };
   if (modif.langue && !estLangue(modif.langue)) return { ok: false, code: 'invalide' };
-  const propre = Object.fromEntries(Object.entries(modif).map(([k, v]) => [k, String(v ?? '').trim().slice(0, k === 'adresse' ? 200 : 120)]));
+  // Seuls ces champs sont modifiables par le client (la base refuse aussi tout autre champ, dont le rôle)
+  const propre = Object.fromEntries(Object.entries(modif).filter(([k]) => CHAMPS_PROFIL.has(k)).map(([k, v]) => [k, String(v ?? '').trim().slice(0, k === 'adresse' ? 200 : 120)]));
+  if (!Object.keys(propre).length) return { ok: false, code: 'invalide' };
   const { error } = await sb.from('profils').update(propre).eq('id', user.id);
   if (error) return { ok: false, code: 'reseau' };
   rafraichir();

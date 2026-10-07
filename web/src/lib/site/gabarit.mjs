@@ -29,8 +29,8 @@ function prix(y, { court = false } = {}) {
 
 function img(src, { w, h, alt = '', sizes = '100vw', lazy = true, cls = '' }, root) {
   // Les images existent en deux largeurs : 900 et 1600 (ou 1536, la largeur des originaux ChatGPT)
-  const big = Math.min(1600, w || 1600);
-  return `<img${cls ? ` class="${cls}"` : ''} src="${photo(src, 1600, root)}" srcset="${photo(src, 900, root)} 900w, ${photo(src, 1600, root)} ${big}w" sizes="${sizes}" alt="${esc(alt)}" width="${w}" height="${h}"${lazy ? ' loading="lazy"' : ' fetchpriority="high"'}>`;
+  const big = Math.min(1600, Number(w) || 1600);
+  return `<img${cls ? ` class="${cls}"` : ''} src="${esc(photo(src, 1600, root))}" srcset="${esc(photo(src, 900, root))} 900w, ${esc(photo(src, 1600, root))} ${big}w" sizes="${sizes}" alt="${esc(alt)}" width="${Number(w) || ''}" height="${Number(h) || ''}"${lazy ? ' loading="lazy"' : ' fetchpriority="high"'}>`;
 }
 // Règles de réservation (réglages de la saison dans Supabase, avec des valeurs par défaut si le fichier est ancien)
 const HAUTE_FIN = saison.hauteFin || (() => { const d = new Date(`${saison.haute[1]}T12:00:00Z`); d.setUTCDate(d.getUTCDate() + 7); return d.toISOString().slice(0, 10); })();
@@ -147,7 +147,7 @@ function page({ root, url, title, description, image, body, script, jsonld, body
   <meta property="og:title" content="${esc(title)}">
   <meta property="og:description" content="${esc(description)}">
   <meta property="og:url" content="${SITE}${url}">
-  <meta property="og:image" content="${photo(image, 1600, SITE + "/")}">
+  <meta property="og:image" content="${esc(photo(image, 1600, SITE + "/"))}">
   <meta property="og:image:alt" content="${esc(alt)}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#0B1513">
@@ -160,7 +160,7 @@ function page({ root, url, title, description, image, body, script, jsonld, body
   <!-- Une seule feuille de style, assemblée et compressée par tools/css.cjs (sources : css/main.css, flotte.css…) -->
   <link rel="stylesheet" href="${root}css/site.min.css">
   <script type="application/ld+json">
-${JSON.stringify(jsonld, null, 2)}
+${JSON.stringify(jsonld, null, 2).replace(/</g, '\\u003c')}
   </script>
 </head>
 <body class="${bodyClass}">
@@ -236,7 +236,7 @@ function pageFlotte() {
   const nLoc = yachts.filter(loue).length;
 
   const plates = yachts.map((y, i) => `
-      <li class="plate" data-vente="${vendu(y)}" data-location="${loue(y)}" data-type="${y.type}" data-longueur="${y.longueur}">
+      <li class="plate" data-vente="${vendu(y)}" data-location="${loue(y)}" data-type="${esc(y.type)}" data-longueur="${y.longueur}">
         <a class="plate__media" href="${y.slug}/" data-cursor="Voir" tabindex="-1" aria-hidden="true">
           ${img(y.image.src, { ...y.image, alt: '', sizes: '(min-width: 960px) 62vw, 100vw' }, root)}
         </a>
@@ -246,7 +246,7 @@ function pageFlotte() {
           <p class="plate__line">${esc(y.accroche)}</p>
           <dl class="plate__specs">
             <div><dt>Longueur</dt><dd>${metres(y.longueur)}</dd></div>
-            <div><dt>Année</dt><dd>${y.annee}${y.refit ? ` <small>refit ${y.refit}</small>` : ''}</dd></div>
+            <div><dt>Année</dt><dd>${esc(y.annee)}${y.refit ? ` <small>refit ${esc(y.refit)}</small>` : ''}</dd></div>
             <div><dt>Invités</dt><dd>${y.invites}</dd></div>
             <div><dt>Cabines</dt><dd>${nbCabines(y)}</dd></div>
             <div><dt>Croisière</dt><dd>${y.vitesse.croisiere}<small>nœuds</small></dd></div>
@@ -260,12 +260,12 @@ function pageFlotte() {
       </li>`).join('');
 
   const rows = yachts.map((y, i) => `
-      <li class="row" data-vente="${vendu(y)}" data-location="${loue(y)}" data-type="${y.type}" data-longueur="${y.longueur}" data-preview="${photo(y.image.src, 900, root)}">
+      <li class="row" data-vente="${vendu(y)}" data-location="${loue(y)}" data-type="${esc(y.type)}" data-longueur="${y.longueur}" data-preview="${esc(photo(y.image.src, 900, root))}">
         <a class="row__link" href="${y.slug}/">
           <span class="row__num">${pad(i)}</span>
           <span class="row__name"><em>${esc(y.nom)}</em></span>
           <span class="row__yard">${esc(y.chantierCourt)}</span>
-          <span class="row__cell">${y.annee}</span>
+          <span class="row__cell">${esc(y.annee)}</span>
           <span class="row__cell">${metres(y.longueur)}</span>
           <span class="row__cell">${y.invites} invités</span>
           <span class="row__price">${vendu(y) ? euros(y.vente) : `dès ${euros(y.location.basse)}<small> / semaine</small>`}</span>
@@ -392,22 +392,22 @@ function fiche(y, i) {
   const ponts = [...new Set(y.galerie.map((g) => g.pont))];
 
   const specs = [
-    ['Chantier', y.chantier],
-    ['Année', `${y.annee}${y.refit ? `, refit ${y.refit}` : ''}`],
+    ['Chantier', esc(y.chantier)],
+    ['Année', `${esc(y.annee)}${y.refit ? `, refit ${esc(y.refit)}` : ''}`],
     ['Longueur', metres(y.longueur)],
     ['Largeur', metres(y.largeur)],
     ["Tirant d'eau", metres(y.tirant)],
-    ['Coque', y.coque],
-    ['Architecture', y.architecte],
+    ['Coque', esc(y.coque)],
+    ['Architecture', esc(y.architecte)],
     ['Invités', `${y.invites}`],
-    ['Cabines', y.cabines],
+    ['Cabines', esc(y.cabines)],
     ['Équipage', `${y.equipage}`],
     ['Vitesse', `${y.vitesse.croisiere}&nbsp;nœuds en croisière, ${y.vitesse.max} en pointe`],
     ['Autonomie', `${nombre(y.autonomie)}&nbsp;milles`],
-    ['Motorisation', y.moteurs],
-    ['Stabilité', y.stabilisateurs],
-    ['Pavillon', y.pavillon],
-    ["Port d'attache", y.port],
+    ['Motorisation', esc(y.moteurs)],
+    ['Stabilité', esc(y.stabilisateurs)],
+    ['Pavillon', esc(y.pavillon)],
+    ["Port d'attache", esc(y.port)],
   ];
 
   const galerie = y.galerie.length
@@ -444,7 +444,7 @@ function fiche(y, i) {
   const v = y.visite;
   const visite = v ? `
         <section class="fi-tour" id="visite" aria-labelledby="tour-title"
-          data-dir="${root}assets/${v.dir}/" data-yacht="${esc(y.nom)}" data-pieces="${esc(JSON.stringify(v.pieces))}" data-louer="${loue(y)}">
+          data-dir="${root}assets/${esc(v.dir)}/" data-yacht="${esc(y.nom)}" data-pieces="${esc(JSON.stringify(v.pieces))}" data-louer="${loue(y)}">
           <button type="button" class="fi-tour__open" data-cursor="Embarquer" aria-labelledby="tour-title" aria-describedby="tour-lead">
             ${img(v.affiche, { w: 1600, h: 900, alt: '', sizes: '(min-width: 1100px) 60vw, 100vw' }, root)}
             <span class="fi-tour__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
@@ -521,7 +521,7 @@ function fiche(y, i) {
       <dl class="fi-hero__specs">
         <div><dt>Longueur</dt><dd>${metres(y.longueur)}</dd></div>
         <div><dt>Chantier</dt><dd>${esc(y.chantierCourt === 'Exclusivité Portolan' ? 'Viareggio' : y.chantierCourt)}</dd></div>
-        <div><dt>Année</dt><dd>${y.annee}</dd></div>
+        <div><dt>Année</dt><dd>${esc(y.annee)}</dd></div>
         <div><dt>Invités</dt><dd>${y.invites}</dd></div>
         <div><dt>Cabines</dt><dd>${nbCabines(y)}</dd></div>
         <div><dt>Équipage</dt><dd>${y.equipage}</dd></div>
@@ -595,7 +595,7 @@ ${vente}${charter}
       <aside class="fi-carnet" aria-label="En bref">
         <div class="fi-carnet__inner">
           <p class="fi-carnet__name"><em>${esc(y.nom)}</em></p>
-          <p class="fi-carnet__meta">${metres(y.longueur)} · ${y.annee} · ${y.invites} invités</p>
+          <p class="fi-carnet__meta">${metres(y.longueur)} · ${esc(y.annee)} · ${Number(y.invites)} invités</p>
           ${vendu(y) ? `<p class="fi-carnet__price"><small>À vendre</small>${euros(y.vente)}</p>` : ''}
           ${loue(y) ? `<p class="fi-carnet__price"><small>À louer, la semaine</small>dès ${euros(y.location.basse)}</p>` : ''}
           <div class="fi-carnet__actions">

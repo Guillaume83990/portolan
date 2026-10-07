@@ -151,7 +151,7 @@ export function transform(html, o) {
     return t != null ? t : v;
   };
   for (const s of doc.querySelectorAll('script[type="application/ld+json"]')) {
-    try { s.textContent = `\n${JSON.stringify(deep(JSON.parse(s.textContent)), null, 2)}\n  `; } catch (e) { missing.push(['JSON-LD illisible', e.message]); }
+    try { s.textContent = `\n${JSON.stringify(deep(JSON.parse(s.textContent)), null, 2).replace(/</g, '\\u003c')}\n  `; } catch (e) { missing.push(['JSON-LD illisible', e.message]); }
   }
 
   doc.documentElement.lang = o.lang;

@@ -43,7 +43,7 @@ export function FormulairesCompte({ langue, profil, avenir, courtier }: {
   const [erreurSuppr, setErreurSuppr] = useState('');
 
   const sauver = (modif: Parameters<typeof enregistrerProfil>[0], message: string) => demarrer(async () => {
-    const r = await enregistrerProfil(modif); notifier(r.ok ? message : dico(langue).espace.erreur.texte); if (r.ok) router.refresh();
+    const r = await enregistrerProfil(modif); notifier(r.ok ? message : !r.ok && r.code === 'demo' ? dico(langue).auth.porte.demoBloque : dico(langue).espace.erreur.texte); if (r.ok) router.refresh();
   });
   const titre = (h: string, p?: string) => <div><h2>{h}</h2>{p && <p>{p}</p>}</div>;
   const btn = (libelle: string, onClick: () => void, classe = 'btn--plein') =>

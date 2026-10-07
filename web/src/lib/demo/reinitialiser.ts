@@ -13,6 +13,10 @@ const PROFILS: Record<CompteDemo, Record<string, string>> = {
   },
 };
 
+// Marque « demo » dans app_metadata (écrite par le serveur seul, présente dans le jeton de session) : la base refuse
+// toute modification du profil de ces comptes partagés (migration 15)
+const APP = { demo: true };
+
 async function compte(cle: CompteDemo) {
   const id = identifiantsDemo(cle);
   if (!id) throw new Error(`identifiants_${cle}_manquants`);
@@ -22,10 +26,10 @@ async function compte(cle: CompteDemo) {
   let uid = existant?.id as string | undefined;
   const meta = { prenom: p.prenom, nom: p.nom, langue: p.langue };
   if (uid) {
-    const { error } = await admin.auth.admin.updateUserById(uid, { email: id.email, password: id.mdp, email_confirm: true, user_metadata: meta });
+    const { error } = await admin.auth.admin.updateUserById(uid, { email: id.email, password: id.mdp, email_confirm: true, user_metadata: meta, app_metadata: APP });
     if (error) throw error;
   } else {
-    const { data, error } = await admin.auth.admin.createUser({ email: id.email, password: id.mdp, email_confirm: true, user_metadata: meta });
+    const { data, error } = await admin.auth.admin.createUser({ email: id.email, password: id.mdp, email_confirm: true, user_metadata: meta, app_metadata: APP });
     if (error) throw error;
     uid = data.user.id;
   }
@@ -42,6 +46,13 @@ async function viderDocuments(uid: string) {
     const { data: fichiers } = await stock.list(`${uid}/${d.name}`, { limit: 1000 });
     if (fichiers?.length) await stock.remove(fichiers.map((f) => `${uid}/${d.name}/${f.name}`));
   }
+}
+
+// Compte saboté (mot de passe ou adresse changés par un visiteur via l'API d'authentification) : rétabli aussitôt.
+// Client de démonstration : remise à zéro complète (ses réservations fictives dépendent du compte).
+export async function retablirCompte(cle: CompteDemo) {
+  if (cle === 'client') await reinitialiserDemo();
+  else await compte(cle);
 }
 
 export async function reinitialiserDemo() {

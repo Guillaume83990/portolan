@@ -67,11 +67,13 @@ type Ligne = Record<string, unknown> & {
   traductions?: Record<string, Record<string, string>>; textes?: Record<string, Record<string, { texte?: string; source?: string }>>;
 };
 
+const NUMERIQUES = ['longueur', 'largeur', 'tirant', 'equipage', 'autonomie'];
+
 // 1. Données (même forme que data/flotte.json, comme tools/supabase/exporter.cjs)
 async function lireDonnees() {
   const sb = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!, { auth: { persistSession: false } });
   const [reg, ys, dispo] = await Promise.all([
-    sb.from('reglages').select('*').single(),
+    sb.rpc('reglages_publics'),
     sb.from('yachts').select('*').eq('publie', true).eq('archive', false).order('ordre'),
     sb.rpc('disponibilites', {}),
   ]);
@@ -89,7 +91,11 @@ async function lireDonnees() {
   const lignes = (ys.data ?? []) as Ligne[];
   const yachts = lignes.map((l) => {
     const v = l.fiche.visite;
-    const fiche = v ? { ...l.fiche, visite: { ...v, pieces: Object.fromEntries((v.pieces ?? []).map((p) => [p.cle, p.nom])) } } : l.fiche;
+    const brute = v ? { ...l.fiche, visite: { ...v, pieces: Object.fromEntries((v.pieces ?? []).map((p) => [p.cle, p.nom])) } } : l.fiche;
+    // Champs numériques forcés en nombres : ils sont insérés tels quels dans la page (aucun texte ne peut s'y glisser)
+    const vit = (brute as { vitesse?: { croisiere?: unknown; max?: unknown } }).vitesse;
+    const fiche = { ...brute, ...Object.fromEntries(NUMERIQUES.filter((k) => k in brute).map((k) => [k, Number((brute as Record<string, unknown>)[k]) || 0])),
+      ...(vit ? { vitesse: { croisiere: Number(vit.croisiere) || 0, max: Number(vit.max) || 0 } } : {}) };
     const dates = prises.filter((p) => p.yacht === l.slug).map(({ debut, fin, etat }) => ({ debut, fin, etat }));
     return {
       slug: l.slug, nom: l.nom, ...fiche, invites: l.invites, port: l.port, vente: l.vente,

@@ -4,7 +4,7 @@
 import { useRouter } from 'next/navigation';
 import { useRef, useState, useTransition } from 'react';
 import { Turnstile, type TurnstileApi } from '@/components/Turnstile';
-import { connexionDemo } from '@/lib/demo/actions';
+import { entrerDemo } from '@/lib/demo/entrer';
 
 type Compte = 'client' | 'directeur';
 
@@ -17,8 +17,7 @@ export function BoutonsDemo({ comptes, destinationClient, robotTexte, indisponib
   const robot = useRef<TurnstileApi>(null);
   const essayer = (compte: Compte) => demarrer(async () => {
     setErreur('');
-    const j = await robot.current?.jeton(); robot.current?.reinitialiser();
-    const r = await connexionDemo(compte, j);
+    const r = await entrerDemo(compte, async () => { const j = await robot.current?.jeton(); robot.current?.reinitialiser(); return j; });
     if (!r.ok) { setErreur(r.code === 'robot' ? robotTexte : indisponible); return; }
     router.push(compte === 'directeur' ? '/direction/tableau-de-bord' : destinationClient);
     router.refresh();
