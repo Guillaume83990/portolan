@@ -7,10 +7,17 @@ import { NextResponse, type NextRequest } from 'next/server';
 import pagesVitrines from '@/lib/site-statique.json';
 
 const VITRINES = new Set<string>(pagesVitrines);
+// Flotte et fiches, rendues depuis la base (route interne /site-flotte), aux adresses du site : /fr/flotte/camarat/
+const FLOTTE = /^\/(?:(fr|de)\/flotte|(en)\/fleet|(it)\/flotta)(?:\/([a-z0-9-]+))?(\/?)$/;
 
 export async function proxy(request: NextRequest) {
   const p = request.nextUrl.pathname;
   if (VITRINES.has(p)) return NextResponse.rewrite(new URL(`${p}index.html`, request.url));
+  const f = p.match(FLOTTE);
+  if (f) {
+    if (!f[5]) return NextResponse.redirect(new URL(`${p}/${request.nextUrl.search}`, request.url), 308);
+    return NextResponse.rewrite(new URL(`/site-flotte/${f[1] ?? f[2] ?? f[3]}${f[4] ? `/${f[4]}` : ''}`, request.url));
+  }
   if (!p.endsWith('/') && VITRINES.has(`${p}/`)) return NextResponse.redirect(new URL(`${p}/${request.nextUrl.search}`, request.url), 308);
   if (p.length > 1 && p.endsWith('/') && !p.startsWith('/api/')) {
     return NextResponse.redirect(new URL(`${p.replace(/\/+$/, '')}${request.nextUrl.search}`, request.url), 308);

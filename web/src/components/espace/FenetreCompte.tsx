@@ -14,8 +14,9 @@ type Vue = 'connexion' | 'creation' | 'verifier' | 'oubli';
 const EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 const force = (m: string) => [m.length >= 8, m.length >= 12, /[A-Z]/.test(m) && /[a-z]/.test(m), /\d|[^\w]/.test(m)].filter(Boolean).length;
 
-export function FenetreCompte({ langue, ouvert, vueInitiale = 'connexion', onFermer, raison }: {
+export function FenetreCompte({ langue, ouvert, vueInitiale = 'connexion', onFermer, raison, apres }: {
   langue: Langue; ouvert: boolean; vueInitiale?: Vue; onFermer: () => void; raison?: React.ReactNode;
+  apres?: string | null; // fiche d'un yacht où revenir une fois connecté (réservation en cours)
 }) {
   const t = dico(langue).auth;
   const router = useRouter();
@@ -42,7 +43,8 @@ export function FenetreCompte({ langue, ouvert, vueInitiale = 'connexion', onFer
   useEffect(() => { if (attente <= 0) return; const x = setTimeout(() => setAttente((a) => a - 1), 1000); return () => clearTimeout(x); }, [attente]);
 
   const sb = supabaseNavigateur();
-  const retour = (suite: string) => `${location.origin}${cheminEspace(langue, 'auth')}?suite=${encodeURIComponent(suite)}`;
+  const retour = (suite: string) => `${location.origin}${cheminEspace(langue, 'auth')}?suite=${encodeURIComponent(suite)}${apres && suite === 'confirmation' ? `&retour=${encodeURIComponent(apres)}` : ''}`;
+  const connecte = () => { onFermer(); if (apres) location.assign(apres); else router.refresh(); };
   const champ = (k: keyof typeof f) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => setF((x) => ({ ...x, [k]: e.target.value }));
   const reinit = () => { setErreurs({}); setErreur(''); setInfo(''); setNonConfirme(false); };
 
@@ -58,7 +60,7 @@ export function FenetreCompte({ langue, ouvert, vueInitiale = 'connexion', onFer
       setErreur(/rate|too many/i.test(error.message) ? t.erreurs.trop : /fetch|network/i.test(error.message) ? t.erreurs.reseau : t.erreurs.identifiants);
       return;
     }
-    onFermer(); router.refresh();
+    connecte();
   }
 
   async function creer(e: React.FormEvent) {
@@ -80,7 +82,7 @@ export function FenetreCompte({ langue, ouvert, vueInitiale = 'connexion', onFer
     if (error) { setErreur(erreurRobot(error.message) ? t.erreurs.robot : /rate|too many/i.test(error.message) ? t.erreurs.trop : /registered|exists/i.test(error.message) ? '' : t.erreurs.reseau); if (/registered|exists/i.test(error.message)) setErreurs({ email: t.erreurs.existe }); return; }
     // Adresse déjà inscrite : Supabase répond sans identité (pour ne pas révéler les comptes existants)
     if (data.user && data.user.identities?.length === 0) { setErreurs({ email: t.erreurs.existe }); return; }
-    if (data.session) { onFermer(); router.refresh(); return; }
+    if (data.session) { connecte(); return; }
     setVue('verifier'); setAttente(60);
   }
 

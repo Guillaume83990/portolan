@@ -4,6 +4,7 @@ import { NextResponse, type NextRequest } from 'next/server';
 import type { EmailOtpType } from '@supabase/supabase-js';
 import { supabaseServeur } from '@/lib/supabase/serveur';
 import { cheminEspace, estLangue } from '@/lib/i18n';
+import { retourValide } from '@/lib/site/retour';
 
 const SUITES = ['confirmation', 'nouveau-mot-de-passe', ''];
 
@@ -21,6 +22,9 @@ export async function GET(request: NextRequest, { params }: RouteContext<'/[loca
   if (code) ok = !(await sb.auth.exchangeCodeForSession(code)).error;
   else if (tokenHash && type) ok = !(await sb.auth.verifyOtp({ token_hash: tokenHash, type })).error;
 
+  // Compte confirmé pendant une réservation : retour direct sur la fiche du yacht (dates conservées par la page)
+  const fiche = retourValide(url.searchParams.get('retour'));
+  if (ok && suite === 'confirmation' && fiche) return NextResponse.redirect(new URL(fiche, url.origin));
   const cible = new URL(cheminEspace(langue, ok ? suite : suite === 'nouveau-mot-de-passe' ? 'nouveau-mot-de-passe' : ''), url.origin);
   if (!ok) cible.searchParams.set('lien', 'invalide');
   return NextResponse.redirect(cible);

@@ -13,8 +13,8 @@ const racine = path.resolve(import.meta.dirname, '..', '..');
 const web = path.resolve(import.meta.dirname, '..');
 const pub = path.join(web, 'public');
 const LANGUES = ['fr', 'en', 'de', 'it'];
-// Dossiers remplacés par l'application (Mon espace, ancien espace directeur)
-const REMPLACES = new Set(['espace', 'my-account', 'mein-konto', 'area-riservata', 'direction']);
+// Dossiers remplacés par l'application (Mon espace, ancien espace directeur, flotte et fiches rendues depuis la base)
+const REMPLACES = new Set(['espace', 'my-account', 'mein-konto', 'area-riservata', 'direction', 'flotte', 'fleet', 'flotta']);
 
 const env = Object.fromEntries(fs.readFileSync(path.join(web, '.env.local'), 'utf8').split(/\r?\n/)
   .filter((l) => /^[A-Z_]+=/.test(l)).map((l) => { const i = l.indexOf('='); return [l.slice(0, i), l.slice(i + 1).trim()]; }));
@@ -53,4 +53,19 @@ if (apres === avant) throw new Error('js/supabase.js : URL ou clé introuvable')
 fs.writeFileSync(sb, apres);
 
 fs.writeFileSync(path.join(web, 'src', 'lib', 'site-statique.json'), JSON.stringify(pages.sort(), null, 0) + '\n');
+// Dictionnaires de traduction (tools/i18n : empreinte du texte français → traduction), pour la flotte et les fiches
+// rendues par l'application. Les traductions propres aux yachts viennent de la base (pas de *-yachts.tsv).
+const i18n = path.join(racine, 'tools', 'i18n');
+const dicos = { noms: JSON.parse(fs.readFileSync(path.join(i18n, 'noms.json'), 'utf8')) };
+for (const l of ['en', 'de', 'it']) {
+  dicos[l] = {};
+  for (const f of fs.readdirSync(i18n).filter((n) => n.startsWith(`${l}-`) && n.endsWith('.tsv') && !n.endsWith('-yachts.tsv'))) {
+    for (const ligne of fs.readFileSync(path.join(i18n, f), 'utf8').split(/\r?\n/)) {
+      const m = ligne.match(/^([0-9a-f]{8})\s+(.*\S)\s*$/);
+      if (m) dicos[l][m[1]] = m[2];
+    }
+  }
+}
+fs.writeFileSync(path.join(web, 'src', 'lib', 'site', 'dictionnaires.json'), JSON.stringify(dicos) + '\n');
+
 console.log(`${pages.length} pages vitrines copiées dans web/public`);

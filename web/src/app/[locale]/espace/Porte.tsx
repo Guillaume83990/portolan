@@ -11,10 +11,11 @@ import type { Langue } from '@/lib/format';
 
 const DEMO = process.env.NEXT_PUBLIC_DEMO === 'true';
 
-export function Porte({ langue, lienInvalide }: { langue: Langue; lienInvalide?: boolean }) {
+// retour : fiche d'un yacht où le visiteur reprend sa réservation une fois connecté (validée par la page)
+export function Porte({ langue, lienInvalide, retour }: { langue: Langue; lienInvalide?: boolean; retour?: string | null }) {
   const t = dico(langue).auth;
   const router = useRouter();
-  const [vue, setVue] = useState<null | 'connexion' | 'creation'>(null);
+  const [vue, setVue] = useState<null | 'connexion' | 'creation'>(retour ? 'connexion' : null);
   const [erreur, setErreur] = useState('');
   const [envoi, demarrer] = useTransition();
   const robot = useRef<TurnstileApi>(null);
@@ -25,13 +26,18 @@ export function Porte({ langue, lienInvalide }: { langue: Langue; lienInvalide?:
     const j = await robot.current?.jeton(); robot.current?.reinitialiser();
     const r = await connexionDemo(compte, j);
     if (!r.ok) { setErreur(r.code === 'robot' ? t.erreurs.robot : t.porte.demo.indisponible); return; }
-    if (compte === 'directeur') router.push('/direction/tableau-de-bord'); else router.refresh();
+    if (compte === 'directeur') router.push('/direction/tableau-de-bord'); else if (retour) location.assign(retour); else router.refresh();
   });
 
   return (
     <main className="esp">
       <h1 className="esp__bonjour">{t.porte.titre}</h1>
       <p className="esp__sous">{t.porte.texte}</p>
+      {retour && (
+        <div className="bandeau-info" style={{ marginTop: '1.5rem', maxWidth: '40rem' }}>
+          <strong>{t.porte.reserver.titre}</strong> {t.porte.reserver.texte} <a href={retour}>{t.porte.reserver.annuler}</a>
+        </div>
+      )}
       {lienInvalide && <p className="bandeau-info bandeau-info--alerte" role="alert" style={{ marginTop: '1.5rem', maxWidth: '40rem' }}>{t.nouveauMdp.lienInvalide}</p>}
       <p style={{ display: 'flex', gap: '.75rem', flexWrap: 'wrap', marginTop: '2rem' }}>
         <button className="btn btn--plein" type="button" onClick={() => setVue('connexion')}>{t.porte.connecter}</button>
@@ -49,7 +55,8 @@ export function Porte({ langue, lienInvalide }: { langue: Langue; lienInvalide?:
           <Turnstile ref={robot} langue={langue} />
         </section>
       )}
-      <FenetreCompte key={vue ?? 'ferme'} langue={langue} ouvert={vue !== null} vueInitiale={vue ?? 'connexion'} onFermer={() => setVue(null)} />
+      <FenetreCompte key={vue ?? 'ferme'} langue={langue} ouvert={vue !== null} vueInitiale={vue ?? 'connexion'} onFermer={() => setVue(null)} apres={retour}
+        raison={retour ? t.porte.reserver.texte : undefined} />
     </main>
   );
 }

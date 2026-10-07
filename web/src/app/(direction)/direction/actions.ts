@@ -1,7 +1,7 @@
 'use server';
 // Actions de l'espace directeur. Toutes passent par la session de la personne connectée : la base vérifie
 // le rôle (directeur) et refuse tout au compte de démonstration. Après chaque écriture, les pages se rechargent.
-import { revalidatePath } from 'next/cache';
+import { revalidatePath, updateTag } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { supabaseServeur } from '@/lib/supabase/serveur';
 import { ErreurAffichable, messageErreur, type Resultat } from '@/lib/erreurs';
@@ -10,7 +10,8 @@ import { stripe, stripeDisponible } from '@/lib/paiement/stripe';
 import { adminDisponible, supabaseAdmin } from '@/lib/supabase/admin';
 import { lancerTraitement } from '@/lib/evenements/lancer';
 
-const rafraichir = () => revalidatePath('/direction', 'layout');
+// Pages de la direction, et pages publiques de la flotte rendues depuis la base (lib/site/pages.ts) : vidées aussitôt
+const rafraichir = () => { revalidatePath('/direction', 'layout'); updateTag('flotte'); };
 
 type Session = Awaited<ReturnType<typeof supabaseServeur>>;
 

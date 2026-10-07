@@ -8,6 +8,7 @@ import { CarteVide } from '@/components/Rose';
 import { urlPhoto } from '@/lib/yachts';
 import { dateLongue, dateHeure, euros, jourSemaineCourt, jour, relatif, heure, type Langue } from '@/lib/format';
 import { Porte } from './Porte';
+import { retourValide } from '@/lib/site/retour';
 import { SessionDirection } from './SessionDirection';
 import { AnnulerDemande, Decompte } from './Interactions';
 
@@ -22,7 +23,7 @@ export default async function MonEspace({ params, searchParams }: PageProps<'/[l
   const sp = await searchParams;
   const t = dico(locale);
   const { user, profil } = await session();
-  if (!user || !profil) return <Porte langue={locale} lienInvalide={sp.lien === 'invalide'} />;
+  if (!user || !profil) return <Porte langue={locale} lienInvalide={sp.lien === 'invalide'} retour={retourValide(typeof sp.retour === 'string' ? sp.retour : null)} />;
   if (profil.role !== 'client') return <SessionDirection langue={locale} />;
 
   const r = await reglagesPublics();
