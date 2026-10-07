@@ -9,6 +9,7 @@ import type { Fiche, Yacht } from '@/lib/yachts';
 import { stripe, stripeDisponible } from '@/lib/paiement/stripe';
 import { adminDisponible, supabaseAdmin } from '@/lib/supabase/admin';
 import { lancerTraitement } from '@/lib/evenements/lancer';
+import { manquesPourPublier, verifierYacht } from '@/lib/yachts-validation';
 
 // Pages de la direction, et pages publiques de la flotte rendues depuis la base (lib/site/pages.ts) : vidées aussitôt
 const rafraichir = () => { revalidatePath('/direction', 'layout'); updateTag('flotte'); };
@@ -114,7 +115,10 @@ export const enregistrerNotes = async (id: string, noteInterne: string, mot: str
 
 export async function bloquerDates(yacht: string, debut: string, fin: string, motif: string, note: string) {
   return executer(async (sb) => {
-    if (!debut || !fin || fin <= debut) throw new ErreurAffichable('Choisissez une date de fin après la date de début.');
+    const jour = /^\d{4}-\d{2}-\d{2}$/;
+    if (!jour.test(debut) || !jour.test(fin) || Number.isNaN(Date.parse(debut)) || Number.isNaN(Date.parse(fin))) throw new ErreurAffichable('Dates invalides.');
+    if (fin <= debut) throw new ErreurAffichable('Choisissez une date de fin après la date de début.');
+    if (!/^[a-z0-9-]{1,60}$/.test(yacht)) throw new ErreurAffichable('Yacht inconnu.');
     const nuits = Math.round((Date.parse(fin) - Date.parse(debut)) / 86_400_000);
     verifier(await sb.from('reservations').insert({ yacht, type: 'blocage', debut, fin, statut: 'confirmee', motif, note_interne: note, nuits }));
   });
@@ -156,6 +160,8 @@ const slugifier = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLo
 export async function creerYacht(nom: string, chantier: string, longueur: number, vente: boolean, location: boolean) {
   const r = await executer(async (sb) => {
     if (!nom.trim()) throw new ErreurAffichable('Indiquez le nom du yacht.');
+    if (nom.trim().length > 60) throw new ErreurAffichable('Nom : 60 caractères au plus.');
+    if (!Number.isFinite(longueur) || longueur < 0 || longueur > 200) throw new ErreurAffichable('Longueur : entre 5 et 200 mètres.');
     const slug = slugifier(nom);
     const { data: dernier } = await sb.from('yachts').select('ordre').order('ordre', { ascending: false }).limit(1);
     verifier(await sb.from('yachts').insert({
@@ -188,8 +194,12 @@ export async function supprimerYacht(slug: string) {
   return executer(async (sb) => {
     const { count } = await sb.from('reservations').select('id', { count: 'exact', head: true }).eq('yacht', slug);
     if (count) throw new ErreurAffichable(`Impossible : ce yacht a ${count} réservation${count > 1 ? 's' : ''}. Archivez-le plutôt.`);
-    const { data: fichiers } = await sb.storage.from('yachts').list(slug);
-    if (fichiers?.length) await sb.storage.from('yachts').remove(fichiers.map((f) => `${slug}/${f.name}`));
+    // Photos du yacht effacées du stockage par le serveur (rôle déjà vérifié par executer) : la session du directeur
+    // n'a pas le droit de lister les fichiers, la liste revenait vide et les photos restaient orphelines
+    if (!/^[a-z0-9-]{1,60}$/.test(slug)) throw new ErreurAffichable('Yacht inconnu.');
+    const stock = supabaseAdmin().storage.from('yachts');
+    const { data: fichiers } = await stock.list(slug, { limit: 1000 });
+    if (fichiers?.length) await stock.remove(fichiers.map((f) => `${slug}/${f.name}`));
     verifier(await sb.from('yachts').delete().eq('slug', slug));
   });
 }
@@ -202,16 +212,30 @@ export async function enregistrerYacht(slug: string, modif: Partial<Yacht>, ouve
   try {
     const sb = await supabaseServeur();
     await exigerDirecteur(sb);
-    const { data: actuel } = await sb.from('yachts').select('modifie_le').eq('slug', slug).single();
+    // Saisie contrôlée avant toute écriture (types, bornes, longueurs) : message clair dans l'éditeur
+    const invalide = verifierYacht(modif);
+    if (invalide) return { ok: false as const, erreur: invalide };
+    const { data: actuel } = await sb.from('yachts').select('modifie_le, nom, publie, vente, location_basse, location_haute, fiche').eq('slug', slug).single();
     if (!ecraser && actuel && new Date(actuel.modifie_le).getTime() > new Date(ouvertLe).getTime() + 1000) {
       return { ok: false as const, erreur: 'conflit', modifieLe: actuel.modifie_le as string };
+    }
+    if (actuel) {
+      const cible = { ...actuel, ...modif } as Pick<Yacht, 'nom' | 'publie' | 'vente' | 'location_basse' | 'location_haute' | 'fiche'>;
+      if ((cible.location_basse == null) !== (cible.location_haute == null)) {
+        return { ok: false as const, erreur: 'Location : indiquez les deux tarifs (basse et haute saison), ou aucun.' };
+      }
+      // Un yacht en ligne doit pouvoir être présenté correctement sur le site public
+      const manques = cible.publie ? manquesPourPublier(cible) : [];
+      if (manques.length) return { ok: false as const, erreur: `Pour mettre ce yacht en ligne, complétez : ${manques.join(', ')}.` };
     }
     const { data, error } = await sb.from('yachts').update(modif).eq('slug', slug).select('slug, modifie_le').single();
     if (error) throw error;
     // Suppression réelle des fichiers des photos retirées
     if (photosRetirees.length) {
-      const chemins = photosRetirees.filter((s) => s.startsWith('supabase:')).flatMap((s) => [`${s.slice(9)}-900.webp`, `${s.slice(9)}-1600.webp`]);
-      if (chemins.length) await sb.storage.from('yachts').remove(chemins);
+      // Seulement les photos de ce yacht (dossier « <slug>/ »), effacées par le serveur après la vérification du rôle
+      const chemins = photosRetirees.filter((p) => p.startsWith(`supabase:${slug}/`) && /^supabase:[a-z0-9-]+\/[A-Za-z0-9_-]+$/.test(p))
+        .flatMap((p) => [`${p.slice(9)}-900.webp`, `${p.slice(9)}-1600.webp`]);
+      if (chemins.length) await supabaseAdmin().storage.from('yachts').remove(chemins);
     }
     rafraichir();
     return { ok: true as const, slug: data.slug as string, modifieLe: data.modifie_le as string };

@@ -139,7 +139,7 @@ function Identite({ y, setY, setFiche }: PropsY) {
           <Champ id="i-ch" label="Chantier" valeur={f.chantier} onChange={(v) => setFiche!({ chantier: v })} />
           <Champ id="i-chc" label="Nom court du chantier" valeur={f.chantierCourt} onChange={(v) => setFiche!({ chantierCourt: v })} />
           <div className="champ"><label htmlFor="i-type">Type</label>
-            <select id="i-type" value={f.type ?? 'moteur'} onChange={(e) => setFiche!({ type: e.target.value as 'moteur' | 'voilier' })}><option value="moteur">Moteur</option><option value="voilier">Voilier</option></select></div>
+            <select id="i-type" value={f.type ?? 'moteur'} onChange={(e) => setFiche!({ type: e.target.value as 'moteur' | 'voile' })}><option value="moteur">Moteur</option><option value="voile">Voilier</option></select></div>
           <Champ id="i-num" label="Numéro dans la flotte" valeur={String(y.ordre).padStart(2, '0')} inputMode="numeric" onChange={(v) => setY((x) => ({ ...x, ordre: Math.max(1, nombre(v)) }))} />
           <Champ id="i-port" label="Port d'attache" valeur={y.port} onChange={(v) => setY((x) => ({ ...x, port: v }))} />
           <Champ id="i-pav" label="Pavillon" valeur={f.pavillon} onChange={(v) => setFiche!({ pavillon: v })} />
@@ -447,7 +447,8 @@ function Photos({ y, setFiche, onRetirer, demo }: { y: Yacht; setFiche: (f: Part
           const blob = await new Promise<Blob | null>((ok) => canvas.toBlob(ok, 'image/webp', 0.82));
           if (!blob || blob.type !== 'image/webp') throw new Error('Ce navigateur ne sait pas préparer les photos : utilisez Chrome, Edge ou Firefox.');
           setEnvois((e) => e.map((x) => (x.id === id ? { ...x, etat: 'envoi', progres: 30 + n * 35 } : x)));
-          const { error } = await sb.storage.from('yachts').upload(`${cle}-${largeur}.webp`, blob, { contentType: 'image/webp', upsert: true });
+          // Identifiant unique : jamais de remplacement (un « upsert » exigerait en plus un droit de lecture sur le stockage)
+          const { error } = await sb.storage.from('yachts').upload(`${cle}-${largeur}.webp`, blob, { contentType: 'image/webp', upsert: false });
           if (error) throw error;
           if (largeur === 1600) dims = { w: l, h };
         }

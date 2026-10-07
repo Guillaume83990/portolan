@@ -13,6 +13,7 @@ import { transform } from './traduction.mjs';
 import { LOCALES, ROUTES, localize } from './routes.mjs';
 import dicos from './dictionnaires.json';
 import vitrines from '@/lib/site-statique.json';
+import { normaliserFiche } from '@/lib/yachts-validation';
 
 export type Langue = 'fr' | 'en' | 'de' | 'it';
 const SITE = (process.env.NEXT_PUBLIC_APP_URL ?? 'https://portolan.sudwebproject.com').replace(/\/$/, '');
@@ -67,8 +68,6 @@ type Ligne = Record<string, unknown> & {
   traductions?: Record<string, Record<string, string>>; textes?: Record<string, Record<string, { texte?: string; source?: string }>>;
 };
 
-const NUMERIQUES = ['longueur', 'largeur', 'tirant', 'equipage', 'autonomie'];
-
 // 1. Données (même forme que data/flotte.json, comme tools/supabase/exporter.cjs)
 async function lireDonnees() {
   const sb = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!, { auth: { persistSession: false } });
@@ -92,10 +91,8 @@ async function lireDonnees() {
   const yachts = lignes.map((l) => {
     const v = l.fiche.visite;
     const brute = v ? { ...l.fiche, visite: { ...v, pieces: Object.fromEntries((v.pieces ?? []).map((p) => [p.cle, p.nom])) } } : l.fiche;
-    // Champs numériques forcés en nombres : ils sont insérés tels quels dans la page (aucun texte ne peut s'y glisser)
-    const vit = (brute as { vitesse?: { croisiere?: unknown; max?: unknown } }).vitesse;
-    const fiche = { ...brute, ...Object.fromEntries(NUMERIQUES.filter((k) => k in brute).map((k) => [k, Number((brute as Record<string, unknown>)[k]) || 0])),
-      ...(vit ? { vitesse: { croisiere: Number(vit.croisiere) || 0, max: Number(vit.max) || 0 } } : {}) };
+    // Valeurs sûres pour chaque champ (lib/yachts-validation.ts) : une donnée inattendue ne fait jamais tomber la page
+    const fiche = normaliserFiche(brute, l.nom);
     const dates = prises.filter((p) => p.yacht === l.slug).map(({ debut, fin, etat }) => ({ debut, fin, etat }));
     return {
       slug: l.slug, nom: l.nom, ...fiche, invites: l.invites, port: l.port, vente: l.vente,
@@ -138,10 +135,16 @@ function finaliser(html: string, langue: Langue) {
 // Rendu d'une page (« null » : la flotte ; sinon le slug du yacht) ; null si le yacht n'existe pas ou n'est pas publié
 async function rendre(langue: Langue, slug: string | null): Promise<string | null> {
   const d = await lireDonnees();
-  const g = creerGabarit({ saison: d.saison, yachts: d.yachts, SITE, STOCKAGE });
-  const i = slug ? d.yachts.findIndex((y) => y.slug === slug) : -1;
+  // Un yacht dont la fiche ne peut pas être rendue est écarté des pages publiques (et signalé), au lieu de faire tomber
+  // toute la flotte : le reste du site reste en ligne pendant que le directeur corrige
+  const essai = creerGabarit({ saison: d.saison, yachts: d.yachts, SITE, STOCKAGE });
+  const yachts = d.yachts.filter((y, k) => {
+    try { essai.fiche(y, k); return true; } catch (e) { console.error(`[flotte] fiche « ${y.slug} » écartée :`, e instanceof Error ? e.message : e); return false; }
+  });
+  const g = creerGabarit({ saison: d.saison, yachts, SITE, STOCKAGE });
+  const i = slug ? yachts.findIndex((y) => y.slug === slug) : -1;
   if (slug && i < 0) return null;
-  const fr = slug ? g.fiche(d.yachts[i], i) : g.pageFlotte();
+  const fr = slug ? g.fiche(yachts[i], i) : g.pageFlotte();
   if (langue === 'fr') return finaliser(fr, 'fr');
 
   // 4. Traduction : table des adresses (toutes les pages françaises du site), puis dictionnaire de la langue
@@ -157,7 +160,7 @@ async function rendre(langue: Langue, slug: string | null): Promise<string | nul
 }
 
 // L'adresse du site fait partie de la clé : un changement de domaine ne sert jamais une page mise en cache avec l'ancienne
-export const pageFlotte = unstable_cache(rendre, ['site-flotte-v4', SITE], { tags: ['flotte'], revalidate: 600 });
+export const pageFlotte = unstable_cache(rendre, ['site-flotte-v5', SITE], { tags: ['flotte'], revalidate: 600 });
 
 // Le segment d'adresse de « La flotte » dans chaque langue (flotte, fleet, flotte, flotta)
 export const segmentFlotte = (l: Langue) => (ROUTES as Record<string, Record<string, string>>)[l].flotte;

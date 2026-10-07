@@ -3,7 +3,7 @@
 // dans le stockage Supabase, « supabase:<slug>/<id> » → bucket yachts, <slug>/<id>-900.webp.
 export type Photo = { src: string; w?: number; h?: number; alt: string; pont?: string };
 export type Fiche = {
-  type?: 'moteur' | 'voilier'; annee?: number; refit?: number | null; longueur?: number; largeur?: number; tirant?: number;
+  type?: 'moteur' | 'voile'; annee?: number; refit?: number | null; longueur?: number; largeur?: number; tirant?: number;
   coque?: string; architecte?: string; cabines?: string; equipage?: number; moteurs?: string; stabilisateurs?: string;
   pavillon?: string; autonomie?: number; vitesse?: { croisiere?: number; max?: number };
   chantier?: string; chantierCourt?: string; accroche?: string; exclusivite?: boolean; selection?: boolean;

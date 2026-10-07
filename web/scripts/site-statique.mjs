@@ -40,6 +40,9 @@ for (const l of LANGUES) {
   inventorier(path.join(pub, l), `/${l}/`);
 }
 for (const d of ['css', 'js', 'vendor', 'assets/fonts']) copier(d);
+// Scripts de l'ancien espace client et de l'ancien espace directeur statiques : aucune page servie ne les charge
+// (l'application les remplace), ils ne sont donc pas publiés
+for (const f of ['direction.js', 'espace.js']) fs.rmSync(path.join(pub, 'js', f), { force: true });
 for (const f of ['index.html', 'robots.txt', 'assets/favicon.svg', 'assets/favicon-32.png', 'assets/apple-touch-icon.png']) copier(f);
 pages.push('/');
 

@@ -15,7 +15,8 @@ const nombre = (n) => new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 1 
 const euros = (n) => `${nombre(n)}&nbsp;€`;
 const metres = (n) => `${nombre(n)}&nbsp;m`;
 const pad = (i) => String(i + 1).padStart(2, '0');
-const nbCabines = (y) => Number(y.cabines.match(/^\d+/)[0]);
+// Nombre de cabines : saisi dans l'éditeur, ou déduit de la description ; jamais d'erreur si le texte n'a pas de chiffre
+const nbCabines = (y) => Number(y.nbCabines) || Number(String(y.cabines ?? '').match(/^\d+/)?.[0]) || '—';
 const vendu = (y) => y.vente != null;
 const loue = (y) => y.location != null;
 const statut = (y) => [vendu(y) && 'À vendre', loue(y) && 'À louer'].filter(Boolean).join(' et ').replace('À vendre et À louer', 'À vendre et à louer');
